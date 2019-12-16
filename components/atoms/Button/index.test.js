@@ -1,6 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import * as rtl from '@testing-library/react';
+import preloadAll from 'jest-next-dynamic';
 
 import { Button } from './index';
 
@@ -8,16 +9,14 @@ let tools;
 
 beforeEach(() => {
   rtl.cleanup();
-  // tools = rtl.render(<Button />);
-  // console.log(tools);
 });
 
 describe('Button component', () => {
-  tools = rtl.render(<Button />);
+  it('shows the correct button text', async () => {
+    await preloadAll();
+    tools = rtl.render(<Button>some</Button>);
 
-  it('shows the correct button text', () => {
-    const buttonText = tools.findByText('some');
-    console.log(tools);
+    const buttonText = await rtl.waitForElement(() => tools.queryByText(/some/));
     expect(buttonText).toBeInTheDocument();
   });
 });
