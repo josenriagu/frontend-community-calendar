@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+export const StyledButton = styled.button`
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
@@ -10,3 +10,12 @@ export const Button = styled.button`
   display: inline-block;
   font-size: 16px;
 `;
+
+export const Button = () => {
+  return (
+    <div data-testid='count'>
+      some
+    </div>
+  )
+}
+
