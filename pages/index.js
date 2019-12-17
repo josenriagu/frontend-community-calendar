@@ -10,12 +10,11 @@ const Title = styled.h1`
   font-size: 50px;
 `;
 
-const Home = ({ doSignUp }) => {
+const Home = () => {
   const onSignUp = event => {
     event.preventDefault();
-    console.log('button clicked');
     const user = {
-      // name: 'Tola',
+      name: 'Tola',
     };
 
     doSignUp(user);
