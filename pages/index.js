@@ -1,15 +1,39 @@
-import React from 'react'
-import styled, { css } from 'styled-components';
+/* eslint-disable react/button-has-type */
+import React from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+
+import { doSignUp } from '../redux/actions/signUp';
 
 const Title = styled.h1`
   color: red;
   font-size: 50px;
 `;
 
-const Home = () => (
-  <Title>
-    Homepage
-  </Title>
-)
+const Home = ({ doSignUp }) => {
+  const onSignUp = event => {
+    event.preventDefault();
+    console.log('button clicked');
+    const user = {
+      // name: 'Tola',
+    };
 
-export default Home
+    doSignUp(user);
+  };
+
+  return (
+    <Title>
+      Homepage
+      <button
+        onClick={event => onSignUp(event)}
+      >
+        Click to signup
+      </button>
+    </Title>
+  );
+};
+
+export default connect(
+  state => state,
+  { doSignUp },
+)(Home);
