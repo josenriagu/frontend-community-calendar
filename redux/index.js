@@ -1,9 +1,15 @@
-/* eslint-disable no-underscore-dangle */
 import { compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import combinedReducers from './reducers';
 
-export const reduxStore = (initialState = {}) => {
-  return createStore(combinedReducers, initialState, applyMiddleware(thunk, logger));
-};
+const composeEnhancers = typeof window
+  !== 'undefined'
+  && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  || compose;
+
+export const reduxStore = (initialState = {}) => createStore(
+  combinedReducers,
+  initialState,
+  composeEnhancers(applyMiddleware(thunk, logger)),
+);
