@@ -1,0 +1,1 @@
+# Community Calendar [![Build Status](https://travis-ci.org/LABS-EU3/frontend_community_calendar.svg?branch=chore-configure-travis-ci)](https://travis-ci.org/LABS-EU3/frontend_community_calendar.svg?branch=chore-configure-travis-ci)
