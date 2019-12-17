@@ -31,5 +31,9 @@ module.exports = {
   ],
   rules: {
     'react/jsx-filename-extension': 0,
+    'jsx-a11y/html-has-lang': 0,
+    'react/jsx-props-no-spreading': 0,
+    'import/prefer-default-export': 0,
+    'arrow-parens': 0,
   },
 };
