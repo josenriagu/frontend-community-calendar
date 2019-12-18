@@ -10,7 +10,7 @@ const Title = styled.h1`
   font-size: 50px;
 `;
 
-const Home = () => {
+const Home = ({ doSignUp }) => {
   const onSignUp = event => {
     event.preventDefault();
     const user = {
