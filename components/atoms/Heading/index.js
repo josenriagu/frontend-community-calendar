@@ -7,7 +7,7 @@ const fontSize = ({ level }) => `${0.75 + (1 * (1 / level))}em`;
 const fontStyle = css`
   font-size: ${fontSize};
   font-weight: ${props => (props.weight ? props.weight : 500)};
-  color: ${props => (props.color ? props.color : 'black')};
+  color: ${props => (props.color ? props.color : '#000000')};
   margin: 0;
 `;
 
