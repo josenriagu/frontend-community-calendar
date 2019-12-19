@@ -29,7 +29,6 @@
     "@testing-library/react": "^9.3.3",
     "babel-plugin-styled-components": "^1.10.6",
     "conventional-changelog-conventionalcommits": "^4.2.3",
-    "crossenv": "0.0.2-security",
     "eslint": "^6.7.2",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.19.1",
