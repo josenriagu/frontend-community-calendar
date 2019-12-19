@@ -21,14 +21,16 @@ const Home = ({ doSignUp }) => {
   };
 
   return (
-    <Title>
-      Homepage
-      <button
-        onClick={event => onSignUp(event)}
-      >
-        Click to signup
-      </button>
-    </Title>
+    <>
+      <Title>
+        Homepage
+        <button
+          onClick={event => onSignUp(event)}
+        >
+          Click to signup
+        </button>
+      </Title>
+    </>
   );
 };
 
