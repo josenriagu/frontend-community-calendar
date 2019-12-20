@@ -10,17 +10,22 @@ const Input = styled.input`
   height: 3em;
   font-size: 1em;
 
+  :hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+  }
+
   ${props => props.search && css`
     outline: 0;
     border: 0;
     border-bottom: 0.5px solid #716969;
     border-radius: 0;
+    background: none;
     height: 1.5em;
-  `}
 
-  :hover {
-    box-shadow: 0 0 11px rgba(33,33,33,.2);
-  }
+    &:hover {
+      box-shadow: none;
+    }
+  `}
 
   &[type=checkbox], &[type=radio] {
     display: inline-block;
