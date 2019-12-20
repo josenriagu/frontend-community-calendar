@@ -12,11 +12,22 @@ beforeEach(() => {
 });
 
 describe('Button component', () => {
-  it('shows the correct button text', async () => {
+  it('plots the correct button type', async () => {
     await preloadAll();
-    tools = rtl.render(<Button>some</Button>);
+    tools = rtl.render(
+      <>
+        <Button small>Small</Button>
+        <Button medium>Medium</Button>
+        <Button large>Large</Button>
+      </>,
+    );
 
-    const buttonText = await rtl.waitForElement(() => tools.queryByText(/some/));
-    expect(buttonText).toBeInTheDocument();
+    const SmallButton = await rtl.waitForElement(() => tools.queryByText(/small/i));
+    const MediumButton = await rtl.waitForElement(() => tools.queryByText(/medium/i));
+    const LargeButton = await rtl.waitForElement(() => tools.queryByText(/large/i));
+
+    expect(SmallButton).toBeInTheDocument();
+    expect(MediumButton).toBeInTheDocument();
+    expect(LargeButton).toBeInTheDocument();
   });
 });
