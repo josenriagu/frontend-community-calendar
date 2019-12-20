@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect';
 import * as rtl from '@testing-library/react';
 import preloadAll from 'jest-next-dynamic';
 
-import ButtonComponent from './index';
+import { Button } from './index';
 
 let tools;
 
@@ -16,10 +16,10 @@ describe('Button component', () => {
     await preloadAll();
     tools = rtl.render(
       <>
-        <ButtonComponent size="small" text="Small" />
-        <ButtonComponent size="medium" text="Medium" />
-        <ButtonComponent size="large" text="Large" />
-      </>
+        <Button small>Small</Button>
+        <Button medium>Medium</Button>
+        <Button large>Large</Button>
+      </>,
     );
 
     const SmallButton = await rtl.waitForElement(() => tools.queryByText(/small/i));
