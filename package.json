@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "storybook": "start-storybook",
-    "test": "jest test"
+    "test": "jest test --verbose"
   },
   "dependencies": {
     "antd": "^3.26.3",
