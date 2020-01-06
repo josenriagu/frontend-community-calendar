@@ -32,9 +32,9 @@ export const NavBarAlt = () => (
 export default { title: 'Navbar' };
 
 Navbar.defaultProps = {
-  alt: '',
+  alt: false,
 };
 
 Navbar.propTypes = {
-  alt: PropTypes.string,
+  alt: PropTypes.bool,
 };
