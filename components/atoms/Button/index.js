@@ -30,7 +30,4 @@ export const Button = styled.button`
 
 Button.propTypes = {
   fontColor: PropTypes.string,
-  large: PropTypes.string,
-  medium: PropTypes.string,
-  small: PropTypes.string,
 };
