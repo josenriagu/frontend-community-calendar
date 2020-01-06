@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { NavBarDiv } from './index';
+import { NavBarDiv } from '.';
 import { Logo } from '../../atoms/Logo';
 import { Button } from '../../atoms/Button';
 
