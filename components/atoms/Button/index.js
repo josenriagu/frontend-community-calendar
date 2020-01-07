@@ -5,11 +5,10 @@ export const Button = styled.button`
     background-color: ${props => props.background || '#CE5374'};
     border: none;
     color: ${props => props.fontColor || 'white'};
-    padding: .5rem .3rem;
+    padding: .5rem .7rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    border-radius: .4rem;
     cursor: pointer;
     ${props => props.large && css`
 

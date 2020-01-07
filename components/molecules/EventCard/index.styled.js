@@ -8,7 +8,6 @@ export const EventCardDiv = styled.div`
   display flex;
   justify-content: space-between;
   border: .05rem solid ${colors.borderGray};
-  border-radius: .25rem;
   padding: .7rem 1rem .3rem;
   div#parent1 {
     display: flex;
@@ -28,7 +27,6 @@ export const EventCardAltDiv = styled.div`
   flex-direction: column;
   justify-content: space-between;
   border: .05rem solid ${colors.borderGray};
-  border-radius: .25rem;
   padding: .7rem 1rem .3rem;
   p {
     font-size: 1rem;
