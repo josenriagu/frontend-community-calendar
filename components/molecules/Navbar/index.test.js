@@ -12,12 +12,7 @@ beforeEach(() => rtl.cleanup());
 describe('NavBar Test Suite', () => {
   it('renders NavBar correctly', async () => {
     await preloadAll();
-    tools = await rtl.render(
-      <>
-        <NavBar />
-        {/* <NavBarAlt /> */}
-      </>,
-    );
+    tools = await rtl.render(<NavBar />);
 
     const Create = await rtl.waitForElement(() => tools.findByText(/create event/i));
     const Login = await rtl.waitForElement(() => tools.findByText(/login/i));
@@ -29,11 +24,7 @@ describe('NavBar Test Suite', () => {
   });
   it('renders NavBarAlt correctly', async () => {
     await preloadAll();
-    tools = await rtl.render(
-      <>
-        <NavBarAlt />
-      </>,
-    );
+    tools = await rtl.render(<NavBarAlt />);
 
     const Create = await rtl.waitForElement(() => tools.findByText(/create event/i));
     const Login = await rtl.waitForElement(() => tools.findByText(/login/i));
