@@ -3,14 +3,16 @@ import styled from 'styled-components';
 import { colors } from '../../~reusables';
 
 export const SearchBarDiv = styled.div`
-  width: calc(100% - 40%);
+  width: 60rem;
+  height: 6rem;
   margin: 0 auto;
   padding: .5rem 1rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background: white;
   position: absolute;
-  top: -2rem;
+  top: -3rem;
   left: 20%;
   right: 20%;
   transition: box-shadow 2s;
@@ -21,5 +23,12 @@ export const SearchBarDiv = styled.div`
   :hover {
     box-shadow: .5rem .5rem 1rem .3rem rgba(167, 167, 167, 1);
     border: none;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    i {
+    font-size: 1.6rem;
+    }
   }
 `;

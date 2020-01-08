@@ -7,13 +7,16 @@ import { EventCardAltDiv } from './index.styled';
 import { colors } from '../../~reusables';
 
 const EventCardMax = ({ toggle }) => (
-  <EventCardAltDiv onClick={toggle}>
+  <EventCardAltDiv>
     <div id="topbar">
       <div id="datetime">
         <span>10:00AM</span>
         <span>10 February, 2020</span>
       </div>
-      <span><Icon type="star" color={colors.secondary} /></span>
+      <span id="toggle">
+        <i onClick={toggle} className=" fas fa-chevron-up" />
+        <Icon type="star" color={colors.secondary} />
+      </span>
     </div>
     <h6>Event Title</h6>
     <div id="host">

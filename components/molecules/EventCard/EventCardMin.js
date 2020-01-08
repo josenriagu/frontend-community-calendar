@@ -6,7 +6,7 @@ import { EventCardDiv } from './index.styled';
 import { colors } from '../../~reusables';
 
 const EventCardMin = ({ toggle }) => (
-  <EventCardDiv onClick={toggle}>
+  <EventCardDiv>
     <div id="parent1">
       <div><p>10:00AM</p></div>
       <div id="sibling1">
@@ -15,7 +15,8 @@ const EventCardMin = ({ toggle }) => (
         <p>Virginia, US</p>
       </div>
     </div>
-    <span>
+    <span id="toggle">
+      <i onClick={toggle} className=" fas fa-chevron-down" />
       <Icon type="star" color={colors.secondary} />
     </span>
   </EventCardDiv>

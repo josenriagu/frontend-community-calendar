@@ -1,14 +1,15 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
 import { connect } from 'react-redux';
+import Head from 'next/head';
+// import { Calendar } from 'antd';
 
 import { AppDiv } from '../styles/App.styled';
 import GlobalStyle from '../styles/GlobalStyles';
 import NavBar from '../components/molecules/Navbar';
 import SearchBar from '../components/molecules/Searchbar';
 import EventCard from '../components/molecules/EventCard';
-import Icon from '../components/atoms/Icon';
-// import Heading from '../components/atoms/Heading';
+import AppFooter from '../components/molecules/Footer';
 
 import { doSignUp } from '../redux/actions/signUp';
 
@@ -16,54 +17,37 @@ import { doSignUp } from '../redux/actions/signUp';
 const Home = () => (
   <>
     <GlobalStyle />
+    <Head>
+      {/* Stylesheet links */}
+      <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossOrigin="anonymous" />
+    </Head>
     <AppDiv>
       <div id="introSection">
-        <NavBar />
-        <div id="heading">
-          <h3>find relevant community events</h3>
-          <h3>around you</h3>
+        <div id="wrapper">
+          <NavBar />
+          <div id="heading">
+            <h3>find relevant community events</h3>
+            <h3>around you</h3>
+          </div>
         </div>
       </div>
       <div id="eventSection">
-        <SearchBar />
-        <div id="eventsContainer">
-          {
-            ['1', '2', '3', '4', '5'].map(el => <EventCard key={el} />)
-          }
+        <div id="wrapper">
+          <SearchBar />
+          <div id="eventCal">
+            <div id="eventsContainer">
+              {
+                ['1', '2', '3', '4', '5'].map(el => <EventCard key={el} />)
+              }
+            </div>
+            {/* <div id="calendar">
+              <Calendar fullscreen={false} />
+            </div> */}
+          </div>
         </div>
       </div>
-      <footer>
-        <div id="footerGroup">
-          <div id="col1">
-            <h3>ComCal</h3>
-          </div>
-          <div id="col2">
-            <h6>Your Acount</h6>
-            <a href="/signup">Sign Up</a>
-            <a href="/login">Login</a>
-            <a href="/create-event">Create Event</a>
-          </div>
-          <div id="col3">
-            <h6>Use ComCal</h6>
-            <p>How it Works</p>
-            <p>Fun Facts</p>
-            <p>FAQs</p>
-          </div>
-          <div id="col4">
-            <h6>Find Events</h6>
-            <p>Accra</p>
-            <p>Lagos</p>
-            <p>New York</p>
-            <p>Lome</p>
-            <p>All Communities</p>
-          </div>
-        </div>
-        <div id="socialIcons">
-          <Icon type="facebook" color="#ffffff" theme="filled" />
-          <Icon type="instagram" color="#ffffff" theme="filled" />
-          <Icon type="github" color="#ffffff" theme="filled" />
-        </div>
-      </footer>
+      <AppFooter />
     </AppDiv>
   </>
 );

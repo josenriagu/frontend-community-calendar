@@ -4,7 +4,6 @@ import { colors } from '../../~reusables';
 
 export const EventCardDiv = styled.div`
   width: 100%;
-  cursor: pointer;
   display: flex;
   justify-content: space-between;
   margin: 1rem 0 1rem;
@@ -19,11 +18,20 @@ export const EventCardDiv = styled.div`
   p {
     margin: .3rem 0;
   }
+  span#toggle {
+    width: 7.5%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    i {
+      color: ${colors.secondary};
+    }
+  }
 `;
 
 export const EventCardAltDiv = styled.div`
   width: 100%;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -38,6 +46,16 @@ export const EventCardAltDiv = styled.div`
       width: 40%;
       display: flex;
       justify-content: space-between;
+    }
+    span#toggle {
+      width: 7.5%;
+      height: auto;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      i {
+        color: ${colors.secondary};
+      }
     }
   }
   div#host {

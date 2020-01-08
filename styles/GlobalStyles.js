@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
   }
   body{
-    line-height: 1;
+    line-height: 1.5;
     background-color: '#ffffff' ;
     color: '#000000';
     text-align: left;
