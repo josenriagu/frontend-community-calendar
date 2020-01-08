@@ -1,3 +1,4 @@
 export const colors = {
-  secondary: '#CE5374',
+  secondary: '#ce5374',
+  borderGray: '#a7a7a7',
 };

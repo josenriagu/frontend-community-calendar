@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect';
 import * as rtl from '@testing-library/react';
 import preloadAll from 'jest-next-dynamic';
 
-import { NavBar, NavBarAlt } from './index.stories';
+import { Navbar, NavbarAlt } from './index.stories';
 
 let tools;
 
@@ -12,7 +12,7 @@ beforeEach(() => rtl.cleanup());
 describe('NavBar Test Suite', () => {
   it('renders NavBar correctly', async () => {
     await preloadAll();
-    tools = await rtl.render(<NavBar />);
+    tools = await rtl.render(<Navbar />);
 
     const Create = await rtl.waitForElement(() => tools.findByText(/create event/i));
     const Login = await rtl.waitForElement(() => tools.findByText(/login/i));
@@ -22,9 +22,9 @@ describe('NavBar Test Suite', () => {
     expect(Login).toBeInTheDocument();
     expect(Signup).toBeInTheDocument();
   });
-  it('renders NavBarAlt correctly', async () => {
+  it('renders NavbarAlt correctly', async () => {
     await preloadAll();
-    tools = await rtl.render(<NavBarAlt />);
+    tools = await rtl.render(<NavbarAlt />);
 
     const Create = await rtl.waitForElement(() => tools.findByText(/create event/i));
     const Login = await rtl.waitForElement(() => tools.findByText(/login/i));
