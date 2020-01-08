@@ -1,22 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Heading from '../../atoms/Heading';
 import { Button } from '../../atoms/Button';
 import Icon from '../../atoms/Icon';
 import { EventCardAltDiv } from './index.styled';
 import { colors } from '../../~reusables';
 
 const EventCardMax = ({ toggle }) => (
-  <EventCardAltDiv onClick={toggle}>
+  <EventCardAltDiv>
     <div id="topbar">
       <div id="datetime">
         <span>10:00AM</span>
         <span>10 February, 2020</span>
       </div>
-      <span><Icon type="star" color={colors.secondary} /></span>
+      <span id="toggle">
+        <i onClick={toggle} className=" fas fa-chevron-up" />
+        <Icon type="star" color={colors.secondary} />
+      </span>
     </div>
-    <Heading weight="bold" level={2}>Lorem Ipsum</Heading>
+    <h6>Event Title</h6>
     <div id="host">
       <div id="imgHolder">
         {/* <img src="#" alt="star" /> */}
@@ -29,7 +31,7 @@ const EventCardMax = ({ toggle }) => (
     <div id="actionIcons">
       <span>
         <Icon type="environment" color={colors.secondary} />
-        <p>Hotspot</p>
+        <p>Virginia, US</p>
       </span>
       <span>
         <Icon type="idcard" color={colors.secondary} />
@@ -45,7 +47,7 @@ const EventCardMax = ({ toggle }) => (
       </span>
     </div>
     <div id="description">
-      <Heading weight="bold" level={3}>Description</Heading>
+      <p><strong>Description</strong></p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
         culpa qui officia deserunt mollit anim id est laborum.

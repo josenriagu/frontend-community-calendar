@@ -8,7 +8,7 @@ const SearchBar = () => (
   <SearchBarDiv>
     <Input search type="text" placeholder="I want events in" />
     <div>
-      <Input search type="options" placeholder="Happening on               --v--" />
+      <Input search type="options" placeholder="Happening on          " />
       <i className=" fas fa-chevron-down" />
     </div>
     <Button medium>Search</Button>
