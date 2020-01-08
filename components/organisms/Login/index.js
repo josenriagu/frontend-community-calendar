@@ -2,42 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import { Button } from "../../atoms/Button";
-import NavBar from "../../molecules/Navbar/";
+import { NavbarAlt } from "../../molecules/Navbar/index.stories";
 import Input from "../../atoms/Input/";
+import { Label, InputDiv, Form } from "../signup";
 
-export const BorderDiv = styled.div`
-  width: 25rem;
-  height: 32rem;
-  margin: 0 auto;
-  background: #ffffff;
-  border: 1px solid #cec8c8;
-  box-sizing: border-box;
-  padding-top: 3rem;
-`;
-export const InputDiv = styled.div`
-  margin-bottom: 1.5rem;
-`;
-export const Label = styled.div`
-  font-family: Montserrat;
-  font-weight: bold;
-  font-size: 1.2rem;
-`;
-
-export const Paragraph = styled.p`
-  margin-bottom: 1.6rem;
-  margin-top: 0.7rem;
-  margin-right: 7rem;
-  font-size: 1.3rem;
-`;
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const Register = () => {
+export const Login = () => {
   const initialState = {
-    name: "",
     email: "",
     password: ""
   };
@@ -49,27 +19,18 @@ export const Register = () => {
   };
   return (
     <div>
-      <NavBar alt />
+      <NavbarAlt />
       <BorderDiv>
         <Form>
           <InputDiv>
-            <Label>Name</Label>
+            <Label>Email</Label>
             <Input
               large
               type="text"
-              onChange={handleChange}
-              name="name"
-              value={credentials.name}
-            />
-          </InputDiv>
-
-          <InputDiv>
-            <Label>Email address</Label>
-            <Input
               large
               type="text"
               onChange={handleChange}
-              name="name"
+              name="email"
               value={credentials.email}
             />
           </InputDiv>
@@ -80,16 +41,38 @@ export const Register = () => {
               large
               type="text"
               onChange={handleChange}
-              name="name"
+              name="password"
               value={credentials.password}
             />
           </InputDiv>
-          <Paragraph>Lagos,NG(Change)</Paragraph>
+          <StyledDiv>
+            <Input type="checkbox" />
+            <p>Remember me</p>
+          </StyledDiv>
           <Button large style={{ width: "20rem", height: "3rem" }}>
-            Sign up
+            Login
           </Button>
         </Form>
       </BorderDiv>
     </div>
   );
 };
+
+const BorderDiv = styled.div`
+  width: 25rem;
+  height: 25rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  background: #ffffff;
+  border: 1px solid #cec8c8;
+  box-sizing: border-box;
+  padding-top: 3rem;
+`;
+const StyledDiv = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  margin-right: 12rem;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+`;
