@@ -11,12 +11,12 @@ const Icon = ({ color, type }) => (
   />
 );
 
-Location.propTypes = {
+Icon.propTypes = {
   type: PropTypes.string.isRequired,
   color: PropTypes.string,
 };
 
-Location.defaultProps = {
+Icon.defaultProps = {
   color: '#000000',
 };
 
