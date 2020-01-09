@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 
 export const Logo = styled.div`
-  background-image: url('/comcal.png');
+  background-image: url('/logo.png');
   width: ${props => props.width || '113px'};
   height: ${props => props.height || '58px'};
   background-repeat: no-repeat;

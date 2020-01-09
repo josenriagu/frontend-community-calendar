@@ -12,7 +12,7 @@ const SearchBar = () => (
       <Input search type="options" placeholder="Happening on          " />
       <i className=" fas fa-chevron-down" />
     </div>
-    <Button medium background={colors.secondary}>Search</Button>
+    <Button medium background={colors.primary}>Search</Button>
   </SearchBarDiv>
 );
 

@@ -17,7 +17,7 @@ const EventCardMin = ({ toggle }) => (
     </div>
     <span id="toggle">
       <i onClick={toggle} className=" fas fa-chevron-down" />
-      <Icon type="star" color={colors.secondary} />
+      <Icon type="star" color={colors.primary} />
     </span>
   </EventCardDiv>
 );

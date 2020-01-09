@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 export const Button = styled.button`
     background: ${props => props.background};
     border: none;
+    border-radius: 5rem;
     color: ${props => props.fontColor || 'white'};
     padding: .75rem 1.5rem;
     text-align: center;
