@@ -5,14 +5,9 @@ const Input = styled.input`
   border: 0.5px solid #716969;
   border-radius: 5px;
   outline: none;
-  margin: 5px 0;
-  padding: 0 5px;
-  height: 3em;
-  font-size: 1em;
-
-  :hover {
-    box-shadow: 0 0 11px rgba(33,33,33,.2);
-  }
+  padding: 0 .5rem;
+  height: 3.3rem;
+  font-size: 1.6rem;
 
   ${props => props.search && css`
     outline: 0;

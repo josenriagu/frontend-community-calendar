@@ -8,13 +8,12 @@ import { colors } from '../../~reusables';
 
 const NavBar = ({ alt }) => (
   <NavBarDiv>
-    {alt && <Logo coloredLogo />}
-    {!alt && <Logo />}
+    <Logo />
     <nav>
-      <a href="/create-event"><Button medium>Create Event</Button></a>
-      {alt && <a href="/login"><Button medium background="inherit" fontColor={colors.secondary}>Login</Button></a>}
+      <a href="/create-event"><Button medium background={colors.primary}>Create Event</Button></a>
+      {alt && <a href="/login"><Button medium background="inherit" fontColor={colors.primary}>Login</Button></a>}
       {!alt && <a href="/login"><Button medium background="inherit">Login</Button></a>}
-      {alt && <a href="/signup"><Button medium background="inherit" fontColor={colors.secondary}>Signup</Button></a>}
+      {alt && <a href="/signup"><Button medium background="inherit" fontColor={colors.primary}>Signup</Button></a>}
       {!alt && <a href="/signup"><Button medium background="inherit">Signup</Button></a>}
     </nav>
   </NavBarDiv>
