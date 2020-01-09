@@ -1,5 +1,5 @@
 export const colors = {
-  secondary: '#ce5374',
+  secondary: '#9c0d38',
   borderGray: '#a7a7a7',
-  footer: '#223127',
+  footer: '#4e5086',
 };

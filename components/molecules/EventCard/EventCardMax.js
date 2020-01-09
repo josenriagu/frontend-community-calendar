@@ -54,7 +54,7 @@ const EventCardMax = ({ toggle }) => (
       </p>
     </div>
     <div id="button">
-      <Button medium>Attend Event</Button>
+      <Button medium background={colors.secondary}>Attend Event</Button>
     </div>
   </EventCardAltDiv>
 );

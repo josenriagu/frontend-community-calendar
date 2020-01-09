@@ -6,7 +6,7 @@ export const EventCardDiv = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 1rem 0 1rem;
+  margin: 0 0 1rem;
   padding: 1.5rem 3rem 1rem;
   border: .05rem solid ${colors.borderGray};
   div#parent1 {
@@ -35,7 +35,7 @@ export const EventCardAltDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 1rem 0 1rem;
+  margin: 0 0 1rem;
   padding: 1.5rem 3rem 1rem;
   border: .05rem solid ${colors.borderGray};
   div#topbar {
@@ -102,7 +102,6 @@ export const EventCardAltDiv = styled.div`
   div#button {
     margin: 0 auto;
     button {
-      padding: .5rem;
       font-size: 1.6rem;
     }
   }

@@ -11,7 +11,7 @@ const NavBar = ({ alt }) => (
     {alt && <Logo coloredLogo />}
     {!alt && <Logo />}
     <nav>
-      <a href="/create-event"><Button medium>Create Event</Button></a>
+      <a href="/create-event"><Button medium background={colors.secondary}>Create Event</Button></a>
       {alt && <a href="/login"><Button medium background="inherit" fontColor={colors.secondary}>Login</Button></a>}
       {!alt && <a href="/login"><Button medium background="inherit">Login</Button></a>}
       {alt && <a href="/signup"><Button medium background="inherit" fontColor={colors.secondary}>Signup</Button></a>}
