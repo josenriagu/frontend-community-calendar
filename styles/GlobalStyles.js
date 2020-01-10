@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
   }
   body{
-    line-height: 1;
+    line-height: 1.5;
     background-color: '#ffffff' ;
     color: '#000000';
     text-align: left;
@@ -33,6 +33,44 @@ const GlobalStyle = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  h2 {
+    font-size: 5rem;
+    margin-top: 1rem;
+    font-weight: 400;
+    color: white;
+  }
+  h3 {
+    font-size: calc(1.5 * 2.4rem);
+    margin-bottom: 0;
+    font-weight: 400;
+    color: white;
+  }
+  h4 {
+    font-size: 3rem;
+    margin: 1.5rem 0 0 0;
+    font-family: 'Playfair Display', sans-serif;
+    color: white;
+  }
+  h5 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  h6 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  p, span {
+    font-size: 1.6rem;
+  }
+  a {
+    text-decoration: none;
+    font-size: 1.6rem
+  }
+  strong {
+    font-weight: bold;
   }
   ol, ul {
     list-style: none;

@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { colors } from '../../~reusables';
 
 export const EventCardDiv = styled.div`
-  width: 50%;
-  cursor: pointer;
-  display flex;
+  width: 100%;
+  display: flex;
   justify-content: space-between;
-  border: .05rem solid ${colors.borderGray};
-  padding: .7rem 1rem .3rem;
+  margin: 0 0 1rem;
+  padding: 1.5rem 3rem 1rem;
+  border: .05rem solid ${colors.tertiary};
+  border-radius: 1.5rem;
   div#parent1 {
     display: flex;
   }
@@ -18,19 +19,27 @@ export const EventCardDiv = styled.div`
   p {
     margin: .3rem 0;
   }
+  span#toggle {
+    width: 7.5%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    i {
+      color: ${colors.primary};
+    }
+  }
 `;
 
 export const EventCardAltDiv = styled.div`
-  width: 50%;
-  cursor: pointer;
-  display flex;
+  width: 100%;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: .05rem solid ${colors.borderGray};
-  padding: .7rem 1rem .3rem;
-  p {
-    font-size: 1rem;
-  }
+  margin: 0 0 1rem;
+  padding: 1.5rem 3rem 1rem;
+  border: .05rem solid ${colors.tertiary};
+  border-radius: 1.5rem;
   div#topbar {
     width: 100%;
     display: flex;
@@ -40,14 +49,24 @@ export const EventCardAltDiv = styled.div`
       display: flex;
       justify-content: space-between;
     }
+    span#toggle {
+      width: 7.5%;
+      height: auto;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      i {
+        color: ${colors.primary};
+      }
+    }
   }
   div#host {
     display: flex;
     align-items: center;
-    margin-top: .5rem;
+    margin-top: 1rem;
     div#imgHolder {
-      width: 3rem;
-      height: 3rem;
+      width: 5rem;
+      height: 5rem;
       border-radius: 50%;
       background-color: gray;
     }
@@ -62,7 +81,7 @@ export const EventCardAltDiv = styled.div`
   }
   div#actionIcons {
     width: 90%;
-    margin-top: .5rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: space-between;
     span {
@@ -74,7 +93,7 @@ export const EventCardAltDiv = styled.div`
     }
   }
   div#description {
-    margin-top: .5rem;
+    margin-top: 1rem;
     p {
       margin: .8rem 0;
     }
@@ -85,8 +104,7 @@ export const EventCardAltDiv = styled.div`
   div#button {
     margin: 0 auto;
     button {
-      padding: .5rem;
-      font-size: .9rem;
+      font-size: 1.6rem;
     }
   }
 `;
