@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import { doSignUp } from "../redux/actions/signUp";
-import { Login } from "../components/organisms/Login";
+import { Login } from "../components/organisms/Login/";
 
 const Home = ({ doSignUp }) => {
   const onSignUp = event => {

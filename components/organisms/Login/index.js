@@ -1,37 +1,52 @@
 import React, { useState } from "react";
+import Axios from "axios";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 
+import { loginStatus } from "../../../redux/actions/Login";
 import { Button } from "../../atoms/Button";
-import { NavbarAlt } from "../../molecules/Navbar/index.stories";
+import AuthNavBar from "../AuthNavBar/";
 import Input from "../../atoms/Input/";
 import { Label, InputDiv, Form } from "../signup";
 
 export const Login = () => {
   const initialState = {
-    email: "",
+    username: "",
     password: ""
   };
+  const dispatch = useDispatch();
+
   const [credentials, SetCredentials] = useState(initialState);
 
   const handleChange = e => {
     const { name, value } = e.target;
     SetCredentials({ ...credentials, [name]: value });
   };
+
+  const handleSubmit = (e, credentials) => {
+    e.preventDefault();
+    Axios.post(
+      "https://comcalstaging.herokuapp.com/api/v1/users/signin",
+      credentials
+    )
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch(err => console.log(err));
+  };
   return (
     <div>
-      <NavbarAlt />
+      <AuthNavBar alt />
       <BorderDiv>
-        <Form>
+        <Form onSubmit={e => handleSubmit(e, credentials)}>
           <InputDiv>
-            <Label>Email</Label>
+            <Label>Username</Label>
             <Input
               large
               type="text"
-              large
-              type="text"
               onChange={handleChange}
-              name="email"
-              value={credentials.email}
+              name="username"
+              value={credentials.username}
             />
           </InputDiv>
 
@@ -39,7 +54,7 @@ export const Login = () => {
             <Label>Password</Label>
             <Input
               large
-              type="text"
+              type="password"
               onChange={handleChange}
               name="password"
               value={credentials.password}
