@@ -5,7 +5,6 @@ import { NavBarDiv } from './index.styled';
 import { Logo } from '../../atoms/Logo';
 import { Button } from '../../atoms/Button';
 import { colors } from '../../~reusables';
-// import lod from '../../organisms/Login'
 
 const NavBar = ({ alt }) => (
   <NavBarDiv>
