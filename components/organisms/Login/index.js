@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import Axios from "axios";
-import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from 'react';
+import Axios from 'axios';
+import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 
-import { loginStatus } from "../../../redux/actions/Login";
-import { Button } from "../../atoms/Button";
-import AuthNavBar from "../AuthNavBar/";
-import Input from "../../atoms/Input/";
-import { Label, InputDiv, Form } from "../signup";
+import { loginStatus } from '../../../redux/actions/login.actions';
+import { Button } from '../../atoms/Button';
+import AuthNavBar from '../AuthNavBar';
+import Input from '../../atoms/Input';
+import { Label, InputDiv, Form } from '../signup';
 
 export const Login = () => {
   const initialState = {
-    username: "",
-    password: ""
+    username: '',
+    password: '',
   };
   const dispatch = useDispatch();
 
@@ -23,25 +23,25 @@ export const Login = () => {
     SetCredentials({ ...credentials, [name]: value });
   };
 
-  const handleSubmit = (e, credentials) => {
+  const handleSubmit = (e, existingUser) => {
     e.preventDefault();
     Axios.post(
-      "https://comcalstaging.herokuapp.com/api/v1/users/signin",
-      credentials
+      'https://comcalstaging.herokuapp.com/api/v1/users/signin',
+      existingUser,
     )
       .then(({ data }) => {
-        console.log(data);
-      })
-      .catch(err => console.log(err));
+        dispatch(loginStatus(data));
+      });
   };
   return (
     <div>
       <AuthNavBar alt />
-      <BorderDiv>
+      <BorderDiv style={{ borderRadius: '20px'}}>
         <Form onSubmit={e => handleSubmit(e, credentials)}>
           <InputDiv>
             <Label>Username</Label>
             <Input
+              style={{borderRadius: '20px'}}
               large
               type="text"
               onChange={handleChange}
@@ -53,6 +53,7 @@ export const Login = () => {
           <InputDiv>
             <Label>Password</Label>
             <Input
+              style={{borderRadius: '20px'}}
               large
               type="password"
               onChange={handleChange}
@@ -62,9 +63,14 @@ export const Login = () => {
           </InputDiv>
           <StyledDiv>
             <Input type="checkbox" />
-            <p>Remember me</p>
+            <Paragraph>Remember me</Paragraph>
           </StyledDiv>
-          <Button large style={{ width: "20rem", height: "3rem" }}>
+          <Button
+            large
+            style={{
+              fontSize: '16px', width: '20rem', height: '3rem', backgroundColor: '#CE5374', padding: '5px',
+            }}
+          >
             Login
           </Button>
         </Form>
@@ -74,8 +80,8 @@ export const Login = () => {
 };
 
 const BorderDiv = styled.div`
-  width: 25rem;
-  height: 25rem;
+  width: 280px;
+  height: 280px;
   margin: 0 auto;
   margin-top: 2rem;
   background: #ffffff;
@@ -87,7 +93,8 @@ const StyledDiv = styled.div`
   display: flex;
   align-items: center;
   font-size: 1rem;
-  margin-right: 12rem;
-  margin-top: -1rem;
-  margin-bottom: 1rem;
+  margin-right: 6rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 `;
+const Paragraph = styled.p``;

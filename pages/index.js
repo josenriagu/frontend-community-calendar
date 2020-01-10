@@ -5,10 +5,11 @@ import Head from "next/head";
 
 import GlobalStyle from "../styles/GlobalStyles";
 import App from "../components/layout/App";
-
-import { doSignUp } from "../redux/actions/signUp";
+import { Register } from "../components/organisms/signup";
+import {signUpStatus} from "../redux/actions/signUp.actions";
 
 const Home = () => (
+  
   <>
     <GlobalStyle />
     <Head>
@@ -28,4 +29,4 @@ const Home = () => (
   </>
 );
 
-export default connect(state => state, { doSignUp })(Home);
+export default connect(state => state, { signUpStatus })(Home);

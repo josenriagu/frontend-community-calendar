@@ -1,10 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { NavBarDiv } from "./index.styled";
-import { Logo } from "../../atoms/Logo";
-import { Button } from "../../atoms/Button";
-import { colors } from "../../~reusables";
+import { NavBarDiv } from './index.styled';
+import { Logo } from '../../atoms/Logo';
+import { Button } from '../../atoms/Button';
+import { colors } from '../../~reusables';
+// import lod from '../../organisms/Login'
 
 const NavBar = ({ alt }) => (
   <NavBarDiv>
@@ -48,11 +49,11 @@ const NavBar = ({ alt }) => (
 );
 
 NavBar.defaultProps = {
-  alt: false
+  alt: false,
 };
 
 NavBar.propTypes = {
-  alt: PropTypes.bool
+  alt: PropTypes.bool,
 };
 
 export default NavBar;

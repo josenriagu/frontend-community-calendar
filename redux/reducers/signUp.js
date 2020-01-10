@@ -1,8 +1,8 @@
-import * as types from '../constants/signUp';
+import * as types from '../constants/signUp.constants';
 
 const initialState = {
   requesting: false,
-  success: false,
+  user: {},
   error: null,
 };
 

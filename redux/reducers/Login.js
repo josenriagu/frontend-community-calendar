@@ -1,26 +1,30 @@
-import * as types from "../constants/Login";
+import * as types from '../constants/login.constants';
 
 const initialState = {
-  isLoginSuccess: false,
-  isLoginPending: false,
-  loginError: null
+  requesting: false,
+  user: {},
+  error: null,
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case types.SET_LOGIN_PENDING:
-      return { ...state, isLoginPending: action.payload };
-
-    case types.SET_LOGIN_SUCCESS:
+    case types.LOGIN_REQUEST:
       return {
         ...state,
-        isLoginPending: false,
-        isLoginSuccess: action.payload
+        requesting: action.payload,
       };
-
-    case types.SET_LOGIN_ERROR:
-      return { ...state, isLoginPending: false, loginError: action.payload };
-
+    case types.LOGIN_SUCCESS:
+      return {
+        ...state,
+        requesting: false,
+        user: action.payload,
+      };
+    case types.LOGIN_ERROR:
+      return {
+        ...state,
+        requesting: false,
+        error: action.payload,
+      };
     default:
       return state;
   }

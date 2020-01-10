@@ -1,16 +1,15 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-import { Button } from "../../atoms/Button";
-import AuthNavBar from "../AuthNavBar/";
-import Input from "../../atoms/Input/";
-import axios from "axios";
+import axios from 'axios';
+import { Button } from '../../atoms/Button';
+import AuthNavBar from '../AuthNavBar';
+import Input from '../../atoms/Input';
 
 export const BorderDiv = styled.div`
-  width: 25rem;
-  height: 32rem;
+  width: 350px;
+  height: 450px;
   margin: 0 auto;
-  margin-top: 0.3rem;
   background: #ffffff;
   border: 1px solid #cec8c8;
   box-sizing: border-box;
@@ -22,14 +21,13 @@ export const InputDiv = styled.div`
 export const Label = styled.div`
   font-family: Montserrat;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 16px;
 `;
 
 export const Paragraph = styled.p`
-  margin-bottom: 0.5rem;
-  margin-top: 0;
+  margin-bottom: 0.8rem;
+  margin-top: 5px;
   margin-right: 7rem;
-  font-size: 1.3rem;
 `;
 export const Form = styled.form`
   display: flex;
@@ -39,11 +37,11 @@ export const Form = styled.form`
 
 export const Register = () => {
   const initialState = {
-    first_name: "",
-    last_name: "",
-    username: "",
-    email: "",
-    password: ""
+    first_name: '',
+    last_name: '',
+    username: '',
+    email: '',
+    password: '',
   };
   const [credentials, SetCredentials] = useState(initialState);
 
@@ -52,12 +50,12 @@ export const Register = () => {
     SetCredentials({ ...credentials, [name]: value });
   };
 
-  const handleSubmit = (e, credentials) => {
+  const handleSubmit = (e, newUser) => {
     e.preventDefault();
     axios
       .post(
-        "https://comcalstaging.herokuapp.com/api/v1/users/register",
-        credentials
+        'https://comcalstaging.herokuapp.com/api/v1/users/register',
+        newUser,
       )
       .then(data => {
         console.log(data);
@@ -75,7 +73,7 @@ export const Register = () => {
           <InputDiv>
             <Label>FirstName</Label>
             <Input
-              style={{ height: "2.3rem" }}
+              style={{ width: '250px' }}
               large
               type="text"
               onChange={handleChange}
@@ -86,7 +84,7 @@ export const Register = () => {
           <InputDiv>
             <Label>LastName</Label>
             <Input
-              style={{ height: "2.3rem" }}
+              style={{ width: '250px' }}
               large
               type="text"
               onChange={handleChange}
@@ -97,7 +95,7 @@ export const Register = () => {
           <InputDiv>
             <Label>Username</Label>
             <Input
-              style={{ height: "2.3rem" }}
+              style={{ width: '250px' }}
               large
               type="text"
               onChange={handleChange}
@@ -109,7 +107,7 @@ export const Register = () => {
           <InputDiv>
             <Label>Email address</Label>
             <Input
-              style={{ height: "2.3rem" }}
+              style={{ width: '250px' }}
               large
               type="text"
               onChange={handleChange}
@@ -121,7 +119,7 @@ export const Register = () => {
           <InputDiv>
             <Label>Password</Label>
             <Input
-              style={{ height: "2.3rem" }}
+              style={{ width: '250px' }}
               large
               type="text"
               onChange={handleChange}
@@ -130,7 +128,12 @@ export const Register = () => {
             />
           </InputDiv>
           <Paragraph>Lagos,NG(Change)</Paragraph>
-          <Button large style={{ width: "20rem", height: "2.5rem" }}>
+          <Button
+            large
+            style={{
+              fontSize: '16px', width: '20rem', height: '40px', backgroundColor: '#CE5374', padding: '5px',
+            }}
+          >
             Sign up
           </Button>
         </Form>
