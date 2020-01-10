@@ -25,7 +25,7 @@ export const doFetchEvent = (userCountry, userCity, eventType) => dispatch => {
     },
     body: JSON.stringify({
       userCountry,
-      userCity: 'lagos',
+      userCity,
       eventType,
     }),
   };
