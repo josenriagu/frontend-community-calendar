@@ -1,15 +1,14 @@
 /* eslint-disable react/button-has-type */
-import React from "react";
-import { connect } from "react-redux";
-import Head from "next/head";
+import React from 'react';
+import { connect } from 'react-redux';
+import Head from 'next/head';
 
-import GlobalStyle from "../styles/GlobalStyles";
-import App from "../components/layout/App";
-import { Register } from "../components/organisms/signup";
-import {signUpStatus} from "../redux/actions/signUp.actions";
+import GlobalStyle from '../styles/GlobalStyles';
+import App from '../components/layout/App';
+import { signUpStatus } from '../redux/actions/signUp.actions';
 
 const Home = () => (
-  
+
   <>
     <GlobalStyle />
     <Head>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 import { NavBarDiv } from './index.styled';
 import { Logo } from '../../atoms/Logo';
@@ -16,32 +17,40 @@ const NavBar = ({ alt }) => (
         </Button>
       </a>
       {alt && (
-        <a href="/login">
+        <Link href='/SignIn'>
+        <a>
           <Button medium background="inherit" fontColor={colors.primary}>
             Login
           </Button>
         </a>
+        </Link>
       )}
       {!alt && (
-        <a href="/login">
+        <Link href="/SignIn">
+        <a>
           <Button medium background="inherit">
             Login
           </Button>
         </a>
+        </Link>
       )}
       {alt && (
-        <a href="/signup">
+        <Link href="/Register">
+        <a>
           <Button medium background="inherit" fontColor={colors.primary}>
             Signup
           </Button>
         </a>
+        </Link>
       )}
       {!alt && (
-        <a href="/signup">
+        <Link href="/Register">
+        <a>
           <Button medium background="inherit">
             Signup
           </Button>
         </a>
+        </Link>
       )}
     </nav>
   </NavBarDiv>

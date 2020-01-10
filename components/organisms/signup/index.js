@@ -131,7 +131,7 @@ export const Register = () => {
           <Button
             large
             style={{
-              fontSize: '16px', width: '20rem', height: '40px', backgroundColor: '#CE5374', padding: '5px',
+              fontSize: '16px', width: '250px', height: '40px', backgroundColor: '#CE5374', padding: '5px',
             }}
           >
             Sign up
