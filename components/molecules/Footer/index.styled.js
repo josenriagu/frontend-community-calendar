@@ -5,7 +5,7 @@ import { colors } from '../../~reusables';
 export const Footer = styled.footer`
   width: 100%;
   padding: 5rem 3rem 2rem;
-  background-color: ${colors.footer};
+  background-color: ${colors.secondary};
   div#footerGroup {
     display: flex;
     justify-content: space-between;

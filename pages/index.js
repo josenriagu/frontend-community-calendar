@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import { doSignUp } from '../redux/actions/signUp';
-import Dashboard from '../components/organisms/Dashboard/';
+import Dashboard from '../components/organisms/Dashboard';
 
 const Home = ({ doSignUp }) => {
   const onSignUp = event => {
     event.preventDefault();
     const user = {
-      name: "Tola"
+      name: 'Tola',
     };
 
     doSignUp(user);

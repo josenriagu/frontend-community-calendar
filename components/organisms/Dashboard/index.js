@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 // import GlobalStyle from '../../../styles/GlobalStyles';
-import NavBar from '../../molecules/Navbar';
+import NavBarDashboard from '../../molecules/NavbarDashboard';
 
 const Dashboard = () => (
   <>
-    <NavBar />
+    <NavBarDashboard />
     <BorderDiv>
       <TopSectionDiv>
         <div className="imgHolder" />
@@ -91,6 +91,7 @@ const BorderDiv = styled.div`
   box-sizing: border-box;
   border-radius: 0.5rem;
   padding-top: 2rem;
+  line-height: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   h2{
       padding-left: 2rem;
@@ -98,7 +99,7 @@ const BorderDiv = styled.div`
 `;
 const TopSectionDiv = styled.div`
   margin: 0 auto;
-  margin-top: .5rem;
+  margin-top: .1rem;
   padding-left: 2rem;
   display: flex;
   flex-direction: row;

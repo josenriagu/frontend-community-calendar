@@ -15,7 +15,7 @@ const EventCardMax = ({ toggle }) => (
       </div>
       <span id="toggle">
         <i onClick={toggle} className=" fas fa-chevron-up" />
-        <Icon type="star" color={colors.secondary} />
+        <Icon type="star" color={colors.primary} />
       </span>
     </div>
     <h6>Event Title</h6>
@@ -30,19 +30,19 @@ const EventCardMax = ({ toggle }) => (
     </div>
     <div id="actionIcons">
       <span>
-        <Icon type="environment" color={colors.secondary} />
+        <Icon type="environment" color={colors.primary} />
         <p>Virginia, US</p>
       </span>
       <span>
-        <Icon type="idcard" color={colors.secondary} />
+        <Icon type="idcard" color={colors.primary} />
         <p>2.3k going</p>
       </span>
       <span>
-        <Icon type="idcard" color={colors.secondary} />
+        <Icon type="idcard" color={colors.primary} />
         <p>Free entry</p>
       </span>
       <span>
-        <Icon type="idcard" color={colors.secondary} />
+        <Icon type="idcard" color={colors.primary} />
         <p>Share</p>
       </span>
     </div>
@@ -54,7 +54,7 @@ const EventCardMax = ({ toggle }) => (
       </p>
     </div>
     <div id="button">
-      <Button medium>Attend Event</Button>
+      <Button medium background={colors.primary}>Attend Event</Button>
     </div>
   </EventCardAltDiv>
 );

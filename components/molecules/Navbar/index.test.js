@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect';
 import * as rtl from '@testing-library/react';
 import preloadAll from 'jest-next-dynamic';
 
-import { Navbar, NavbarAlt } from './index.stories';
+import { Navbar, NavbarAlt, } from './index.stories';
 
 let tools;
 

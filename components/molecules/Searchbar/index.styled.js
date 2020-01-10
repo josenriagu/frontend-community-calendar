@@ -6,7 +6,7 @@ export const SearchBarDiv = styled.div`
   width: 60rem;
   height: 6rem;
   margin: 0 auto;
-  padding: .5rem 1rem;
+  padding: .5rem 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,7 +16,8 @@ export const SearchBarDiv = styled.div`
   left: 20%;
   right: 20%;
   transition: box-shadow 2s;
-  border: .05rem solid ${colors.borderGray};
+  border: .05rem solid ${colors.tertiary};
+  border-radius: 7rem;
   input::placeholder {
     font-size: 1.6rem;
   }

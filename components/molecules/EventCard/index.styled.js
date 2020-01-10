@@ -6,9 +6,10 @@ export const EventCardDiv = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 1rem 0 1rem;
+  margin: 0 0 1rem;
   padding: 1.5rem 3rem 1rem;
-  border: .05rem solid ${colors.borderGray};
+  border: .05rem solid ${colors.tertiary};
+  border-radius: 1.5rem;
   div#parent1 {
     display: flex;
   }
@@ -25,7 +26,7 @@ export const EventCardDiv = styled.div`
     justify-content: space-between;
     cursor: pointer;
     i {
-      color: ${colors.secondary};
+      color: ${colors.primary};
     }
   }
 `;
@@ -35,9 +36,10 @@ export const EventCardAltDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 1rem 0 1rem;
+  margin: 0 0 1rem;
   padding: 1.5rem 3rem 1rem;
-  border: .05rem solid ${colors.borderGray};
+  border: .05rem solid ${colors.tertiary};
+  border-radius: 1.5rem;
   div#topbar {
     width: 100%;
     display: flex;
@@ -54,7 +56,7 @@ export const EventCardAltDiv = styled.div`
       justify-content: space-between;
       cursor: pointer;
       i {
-        color: ${colors.secondary};
+        color: ${colors.primary};
       }
     }
   }
@@ -102,7 +104,6 @@ export const EventCardAltDiv = styled.div`
   div#button {
     margin: 0 auto;
     button {
-      padding: .5rem;
       font-size: 1.6rem;
     }
   }

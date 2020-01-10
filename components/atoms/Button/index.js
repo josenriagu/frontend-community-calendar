@@ -2,10 +2,11 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
 export const Button = styled.button`
-    background-color: ${props => props.background || '#CE5374'};
+    background: ${props => props.background};
     border: none;
+    border-radius: 5rem;
     color: ${props => props.fontColor || 'white'};
-    padding: .5rem .7rem;
+    padding: .75rem 1.5rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { colors } from '../~reusables';
+
 export const AppDiv = styled.div`
   width: 100vw;
   margin: 0 auto;
@@ -10,7 +12,7 @@ export const AppDiv = styled.div`
   div#introSection {
     height: 80vh;
     background: '#ffffff';
-    background-image: url('/coverphoto.png');
+    background-image: url('/banner.jpg');
     /* background color is the fallback for when the image is not available */
     background-color: '#ffffff';
     background-position: center;
@@ -32,12 +34,16 @@ export const AppDiv = styled.div`
     div#eventCal {
       display: flex;
       justify-content: space-between;
+      padding-top: 5rem;
       div#eventsContainer {
-      width: 65%;
+      width: 62.5%;
       }
       div#calendar {
-        width: 300;
-        border: .1rem solid gray;
+        width: 32.5%;
+        height: 32.5rem;
+        padding: .5rem;
+        border: .1rem solid ${colors.tertiary};
+        border-radius: 1.5rem;
       }
     }
   }
