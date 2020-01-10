@@ -4,18 +4,9 @@ const Input = styled.input`
   background: #F1EDED;
   border: 0.5px solid #716969;
   outline: none;
-<<<<<<< HEAD
-  height: 3rem;
-  font-size: 1rem;
-
-  :hover {
-    box-shadow: 0 0 11px rgba(33,33,33,.2);
-  }
-=======
   padding: 0 .5rem;
   height: 3.3rem;
   font-size: 1.6rem;
->>>>>>> 982c88b05c4cfcb3ef9a4fc22a88edbc8e39897b
 
   ${props =>
     props.search &&
