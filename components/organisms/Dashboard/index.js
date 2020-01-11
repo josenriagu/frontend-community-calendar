@@ -51,6 +51,7 @@ const Dashboard = () => (
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                     ut labore et dolore magna aliqua.
           </p>
+          <h6>evensi.com</h6>
         </Card1Div>
         <Card2Div>
           <h3>Event Title</h3>
@@ -59,6 +60,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                     ut labore et dolore magna aliqua.
           </p>
+          <h6>evensi.com</h6>
         </Card2Div>
         <Card3Div>
           <h3>Event Title</h3>
@@ -67,6 +69,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                     ut labore et dolore magna aliqua.
           </p>
+          <h6>evensi.com</h6>
         </Card3Div>
       </MidSectionDiv>
       <BottomSectionDiv>
@@ -151,6 +154,10 @@ const Card1Div = styled.div`
   h3, h4, p{
       padding: 0.5rem;
   }
+  h6{
+    padding-right: .5rem;
+    text-align: right;
+  }
 `;
 const Card2Div = styled.div`
   margin: 0 auto;
@@ -162,6 +169,10 @@ const Card2Div = styled.div`
   h3, h4, p{
       padding: 0.5rem;
   }
+  h6{
+    padding-right: .5rem;
+    text-align: right;
+  }
 `;
 const Card3Div = styled.div`
   margin: 0 auto;
@@ -172,6 +183,10 @@ const Card3Div = styled.div`
   border-radius: 0.5rem;
   h3, h4, p{
       padding: 0.5rem;
+  }
+  h6{
+    padding-right: .5rem;
+    text-align: right;
   }
 `;
 const BottomSectionDiv = styled.div`
