@@ -18,7 +18,7 @@ const EventCard = ({ el }) => {
 
 EventCard.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  el: PropTypes.array.isRequired,
+  el: PropTypes.object.isRequired,
 };
 
 export default EventCard;

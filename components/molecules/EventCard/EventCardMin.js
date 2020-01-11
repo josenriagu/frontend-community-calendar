@@ -8,10 +8,11 @@ import { colors } from '../../~reusables';
 const EventCardMin = ({ toggle, el }) => {
   // eslint-disable-next-line no-param-reassign
   el.source = 'EventBrite';
+  const dateTimeArr = el.eventDate.split('+')[0].split(',');
   return (
     <EventCardDiv>
       <div id="parent1">
-        <div><p>{el.eventDate.split('+')[0].split(',')[2]}</p></div>
+        <div><p>{dateTimeArr[2]}</p></div>
         <div id="sibling1">
           <h6>{el.name.includes('-') ? el.name.split('-')[0] : el.name}</h6>
           <p>{`Source: ${el.source}`}</p>
@@ -29,7 +30,7 @@ const EventCardMin = ({ toggle, el }) => {
 EventCardMin.propTypes = {
   toggle: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  el: PropTypes.array.isRequired,
+  el: PropTypes.object.isRequired,
 };
 
 export default EventCardMin;
