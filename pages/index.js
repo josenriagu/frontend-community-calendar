@@ -1,25 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import styled from 'styled-components';
+import Head from 'next/head';
 
-import { doSignUp } from '../redux/actions/signUp';
-import Dashboard from '../components/organisms/Dashboard';
+import GlobalStyle from '../styles/GlobalStyles';
+import App from '../components/layout/App';
+import { signUpStatus } from '../redux/actions/signUp.actions';
 
-const Home = ({ doSignUp }) => {
-  const onSignUp = event => {
-    event.preventDefault();
-    const user = {
-      name: 'Tola',
-    };
+const Home = () => (
 
-    doSignUp(user);
-  };
+  <>
+    <GlobalStyle />
+    <Head>
+      {/* Stylesheet links */}
+      <link
+        href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+        crossOrigin="anonymous"
+      />
+    </Head>
+    <App />
 
-  return (
-    <>
-      <Dashboard />
-    </>
-  );
-};
+  </>
+);
 
-export default connect(state => state, { doSignUp })(Home);
+export default connect(state => state, { signUpStatus })(Home);

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 import { NavBarDiv } from './index.styled';
 import { Logo } from '../../atoms/Logo';
@@ -10,11 +11,47 @@ const NavBar = ({ alt }) => (
   <NavBarDiv>
     <Logo />
     <nav>
-      <a href="/create-event"><Button medium background={colors.primary}>Create Event</Button></a>
-      {alt && <a href="/login"><Button medium background="inherit" fontColor={colors.primary}>Login</Button></a>}
-      {!alt && <a href="/login"><Button medium background="inherit">Login</Button></a>}
-      {alt && <a href="/signup"><Button medium background="inherit" fontColor={colors.primary}>Signup</Button></a>}
-      {!alt && <a href="/signup"><Button medium background="inherit">Signup</Button></a>}
+      <a href="/create-event">
+        <Button medium background={colors.primary}>
+          Create Event
+        </Button>
+      </a>
+      {alt && (
+        <Link href='/SignIn'>
+        <a>
+          <Button medium background="inherit" fontColor={colors.primary}>
+            Login
+          </Button>
+        </a>
+        </Link>
+      )}
+      {!alt && (
+        <Link href="/SignIn">
+        <a>
+          <Button medium background="inherit">
+            Login
+          </Button>
+        </a>
+        </Link>
+      )}
+      {alt && (
+        <Link href="/Register">
+        <a>
+          <Button medium background="inherit" fontColor={colors.primary}>
+            Signup
+          </Button>
+        </a>
+        </Link>
+      )}
+      {!alt && (
+        <Link href="/Register">
+        <a>
+          <Button medium background="inherit">
+            Signup
+          </Button>
+        </a>
+        </Link>
+      )}
     </nav>
   </NavBarDiv>
 );

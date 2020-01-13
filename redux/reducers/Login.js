@@ -1,4 +1,4 @@
-import * as types from '../constants/signUp.constants';
+import * as types from '../constants/login.constants';
 
 const initialState = {
   requesting: false,
@@ -6,20 +6,20 @@ const initialState = {
   error: null,
 };
 
-export default function signUp(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case types.SIGNUP_REQUEST:
+    case types.LOGIN_REQUEST:
       return {
         ...state,
         requesting: action.payload,
       };
-    case types.SIGNUP_SUCCESS:
+    case types.LOGIN_SUCCESS:
       return {
         ...state,
         requesting: false,
-        success: action.payload,
+        user: action.payload,
       };
-    case types.SIGNUP_ERROR:
+    case types.LOGIN_ERROR:
       return {
         ...state,
         requesting: false,
