@@ -1,14 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import fetch from 'isomorphic-fetch';
 
 import { Button } from '../../atoms/Button';
 import Icon from '../../atoms/Icon';
 import { EventCardAltDiv } from './index.styled';
 import { colors } from '../../~reusables';
 
-const EventCardMax = ({ toggle, el }) => {
+const EventCardMax = ({ toggle, el, description }) => {
   const dateTimeArr = el.eventDate.split('+')[0].split(',');
+
   function pushLink(e, link) {
     e.preventDefault();
     window.location.href = link;
@@ -22,7 +25,7 @@ const EventCardMax = ({ toggle, el }) => {
           <span>{`${dateTimeArr[0]}, ${dateTimeArr[1]}, ${new Date().getFullYear()}`}</span>
         </div>
         <span id="toggle">
-          <i onClick={toggle} className=" fas fa-chevron-up" />
+          <i onClick={() => { toggle(); }} className=" fas fa-chevron-up" />
           <Icon type="star" color={colors.primary} />
         </span>
       </div>
@@ -57,8 +60,7 @@ const EventCardMax = ({ toggle, el }) => {
       <div id="description">
         <p><strong>Description</strong></p>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          {description}
         </p>
       </div>
       <div onClick={(e) => pushLink(e, el.scrapedEventLink)} id="button">
@@ -72,6 +74,7 @@ EventCardMax.propTypes = {
   toggle: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   el: PropTypes.object.isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 export default EventCardMax;
