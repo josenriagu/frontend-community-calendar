@@ -6,13 +6,14 @@ import EventCardMax from './EventCardMax';
 
 const EventCard = ({ el }) => {
   const [isToggled, setIsToggled] = useState(false);
+  const [description, setDescription] = useState('');
 
   const toggle = () => {
     setIsToggled(!isToggled);
   };
 
   return (
-    isToggled === true ? <EventCardMax toggle={toggle} el={el} /> : <EventCardMin toggle={toggle} el={el} />
+    isToggled === true ? <EventCardMax description={description} toggle={toggle} el={el} /> : <EventCardMin setDescription={setDescription} toggle={toggle} el={el} />
   );
 };
 
