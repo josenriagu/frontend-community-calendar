@@ -26,7 +26,9 @@ const App = ({ events }) => (
         <div id="eventCal">
           <div id="eventsContainer">
             {
-              events.map(el => <EventCard key={el.scrapedEventId} el={el} />)
+              events.length > 0
+                ? events.map(el => <EventCard key={el.scrapedEventId} el={el} />)
+                : null
             }
           </div>
           <div id="calendar">

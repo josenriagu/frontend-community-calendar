@@ -33,7 +33,7 @@ const NavBar = ({ alt, notLoggedIn, notSignedIn }) => (
       {(alt || notSignedIn) && (
         <Link href="/signin">
           <a>
-            <Button medium background="inherit" fontColor={colors.primary}>
+            <Button medium background="inherit" fontColor={alt ? colors.white : colors.primary}>
               Sign in
             </Button>
           </a>
@@ -42,7 +42,7 @@ const NavBar = ({ alt, notLoggedIn, notSignedIn }) => (
       {(alt || notLoggedIn) && (
         <Link href="/signup">
           <a>
-            <Button medium background="inherit" fontColor={colors.primary}>
+            <Button medium background="inherit" fontColor={alt ? colors.white : colors.primary}>
               Sign up
             </Button>
           </a>
