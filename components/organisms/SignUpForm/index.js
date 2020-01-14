@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { Button } from '../../atoms/Button';
 import NavBar from '../../molecules/Navbar';
@@ -9,30 +9,10 @@ import Paragraph from '../../atoms/Paragraph';
 import Input from '../../atoms/Input';
 import { colors } from '../../~reusables';
 import { doSignUp } from '../../../redux/actions/signUp';
+import * as Styles from './index.styled';
 
-export const BorderDiv = styled.div`
-  width: 350px;
-  height: auto;
-  margin: 0 auto;
-  background: #ffffff;
-  border: 1px solid #cec8c8;
-  box-sizing: border-box;
-  padding: 2.5rem 0;
-  border-radius: 20px;
-`;
 
-export const InputDiv = styled.div`
-  margin-bottom: 1.2rem;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
+// eslint-disable-next-line no-shadow
 const SignUpForm = ({ doSignUp }) => {
   const initialState = {
     first_name: '',
@@ -50,16 +30,15 @@ const SignUpForm = ({ doSignUp }) => {
 
   const handleSubmit = (event, newUser) => {
     event.preventDefault();
-    console.log(newUser);
     doSignUp(newUser);
   };
 
   return (
-    <div>
+    <Styles.PageWrapper>
       <NavBar notSignedIn />
-      <BorderDiv>
-        <Form onSubmit={event => handleSubmit(event, credentials)}>
-          <InputDiv>
+      <Styles.BorderDiv>
+        <Styles.Form onSubmit={event => handleSubmit(event, credentials)}>
+          <Styles.InputDiv>
             <Label
               medium
               weight="bold"
@@ -73,8 +52,8 @@ const SignUpForm = ({ doSignUp }) => {
               name="first_name"
               value={credentials.first_name}
             />
-          </InputDiv>
-          <InputDiv>
+          </Styles.InputDiv>
+          <Styles.InputDiv>
             <Label
               medium
               weight="bold"
@@ -88,8 +67,8 @@ const SignUpForm = ({ doSignUp }) => {
               name="last_name"
               value={credentials.last_name}
             />
-          </InputDiv>
-          <InputDiv>
+          </Styles.InputDiv>
+          <Styles.InputDiv>
             <Label
               medium
               weight="bold"
@@ -103,9 +82,8 @@ const SignUpForm = ({ doSignUp }) => {
               name="username"
               value={credentials.username}
             />
-          </InputDiv>
-
-          <InputDiv>
+          </Styles.InputDiv>
+          <Styles.InputDiv>
             <Label
               medium
               weight="bold"
@@ -119,9 +97,8 @@ const SignUpForm = ({ doSignUp }) => {
               name="email"
               value={credentials.email}
             />
-          </InputDiv>
-
-          <InputDiv>
+          </Styles.InputDiv>
+          <Styles.InputDiv>
             <Label
               medium
               weight="bold"
@@ -135,7 +112,7 @@ const SignUpForm = ({ doSignUp }) => {
               name="password"
               value={credentials.password}
             />
-          </InputDiv>
+          </Styles.InputDiv>
           <Paragraph>
             Lagos,NG(Change)
           </Paragraph>
@@ -146,10 +123,14 @@ const SignUpForm = ({ doSignUp }) => {
           >
             Sign up
           </Button>
-        </Form>
-      </BorderDiv>
-    </div>
+        </Styles.Form>
+      </Styles.BorderDiv>
+    </Styles.PageWrapper>
   );
+};
+
+SignUpForm.propTypes = {
+  doSignUp: PropTypes.func.isRequired,
 };
 
 export default connect(state => state, { doSignUp })(SignUpForm);

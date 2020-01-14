@@ -12,7 +12,9 @@ export const Button = styled.button`
     display: inline-block;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
-
+    :focus {
+      outline: none;
+    }
     ${props => props.xLarge && css`
       font-weight: 600;
       font-size: 1.5rem;
