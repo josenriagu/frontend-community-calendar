@@ -25,7 +25,7 @@ export const doSignIn = user => dispatch => {
   axios.post('https://comcalstaging.herokuapp.com/api/v1/users/signin', user)
     .then(({ data }) => {
       Cookie.set('comcal-event-token', data.user.token);
-      Router.push('/UserDashboard');
+      Router.push('/userdashboard');
       dispatch(signInSuccess(data));
     })
     .catch(error => {

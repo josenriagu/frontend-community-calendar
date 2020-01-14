@@ -26,7 +26,7 @@ export const doSignUp = user => dispatch => {
     .post('https://comcalstaging.herokuapp.com/api/v1/users/register', user)
     .then(({ data }) => {
       Cookie.set('comcal-event-token', data.user.token);
-      Router.push('/UserDashboard');
+      Router.push('/userdashboard');
       dispatch(signUpSuccess(data));
     })
     .catch(error => {
