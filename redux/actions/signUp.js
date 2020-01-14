@@ -1,8 +1,13 @@
-import * as types from '../constants/signUp';
+import axios from 'axios';
+import Router from 'next/router';
+import Cookie from 'js-cookie';
 
-export const signUpRequest = status => ({
+import * as types from '../constants/signUp';
+import { API_URL } from '../../config/environment';
+
+const signUpRequest = payload => ({
   type: types.SIGNUP_REQUEST,
-  payload: status,
+  payload,
 });
 
 export const signUpSuccess = payload => ({
@@ -10,13 +15,22 @@ export const signUpSuccess = payload => ({
   payload,
 });
 
-export const signUpError = error => ({
+export const signUpError = payload => ({
   type: types.SIGNUP_ERROR,
-  payload: error,
+  payload,
 });
 
 export const doSignUp = user => dispatch => {
   dispatch(signUpRequest(true));
-  if (user.name) dispatch(signUpSuccess(true));
-  else dispatch(signUpError('error'));
+  axios
+    .post(`${API_URL}/api/v1/users/register`, user)
+    .then(({ data }) => {
+      Cookie.set('comcal-event-token', data.user.token);
+      Router.push('/userdashboard');
+      dispatch(signUpSuccess(data));
+    })
+    .catch(error => {
+      dispatch(signUpError(error));
+    });
+  dispatch(signUpRequest(false));
 };

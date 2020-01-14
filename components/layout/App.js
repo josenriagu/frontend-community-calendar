@@ -13,7 +13,7 @@ const App = ({ events }) => (
   <AppDiv>
     <div id="introSection">
       <div id="wrapper">
-        <NavBar />
+        <NavBar alt />
         <div id="heading">
           <h3>find relevant community events</h3>
           <h3>around you</h3>

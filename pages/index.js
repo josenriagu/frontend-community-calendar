@@ -13,7 +13,7 @@ import { doFetchEvent } from '../redux/actions/events';
 // eslint-disable-next-line no-shadow
 const Home = ({ city, country, doFetchEvent }) => {
   useEffect(() => {
-    doFetchEvent(country, city, 'science-and-tech');
+    doFetchEvent(country, city, 'all');
   }, []);
 
   return (
