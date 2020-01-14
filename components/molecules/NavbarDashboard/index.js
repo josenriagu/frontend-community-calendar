@@ -8,9 +8,9 @@ const NavBarDashboard = () => (
   <NavBarDiv>
     <Logo />
     <nav>
-      <Icon type="bell" class="bell" />
+      <Icon type="bell" className="bell" />
       <div className="imgHolder" />
-      <Icon type="down" class="down" />
+      <Icon type="down" className="down" />
     </nav>
   </NavBarDiv>
 );
