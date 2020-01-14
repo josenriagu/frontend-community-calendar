@@ -1,10 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Head from 'next/head';
 
 import GlobalStyle from '../styles/GlobalStyles';
 import App from '../components/layout/App';
-import { signUpStatus } from '../redux/actions/signUp.actions';
 
 const Home = () => (
 
@@ -28,4 +26,4 @@ const Home = () => (
   </>
 );
 
-export default connect(state => state, { signUpStatus })(Home);
+export default Home;
