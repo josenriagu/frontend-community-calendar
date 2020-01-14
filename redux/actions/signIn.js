@@ -22,7 +22,7 @@ const signInError = payload => ({
 
 export const doSignIn = user => dispatch => {
   dispatch(signInRequest(true));
-  axios.post(`${API_URL}/api/v1/users/signin`, user)
+  axios.post('https://comcalstaging.herokuapp.com/api/v1/users/signin', user)
     .then(({ data }) => {
       Cookie.set('comcal-event-token', data.user.token);
       Router.push('/userdashboard');
