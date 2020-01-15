@@ -10,7 +10,9 @@ import { colors } from '../../~reusables';
 
 const NavBar = ({ alt, notLoggedIn, notSignedIn }) => (
   <NavBarDiv>
-    <Logo />
+    <Link href="/">
+      <Logo />
+    </Link>
     <nav>
       {alt && (
         <Link href="/create-event">
