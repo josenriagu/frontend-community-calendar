@@ -129,13 +129,13 @@ const SignInForm = ({ doSignIn }) => {
             <Input xLarge type="checkbox" />
             <Paragraph>Remember me</Paragraph>
           </StyledDiv>
-          <Button
+          {/* <Button
             disabled={!formState.isValid}
             xLarge
             background={colors.primary}
           >
             Login
-          </Button>
+          </Button> */}
           <AntButton
             type="primary"
             disabled={!formState.isValid}
