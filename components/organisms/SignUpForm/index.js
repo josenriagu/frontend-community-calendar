@@ -147,7 +147,7 @@ const SignUpForm = ({ doSignUp }) => {
               value={formState.values.first_name || ''}
             />
             {
-              hasError('first_name') ? formState.errors.first_name[0] : null
+              hasError('first_name') ? <Paragraph color="hsla(359,98%,68%,1)">{formState.errors.first_name[0]}</Paragraph> : null
             }
           </InputDiv>
           <InputDiv>
@@ -165,7 +165,7 @@ const SignUpForm = ({ doSignUp }) => {
               value={formState.values.last_name || ''}
             />
             {
-              hasError('last_name') ? formState.errors.last_name[0] : null
+              hasError('last_name') ? <Paragraph color="hsla(359,98%,68%,1)">{formState.errors.last_name[0]}</Paragraph> : null
             }
           </InputDiv>
           <InputDiv>
@@ -183,7 +183,7 @@ const SignUpForm = ({ doSignUp }) => {
               value={formState.values.username || ''}
             />
             {
-              hasError('username') ? formState.errors.username[0] : null
+              hasError('username') ? <Paragraph color="hsla(359,98%,68%,1)">{formState.errors.username[0]}</Paragraph> : null
             }
           </InputDiv>
           <InputDiv>
@@ -201,7 +201,7 @@ const SignUpForm = ({ doSignUp }) => {
               value={formState.values.email || ''}
             />
             {
-              hasError('email') ? formState.errors.email[0] : null
+              hasError('email') ? <Paragraph color="hsla(359,98%,68%,1)">{formState.errors.email[0]}</Paragraph> : null
             }
           </InputDiv>
           <InputDiv>
@@ -219,7 +219,7 @@ const SignUpForm = ({ doSignUp }) => {
               value={formState.values.password || ''}
             />
             {
-              hasError('password') ? formState.errors.password[0] : null
+              hasError('password') ? <Paragraph color="hsla(359,98%,68%,1)">{formState.errors.password[0]}</Paragraph> : null
             }
           </InputDiv>
           <Paragraph>
@@ -240,7 +240,7 @@ const SignUpForm = ({ doSignUp }) => {
               handleSubmit(event);
             }}
             style={{
-              backgroundColor: `${colors.primary}`,
+              backgroundColor: `${!formState.isValid ? 'lightpink' : colors.primary}`,
             }}
           >
             Sign up

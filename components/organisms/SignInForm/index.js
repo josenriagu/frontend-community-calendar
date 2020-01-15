@@ -7,12 +7,12 @@ import validate from 'validate.js';
 import { Button as AntButton } from 'antd';
 
 import { doSignIn } from '../../../redux/actions/signIn';
-import { Button } from '../../atoms/Button';
+import Paragraph from '../../atoms/Paragraph';
 import NavBar from '../../molecules/Navbar';
 import Input from '../../atoms/Input';
 import Label from '../../atoms/Label';
 import * as Styles from '../SignUpForm/index.styled';
-import { StyledDiv, Paragraph } from './index.styled';
+import { StyledDiv } from './index.styled';
 import { colors } from '../../~reusables';
 
 const schema = {
@@ -104,7 +104,7 @@ const SignInForm = ({ doSignIn }) => {
               value={formState.values.username || ''}
             />
             {
-              hasError('username') ? formState.errors.username[0] : null
+              hasError('username') ? <Paragraph color="hsla(359,98%,68%,1)">{formState.errors.username[0]}</Paragraph> : null
             }
           </Styles.InputDiv>
           <Styles.InputDiv>
@@ -122,7 +122,7 @@ const SignInForm = ({ doSignIn }) => {
               value={formState.values.password || ''}
             />
             {
-              hasError('password') ? formState.errors.password[0] : null
+              hasError('password') ? <Paragraph color="hsla(359,98%,68%,1)">{formState.errors.password[0]}</Paragraph> : null
             }
           </Styles.InputDiv>
           <StyledDiv>
@@ -144,7 +144,7 @@ const SignInForm = ({ doSignIn }) => {
               handleSubmit(event);
             }}
             style={{
-              backgroundColor: `${colors.primary}`,
+              backgroundColor: `${!formState.isValid ? 'lightpink' : colors.primary}`,
             }}
           >
             Login
