@@ -29,7 +29,7 @@ export const doSignIn = user => dispatch => {
       dispatch(signInSuccess(data));
     })
     .catch(error => {
-      dispatch(signInError(error));
+      dispatch(signInError(error.response.data));
     });
   dispatch(signInRequest(false));
 };
