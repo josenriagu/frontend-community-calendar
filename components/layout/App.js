@@ -8,6 +8,7 @@ import NavBar from '../molecules/Navbar';
 import SearchBar from '../molecules/Searchbar';
 import EventCard from '../molecules/EventCard';
 import AppFooter from '../molecules/Footer';
+import Loader from '../molecules/EventCard/Loader';
 
 const App = ({ events }) => (
   <AppDiv>
@@ -28,7 +29,7 @@ const App = ({ events }) => (
             {
               events.length > 0
                 ? events.map(el => <EventCard key={el.scrapedEventId} el={el} />)
-                : null
+                : <Loader />
             }
           </div>
           <div id="calendar">

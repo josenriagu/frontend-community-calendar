@@ -1,44 +1,138 @@
-import React, { useState } from 'react';
+/* eslint-disable prefer-template */
+/* eslint-disable react/no-array-index-key */
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { Button as AntButton } from 'antd';
+import validate from 'validate.js';
 
-import { Button } from '../../atoms/Button';
 import NavBar from '../../molecules/Navbar';
 import Label from '../../atoms/Label';
 import Paragraph from '../../atoms/Paragraph';
 import Input from '../../atoms/Input';
 import { colors } from '../../~reusables';
 import { doSignUp } from '../../../redux/actions/signUp';
-import * as Styles from './index.styled';
 
+const schema = {
+  first_name: {
+    presence: { allowEmpty: false, message: 'is required' },
+    length: {
+      minimum: 2,
+      maximum: 64,
+    },
+  },
+  last_name: {
+    presence: { allowEmpty: false, message: 'is required' },
+    length: {
+      minimum: 2,
+      maximum: 128,
+    },
+  },
+  email: {
+    presence: { allowEmpty: false, message: 'is required' },
+    email: true,
+    length: {
+      minimum: 4,
+      maximum: 128,
+    },
+  },
+  username: {
+    presence: { allowEmpty: false, message: 'is required' },
+    length: {
+      minimum: 3,
+      maximum: 64,
+    },
+  },
+  password: {
+    presence: { allowEmpty: false, message: 'is required' },
+    length: {
+      minimum: 6,
+      maximum: 128,
+    },
+  },
+};
 
-// eslint-disable-next-line no-shadow
+export const BorderDiv = styled.div`
+  width: 350px;
+  height: auto;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #cec8c8;
+  box-sizing: border-box;
+  padding: 2.5rem 0;
+  border-radius: 20px;
+`;
+
+export const InputDiv = styled.div`
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const SignUpForm = ({ doSignUp }) => {
-  const initialState = {
-    first_name: '',
-    last_name: '',
-    username: '',
-    email: '',
-    password: '',
-  };
-  const [credentials, SetCredentials] = useState(initialState);
+  const [antButtonState, setAntButtonState] = useState({
+    loading: false,
+    iconLoading: false,
+  });
+  const [formState, setFormState] = useState({
+    isValid: false,
+    values: {},
+    touched: {},
+    errors: {},
+  });
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    SetCredentials({ ...credentials, [name]: value });
+  const handleChange = event => {
+    event.persist();
+
+    setFormState((formState) => ({
+      ...formState,
+      values: {
+        ...formState.values,
+        [event.target.name]:
+          event.target.type === 'checkbox'
+            ? event.target.checked
+            : event.target.value,
+      },
+      touched: {
+        ...formState.touched,
+        [event.target.name]: true,
+      },
+    }));
   };
 
-  const handleSubmit = (event, newUser) => {
+  const hasError = field => !!(formState.touched[field] && formState.errors[field]);
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    doSignUp(newUser);
+    setAntButtonState({
+      iconLoading: antButtonState.iconLoading,
+      loading: true,
+    });
+    doSignUp(formState.values);
   };
+
+  useEffect(() => {
+    const errors = validate(formState.values, schema);
+
+    setFormState(formState => ({
+      ...formState,
+      isValid: !errors,
+      errors: errors || {},
+    }));
+  }, [formState.values]);
 
   return (
-    <Styles.PageWrapper>
+    <div>
       <NavBar notSignedIn />
-      <Styles.BorderDiv>
-        <Styles.Form onSubmit={event => handleSubmit(event, credentials)}>
-          <Styles.InputDiv>
+      <BorderDiv>
+        <Form>
+          <InputDiv>
             <Label
               medium
               weight="bold"
@@ -50,10 +144,13 @@ const SignUpForm = ({ doSignUp }) => {
               type="text"
               onChange={handleChange}
               name="first_name"
-              value={credentials.first_name}
+              value={formState.values.first_name || ''}
             />
-          </Styles.InputDiv>
-          <Styles.InputDiv>
+            {
+              hasError('first_name') ? formState.errors.first_name[0] : null
+            }
+          </InputDiv>
+          <InputDiv>
             <Label
               medium
               weight="bold"
@@ -65,10 +162,13 @@ const SignUpForm = ({ doSignUp }) => {
               type="text"
               onChange={handleChange}
               name="last_name"
-              value={credentials.last_name}
+              value={formState.values.last_name || ''}
             />
-          </Styles.InputDiv>
-          <Styles.InputDiv>
+            {
+              hasError('last_name') ? formState.errors.last_name[0] : null
+            }
+          </InputDiv>
+          <InputDiv>
             <Label
               medium
               weight="bold"
@@ -80,10 +180,13 @@ const SignUpForm = ({ doSignUp }) => {
               type="text"
               onChange={handleChange}
               name="username"
-              value={credentials.username}
+              value={formState.values.username || ''}
             />
-          </Styles.InputDiv>
-          <Styles.InputDiv>
+            {
+              hasError('username') ? formState.errors.username[0] : null
+            }
+          </InputDiv>
+          <InputDiv>
             <Label
               medium
               weight="bold"
@@ -95,10 +198,13 @@ const SignUpForm = ({ doSignUp }) => {
               type="text"
               onChange={handleChange}
               name="email"
-              value={credentials.email}
+              value={formState.values.email || ''}
             />
-          </Styles.InputDiv>
-          <Styles.InputDiv>
+            {
+              hasError('email') ? formState.errors.email[0] : null
+            }
+          </InputDiv>
+          <InputDiv>
             <Label
               medium
               weight="bold"
@@ -110,27 +216,39 @@ const SignUpForm = ({ doSignUp }) => {
               type="password"
               onChange={handleChange}
               name="password"
-              value={credentials.password}
+              value={formState.values.password || ''}
             />
-          </Styles.InputDiv>
+            {
+              hasError('password') ? formState.errors.password[0] : null
+            }
+          </InputDiv>
           <Paragraph>
             Lagos,NG(Change)
           </Paragraph>
           <br />
-          <Button
+          {/* <Button
             xLarge
             background={colors.primary}
           >
             Sign up
-          </Button>
-        </Styles.Form>
-      </Styles.BorderDiv>
-    </Styles.PageWrapper>
+          </Button> */}
+          <AntButton
+            type="primary"
+            disabled={!formState.isValid}
+            loading={antButtonState.loading}
+            onClick={async (event) => {
+              handleSubmit(event);
+            }}
+            style={{
+              backgroundColor: `${colors.primary}`,
+            }}
+          >
+            Sign up
+          </AntButton>
+        </Form>
+      </BorderDiv>
+    </div>
   );
-};
-
-SignUpForm.propTypes = {
-  doSignUp: PropTypes.func.isRequired,
 };
 
 export default connect(state => state, { doSignUp })(SignUpForm);

@@ -8,6 +8,7 @@ import { Button } from '../../atoms/Button';
 import Icon from '../../atoms/Icon';
 import { EventCardAltDiv } from './index.styled';
 import { colors } from '../../~reusables';
+import Loader from './Loader';
 
 const EventCardMax = ({ toggle, el, description }) => {
   const dateTimeArr = el.eventDate.split('+')[0].split(',');
@@ -60,11 +61,11 @@ const EventCardMax = ({ toggle, el, description }) => {
       <div id="description">
         <p><strong>Description</strong></p>
         <p>
-          {description}
+          { description.length < 5 ? <Loader /> : description }
         </p>
       </div>
       <div onClick={(e) => pushLink(e, el.scrapedEventLink)} id="button">
-        <Button medium background={colors.primary}>Attend Event</Button>
+        <Button medium background={colors.primary}>Visit Source</Button>
       </div>
     </EventCardAltDiv>
   );
