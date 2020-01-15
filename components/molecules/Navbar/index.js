@@ -8,6 +8,13 @@ import { Logo } from '../../atoms/Logo';
 import { Button } from '../../atoms/Button';
 import { colors } from '../../~reusables';
 
+const pushUrl = () => {
+  if (typeof window !== 'undefined') {
+    window.location.href = '/';
+  }
+  return null;
+};
+
 const NavBar = ({ alt, notLoggedIn, notSignedIn }) => (
   <NavBarDiv>
     <Logo />
@@ -22,13 +29,9 @@ const NavBar = ({ alt, notLoggedIn, notSignedIn }) => (
         </Link>
       )}
       {(notLoggedIn || notSignedIn) && (
-        <Link href="/">
-          <a>
-            <Button medium background={colors.primary}>
-              Home
-            </Button>
-          </a>
-        </Link>
+        <Button medium background={colors.primary} onClick={pushUrl}>
+          Home
+        </Button>
       )}
       {(alt || notSignedIn) && (
         <Link href="/signin">

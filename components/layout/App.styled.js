@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { colors } from '../~reusables';
 
 export const AppDiv = styled.div`
-  width: 100vw;
+  width: 100%;
   margin: 0 auto;
   div#wrapper {
     width: 1200px;
