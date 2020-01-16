@@ -32,7 +32,7 @@ const schema = {
   },
 };
 
-const SignInForm = ({ doSignIn }) => {
+const SignInForm = ({ doSignIn, requesting, error }) => {
   const [formState, setFormState] = useState({
     isValid: false,
     values: {},
@@ -88,7 +88,7 @@ const SignInForm = ({ doSignIn }) => {
     <Styles.PageWrapper>
       <NavBar notLoggedIn />
       <Styles.BorderDiv>
-        <Styles.Form onSubmit={event => handleSubmit(event, formState.values)}>
+        <Styles.Form>
           <Styles.InputDiv>
             <Label
               medium
@@ -139,9 +139,9 @@ const SignInForm = ({ doSignIn }) => {
           <AntButton
             type="primary"
             disabled={!formState.isValid}
-            loading={antButtonState.loading}
+            loading={!!(error && error.status)}
             onClick={async (event) => {
-              handleSubmit(event);
+              handleSubmit(event, formState.values);
             }}
             style={{
               backgroundColor: `${!formState.isValid ? 'lightpink' : colors.primary}`,
@@ -149,6 +149,7 @@ const SignInForm = ({ doSignIn }) => {
           >
             Login
           </AntButton>
+          {(error && error.status) > 400 && <Paragraph color="hsla(359,98%,68%,1)">Username or password is invalid</Paragraph>}
         </Styles.Form>
       </Styles.BorderDiv>
     </Styles.PageWrapper>

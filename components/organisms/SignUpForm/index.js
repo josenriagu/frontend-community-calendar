@@ -237,7 +237,7 @@ const SignUpForm = ({ doSignUp }) => {
             disabled={!formState.isValid}
             loading={antButtonState.loading}
             onClick={async (event) => {
-              handleSubmit(event);
+              handleSubmit(event, formState.values);
             }}
             style={{
               backgroundColor: `${!formState.isValid ? 'lightpink' : colors.primary}`,
