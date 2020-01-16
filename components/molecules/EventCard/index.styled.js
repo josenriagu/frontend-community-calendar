@@ -68,7 +68,12 @@ export const EventCardAltDiv = styled.div`
       width: 5rem;
       height: 5rem;
       border-radius: 50%;
-      background-color: gray;
+      border: .1rem solid ${colors.tertiary};
+      text-align: center;
+      img {
+        width: 80%;
+        height: 80%;
+      }
     }
     div#details {
       margin-left: .5rem;
@@ -89,6 +94,9 @@ export const EventCardAltDiv = styled.div`
       align-items: center;
       p {
         margin-left: .5rem;
+      }
+      i {
+        color: ${colors.primary};
       }
     }
   }
