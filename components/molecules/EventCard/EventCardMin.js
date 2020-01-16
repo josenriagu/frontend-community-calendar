@@ -2,11 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Icon from '../../atoms/Icon';
 import { EventCardDiv } from './index.styled';
-import { colors } from '../../~reusables';
 
-const EventCardMin = ({ toggle, el, setDescription }) => {
+const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
   // eslint-disable-next-line no-param-reassign
   const getDescription = async (link, id) => {
     try {
@@ -46,7 +44,9 @@ const EventCardMin = ({ toggle, el, setDescription }) => {
       </div>
       <span id="toggle">
         <i onClick={() => { toggle(); getDescription(el.scrapedEventLink, el.scrapedEventId); }} className=" fas fa-chevron-down" />
-        <Icon type="star" color={colors.primary} />
+        {
+          isFav ? <i onClick={() => { setFav(); }} className="fas fa-star"></i> : <i onClick={() => { setFav(); }} className="far fa-star"></i>
+        }
       </span>
     </EventCardDiv>
   );
@@ -54,6 +54,8 @@ const EventCardMin = ({ toggle, el, setDescription }) => {
 
 EventCardMin.propTypes = {
   toggle: PropTypes.func.isRequired,
+  setFav: PropTypes.func.isRequired,
+  isFav: PropTypes.bool.isRequired,
   setDescription: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   el: PropTypes.object.isRequired,

@@ -5,12 +5,11 @@ import axios from 'axios';
 import fetch from 'isomorphic-fetch';
 
 import { Button } from '../../atoms/Button';
-import Icon from '../../atoms/Icon';
 import { EventCardAltDiv } from './index.styled';
 import { colors } from '../../~reusables';
 import Loader from './Loader';
 
-const EventCardMax = ({ toggle, el, description }) => {
+const EventCardMax = ({ toggle, setFav, isFav, el, description }) => {
   const dateTimeArr = el.eventDate.split('+')[0].split(',');
 
   function pushLink(e, link) {
@@ -27,13 +26,15 @@ const EventCardMax = ({ toggle, el, description }) => {
         </div>
         <span id="toggle">
           <i onClick={() => { toggle(); }} className=" fas fa-chevron-up" />
-          <Icon type="star" color={colors.primary} />
+          {
+            isFav ? <i onClick={() => { setFav(); }} className="fas fa-star"></i> : <i onClick={() => { setFav(); }} className="far fa-star"></i>
+          }
         </span>
       </div>
       <h6>{el.name.includes('-') ? el.name.split('-')[1] : el.name}</h6>
       <div id="host">
         <div id="imgHolder">
-          {/* <img src={el.imageUrl} alt="star" /> */}
+          <img src="/user.png" alt="star" />
         </div>
         <div id="details">
           <span>Host</span>
@@ -42,26 +43,26 @@ const EventCardMax = ({ toggle, el, description }) => {
       </div>
       <div id="actionIcons">
         <span>
-          <Icon type="environment" color={colors.primary} />
+          <i className="fas fa-map-marker-alt"></i>
           {el.location && <p>{el.location.split('•')[1]}</p>}
         </span>
         <span>
-          <Icon type="idcard" color={colors.primary} />
+          <i className="fas fa-users"></i>
           <p>2.3k going</p>
         </span>
         <span>
-          <Icon type="idcard" color={colors.primary} />
+          <i className="fas fa-money-bill-alt"></i>
           <p>{el.price ? el.price : 'Not stated'}</p>
         </span>
         <span>
-          <Icon type="idcard" color={colors.primary} />
+          <i className="fas fa-share-alt"></i>
           <p>Share</p>
         </span>
       </div>
       <div id="description">
         <p><strong>Description</strong></p>
         <p>
-          { description.length < 5 ? <Loader /> : description }
+          {description.length < 5 ? <Loader /> : description}
         </p>
       </div>
       <div onClick={(e) => pushLink(e, el.scrapedEventLink)} id="button">
@@ -73,6 +74,8 @@ const EventCardMax = ({ toggle, el, description }) => {
 
 EventCardMax.propTypes = {
   toggle: PropTypes.func.isRequired,
+  setFav: PropTypes.func.isRequired,
+  isFav: PropTypes.bool.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   el: PropTypes.object.isRequired,
   description: PropTypes.string.isRequired,
