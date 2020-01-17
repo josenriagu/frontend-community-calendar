@@ -13,8 +13,16 @@ import { doFetchEvent } from '../redux/actions/events';
 // eslint-disable-next-line no-shadow
 const Home = ({ city, country, doFetchEvent }) => {
   useEffect(() => {
-    doFetchEvent(country, city, 'all');
-  }, []);
+    if (city !== undefined) {
+      localStorage.setItem('user_city', city);
+    }
+    if (country !== undefined) {
+      localStorage.setItem('user_country', country);
+    }
+    const scity = city === undefined ? localStorage.getItem('user_city') : city;
+    const scountry = country === undefined ? localStorage.getItem('user_country') : country;
+    doFetchEvent(scountry, scity, 'all');
+  }, [city]);
 
   return (
     <>
@@ -24,7 +32,7 @@ const Home = ({ city, country, doFetchEvent }) => {
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossOrigin="anonymous" />
       </Head>
-      <App city={city} country={country} />
+      <App />
     </>
   );
 };
