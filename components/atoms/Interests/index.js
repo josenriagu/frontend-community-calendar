@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function InterestSelect() {
-  const [interest, setInterest] = useState('');
-
+export default function InterestSelect({ interest, setInterest }) {
   return (
     <>
       <select
@@ -10,7 +9,7 @@ export default function InterestSelect() {
         onChange={(e) => { setInterest(e.target.value); }}
         placeHolder="Select Interest"
         style={{
-          fontSize: '15pt',
+          fontSize: '16px',
           border: 'none',
         }}
       >
@@ -40,3 +39,8 @@ export default function InterestSelect() {
     </>
   );
 }
+
+InterestSelect.propTypes = {
+  setInterest: PropTypes.func.isRequired,
+  interest: PropTypes.string.isRequired,
+};

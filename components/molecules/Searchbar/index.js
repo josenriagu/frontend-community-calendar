@@ -1,50 +1,75 @@
 import React, { useState } from 'react';
-import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { SearchBarDiv } from './index.styled';
 import Interests from '../../atoms/Interests';
 import { Button } from '../../atoms/Button';
 import { colors } from '../../~reusables';
+import { doFetchEvent } from '../../../redux/actions/events';
 
-const SearchBar = () => {
-  const [location, setLocation] = useState({ country: '', region: '..select a country first' });
+// eslint-disable-next-line no-shadow
+const SearchBar = ({ doFetchEvent }) => {
+  const [location, setLocation] = useState({ country: '', city: '' });
+  const [interest, setInterest] = useState('all');
 
   const selectCountry = (val) => setLocation({ ...location, country: val });
-  const selectRegion = (val) => setLocation({ ...location, region: val });
+  const selectRegion = (val) => setLocation({ ...location, city: val });
+  const handleClick = () => {
+    console.log('clicked');
+    const sendCountry = location.country.toLowerCase().replace(' ', '-');
+    const sendCity = location.city === 'Abuja Federal Capital Territory' ? 'abuja' : location.city.toLowerCase().replace(' ', '-');
+    doFetchEvent(sendCountry, sendCity, interest);
+  };
 
   return (
     <>
       <SearchBarDiv>
         {/* <Input search type="text" placeholder="I want events in" /> */}
-        <Interests />
+        <Interests interest={interest} setInterest={setInterest} />
         <div>
           <CountryDropdown
             value={location.country}
             onChange={(val) => selectCountry(val)}
             style={{
               border: 'none',
-              fontSize: '15pt',
+              fontSize: '16px',
               maxWidth: '200px',
             }}
           />
         </div>
         <div>
           <RegionDropdown
-            value={location.region}
+            value={location.city}
             country={location.country}
             onChange={(val) => selectRegion(val)}
             style={{
               border: 'none',
               display: `${location.country ? 'block' : 'none'}`,
-              fontSize: '15pt',
+              fontSize: '16px',
               maxWidth: '200px',
             }}
           />
         </div>
-        <Button medium background={colors.primary}>Search</Button>
+        <Button
+          medium
+          background={colors.primary}
+          disabled={location.country.length <= 0 && location.city.length <= 0}
+          onClick={() => handleClick()}
+        >
+          Search
+        </Button>
       </SearchBarDiv>
     </>
   );
 };
 
-export default SearchBar;
+SearchBar.propTypes = {
+  doFetchEvent: PropTypes.func.isRequired,
+};
+
+export default connect(
+  state => state,
+  { doFetchEvent },
+)(SearchBar);
