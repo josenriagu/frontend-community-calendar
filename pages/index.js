@@ -44,8 +44,8 @@ Home.getInitialProps = async ctx => {
   await axios.get('https://ipapi.co/json/')
     .then(({ data }) => {
       if (data) {
-        city = data.city.toLowerCase();
-        country = data.country_name.toLowerCase();
+        city = data.city.toLowerCase().replace(' ', '-');
+        country = data.country_name.toLowerCase().replace(' ', '-');
       } else throw new Error('an error occurred');
     })
     // eslint-disable-next-line no-console
