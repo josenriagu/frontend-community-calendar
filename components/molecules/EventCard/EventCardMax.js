@@ -18,6 +18,10 @@ const EventCardMax = ({ toggle, el, description }) => {
     window.location.href = link;
   }
 
+  const initialDesc = el.name;
+  const finalDesc = initialDesc.replace(/ /g, '%20');
+  const endTarget = `https://twitter.com/intent/tweet?url=&text=${finalDesc}%20${el.scrapedEventLink}%2F%20`;
+
   return (
     <EventCardAltDiv>
       <div id="topbar">
@@ -55,7 +59,7 @@ const EventCardMax = ({ toggle, el, description }) => {
         </span>
         <span>
           <Icon type="idcard" color={colors.primary} />
-          <p>Share</p>
+          <p><a href={endTarget}>Share</a></p>
         </span>
       </div>
       <div id="description">
