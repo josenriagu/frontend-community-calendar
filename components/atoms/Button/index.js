@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import { colors } from '../../~reusables';
 
 export const Button = styled.button`
     background: ${props => props.background};
@@ -14,6 +15,10 @@ export const Button = styled.button`
     font-family: 'Montserrat', sans-serif;
     :focus {
       outline: none;
+    }
+    :disabled {
+      background-color: ${colors.disabled};
+      cursor: not-allowed;
     }
     ${props => props.xLarge && css`
       font-weight: 600;
