@@ -17,12 +17,14 @@ export default function signUp(state = initialState, action) {
       return {
         ...state,
         requesting: false,
-        success: action.payload,
+        user: action.payload,
+        error: null,
       };
     case types.SIGNUP_ERROR:
       return {
         ...state,
         requesting: false,
+        user: {},
         error: action.payload,
       };
     default:
