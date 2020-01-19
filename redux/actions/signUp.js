@@ -3,9 +3,8 @@ import Router from 'next/router';
 import Cookie from 'js-cookie';
 
 import * as types from '../constants/signUp';
-import { API_URL } from '../../config/environment';
 
-const signUpRequest = payload => ({
+export const signUpRequest = payload => ({
   type: types.SIGNUP_REQUEST,
   payload,
 });
@@ -27,7 +26,8 @@ export const doSignUp = user => dispatch => {
     .then(({ data }) => {
       Cookie.set('comcal-event-token', data.user.token);
       Router.push('/userdashboard');
-      dispatch(signUpSuccess(data));
+      dispatch(signUpSuccess(data.user));
+      localStorage.setItem('cc_user', data.user._id);
     })
     .catch(error => {
       dispatch(signUpError(error.response.data));
