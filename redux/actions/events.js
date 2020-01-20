@@ -37,3 +37,26 @@ export const doFetchEvent = (userCountry, userCity, eventType) => dispatch => {
     })
     .catch(error => dispatch(fetchEventsError(error)));
 };
+
+export const doFetchCalendarEvent = (userCountry, userCity, startDate, endDate) => dispatch => {
+  dispatch(fetchEventsRequest(true));
+  const config = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      userCountry,
+      userCity,
+      startDate,
+      endDate,
+    }),
+  };
+  // utilize fetch here since axios won't work here. refer to: https://stackoverflow.com/questions/56721660/how-to-fix-error-request-failed-with-status-code-404-in-axios-next-js
+  fetch('https://comcalstaging.herokuapp.com/api/v1/event/fetch-date', config)
+    .then(res => res.json())
+    .then(data => {
+      dispatch(fetchEventsSuccess(data));
+    })
+    .catch(error => dispatch(fetchEventsError(error)));
+};
