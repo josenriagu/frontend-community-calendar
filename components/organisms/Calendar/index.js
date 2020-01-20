@@ -24,7 +24,8 @@ const AntCalendar = ({ doFetchCalendarEvent }) => {
     const userCountry = localStorage.getItem('user_country');
     const startDate = moment(event._d).format('YYYY-MM-DD');
     const endDate = moment(event._d).add(1, 'd').format('YYYY-MM-DD');
-    doFetchCalendarEvent(userCountry, userCity, startDate, endDate);
+    const eventType = 'all';
+    doFetchCalendarEvent(userCountry, userCity, eventType, startDate, endDate);
   };
 
   return (

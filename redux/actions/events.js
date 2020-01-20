@@ -38,7 +38,7 @@ export const doFetchEvent = (userCountry, userCity, eventType) => dispatch => {
     .catch(error => dispatch(fetchEventsError(error)));
 };
 
-export const doFetchCalendarEvent = (userCountry, userCity, startDate, endDate) => dispatch => {
+export const doFetchCalendarEvent = (userCountry, userCity, eventType, startDate, endDate) => dispatch => {
   dispatch(fetchEventsRequest(true));
   const config = {
     method: 'POST',
@@ -48,6 +48,7 @@ export const doFetchCalendarEvent = (userCountry, userCity, startDate, endDate) 
     body: JSON.stringify({
       userCountry,
       userCity,
+      eventType,
       startDate,
       endDate,
     }),
