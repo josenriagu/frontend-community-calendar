@@ -22,7 +22,7 @@ const Home = ({ city, country, doFetchEvent }) => {
     const scity = city === undefined ? localStorage.getItem('user_city') : city;
     const scountry = country === undefined ? localStorage.getItem('user_country') : country;
     doFetchEvent(scountry, scity, 'all');
-  }, [city]);
+  }, []);
 
   return (
     <>
