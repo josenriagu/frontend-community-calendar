@@ -65,9 +65,7 @@ const EventCardMax = ({ toggle, setFav, isFav, el, description }) => {
       </div>
       <div id="description">
         <p><strong>Description</strong></p>
-        <p>
-          {description.length < 5 ? <Loader /> : description}
-        </p>
+        {description.length < 5 ? <Loader /> : <p>{description}</p>}
       </div>
       <div onClick={(e) => pushLink(e, el.scrapedEventLink)} id="button">
         <Button medium background={colors.primary}>Visit Source</Button>
