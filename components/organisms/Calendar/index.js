@@ -20,12 +20,14 @@ const AntCalendar = ({ doFetchCalendarEvent }) => {
   `;
 
   const onClick = (event) => {
-    const userCity = localStorage.getItem('user_city');
-    const userCountry = localStorage.getItem('user_country');
+    const { userSearchCity, userSearchCountry, userInitialCountry, userInitialCity } = localStorage;
+    console.log(userSearchCity, userSearchCountry, userInitialCountry, userInitialCity)
+    const userCity = userSearchCity || userInitialCity;
+    const userCountry = userSearchCountry || userInitialCountry;
     const startDate = moment(event._d).format('YYYY-MM-DD');
     const endDate = moment(event._d).add(1, 'd').format('YYYY-MM-DD');
     const eventType = 'all';
-    doFetchCalendarEvent(userCountry, userCity, eventType, startDate, endDate);
+    // doFetchCalendarEvent(userCountry, userCity, eventType, startDate, endDate);
   };
 
   return (

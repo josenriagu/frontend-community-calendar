@@ -14,13 +14,13 @@ import { doFetchEvent } from '../redux/actions/events';
 const Home = ({ city, country, doFetchEvent }) => {
   useEffect(() => {
     if (city !== undefined) {
-      localStorage.setItem('user_city', city);
+      localStorage.setItem('userCity', city);
     }
     if (country !== undefined) {
-      localStorage.setItem('user_country', country);
+      localStorage.setItem('userCountry', country);
     }
-    const scity = city === undefined ? localStorage.getItem('user_city') : city;
-    const scountry = country === undefined ? localStorage.getItem('user_country') : country;
+    const scity = city === undefined ? localStorage.getItem('userCity') : city;
+    const scountry = country === undefined ? localStorage.getItem('userCountry') : country;
     doFetchEvent(scountry, scity, 'all');
   }, []);
 

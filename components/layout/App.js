@@ -17,6 +17,7 @@ import Calendar from '../organisms/Calendar';
 
 const App = ({ events, fetchEventsRequesting, fetchEventsError }) => {
   const token = Cookie.get('comcal-event-token');
+  console.log(events)
   return (
     <AppDiv>
       <div id="introSection">
@@ -34,9 +35,10 @@ const App = ({ events, fetchEventsRequesting, fetchEventsError }) => {
           <div id="eventCal">
             <div id="eventsContainer">
               {
+                // console.log(events)
                 (!fetchEventsError && fetchEventsRequesting)
                   ? <Loader />
-                  : (!fetchEventsRequesting && events.length > 0)
+                  : (!fetchEventsRequesting && typeof events === 'object' && events.length > 0)
                     ? events.map(el => <EventCard key={el.scrapedEventId} el={el} />)
                     : <Heading color="red">There are no events currently. Please try the search feature.</Heading>
               }
@@ -52,7 +54,7 @@ const App = ({ events, fetchEventsRequesting, fetchEventsError }) => {
 
 App.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  events: PropTypes.array.isRequired,
+  events: PropTypes.array,
   fetchEventsError: PropTypes.object,
   fetchEventsRequesting: PropTypes.bool,
 };
