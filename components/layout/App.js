@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Calendar } from 'antd';
 import PropTypes from 'prop-types';
+import Cookie from 'js-cookie';
 
 import { AppDiv } from './App.styled';
 import NavBar from '../molecules/Navbar';
@@ -10,37 +11,40 @@ import EventCard from '../molecules/EventCard';
 import AppFooter from '../molecules/Footer';
 import Loader from '../molecules/EventCard/Loader';
 
-const App = ({ events }) => (
-  <AppDiv>
-    <div id="introSection">
-      <div id="wrapper">
-        <NavBar alt />
-        <div id="heading">
-          <h3>find relevant community events</h3>
-          <h3>around you</h3>
+const App = ({ events }) => {
+  const token = Cookie.get('comcal-event-token');
+  return (
+    <AppDiv>
+      <div id="introSection">
+        <div id="wrapper">
+          {token ? <NavBar eventAuthToken /> : <NavBar alt />}
+          <div id="heading">
+            <h3>find relevant community events</h3>
+            <h3>around you</h3>
+          </div>
         </div>
       </div>
-    </div>
-    <div id="eventSection">
-      <div id="wrapper">
-        <SearchBar />
-        <div id="eventCal">
-          <div id="eventsContainer">
-            {
+      <div id="eventSection">
+        <div id="wrapper">
+          <SearchBar />
+          <div id="eventCal">
+            <div id="eventsContainer">
+              {
               events.length > 0
                 ? events.map(el => <EventCard key={el.scrapedEventId} el={el} />)
                 : <Loader />
-            }
-          </div>
-          <div id="calendar">
-            <Calendar fullscreen={false} />
+              }
+            </div>
+            <div id="calendar">
+              <Calendar fullscreen={false} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <AppFooter />
-  </AppDiv>
-);
+      <AppFooter />
+    </AppDiv>
+  );
+};
 
 App.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
