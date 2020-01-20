@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
-import fetch from 'isomorphic-fetch';
+import { Icon as AntIcon } from 'antd';
 
 import { Button } from '../../atoms/Button';
 import { EventCardAltDiv } from './index.styled';
 import { colors } from '../../~reusables';
+import Icon from '../../atoms/Icon';
 import Loader from './Loader';
 
 const EventCardMax = ({ toggle, setFav, isFav, el, description }) => {
@@ -16,6 +16,10 @@ const EventCardMax = ({ toggle, setFav, isFav, el, description }) => {
     e.preventDefault();
     window.location.href = link;
   }
+
+  const initialDescription = el.name;
+  const finalDescription = initialDescription.replace(/ /g, '%20');
+  const shareLink = `https://twitter.com/intent/tweet?url=&text=${finalDescription}%20${el.scrapedEventLink}%2F%20`;
 
   return (
     <EventCardAltDiv>
@@ -55,8 +59,8 @@ const EventCardMax = ({ toggle, setFav, isFav, el, description }) => {
           <p>{el.price ? el.price : 'Not stated'}</p>
         </span>
         <span>
-          <i className="fas fa-share-alt"></i>
-          <p>Share</p>
+          <AntIcon type="twitter" color={colors.primary} />
+          <p><a style={{ color: 'rgba(0,0,0,0.65)' }} href={shareLink}>Share</a></p>
         </span>
       </div>
       <div id="description">
