@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { Auth } from '../../../config/auth';
 
 const PrivateRoute = ({ children }) => {
-  const isAuthenticated = Auth.isAuthenticated();
+  const isAuthenticated = Auth.isAuthenticated('exp');
 
   useEffect(() => {
     if (!isAuthenticated) {

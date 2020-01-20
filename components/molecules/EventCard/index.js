@@ -21,17 +21,17 @@ const EventCard = ({ el, addFavorite, removeFavorite }) => {
   };
 
   const setFav = async () => {
-    if (!Auth.getId()) {
+    if (!Auth.isAuthenticated('id')) {
       // eslint-disable-next-line no-alert
       alert('You must be logged in to perform this operation');
       Router.push('/signin');
     }
     if (!isFav) {
-      await addFavorite(el.scrapedEventId, Auth.getId());
+      await addFavorite(el.scrapedEventId, Auth.isAuthenticated('id'));
       setIsFav(!isFav);
     }
     if (isFav) {
-      await removeFavorite(el.scrapedEventId, Auth.getId());
+      await removeFavorite(el.scrapedEventId, Auth.isAuthenticated('id'));
       setIsFav(!isFav);
     }
   };
