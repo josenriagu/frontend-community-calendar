@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { message } from 'antd';
 
 import * as types from '../constants/favorite';
 
@@ -24,8 +25,7 @@ export const addFavorite = (eventId, userId) => dispatch => {
     .then(({ data }) => {
       dispatch(doFavoriteRequest(false));
       dispatch(doFavoriteSuccess(data.message));
-      // eslint-disable-next-line no-alert
-      alert(data.message);
+      message.success(data.message);
     })
     .catch(error => {
       dispatch(doFavoriteError(error));
@@ -39,8 +39,7 @@ export const removeFavorite = (eventId, userId) => dispatch => {
     .then(({ data }) => {
       dispatch(doFavoriteRequest(false));
       dispatch(doFavoriteSuccess(data.message));
-      // eslint-disable-next-line no-alert
-      alert(data.message);
+      message.success(data.message);
     })
     .catch(error => {
       dispatch(doFavoriteError(error));

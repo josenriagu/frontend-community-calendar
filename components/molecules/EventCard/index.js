@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Router from 'next/router';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { message } from 'antd';
 
 import { Auth } from '../../../config/auth';
 import EventCardMin from './EventCardMin';
@@ -23,17 +24,18 @@ const EventCard = ({ el, addFavorite, removeFavorite }) => {
   const setFav = async () => {
     if (!Auth.isAuthenticated('id')) {
       // eslint-disable-next-line no-alert
-      alert('You must be logged in to perform this operation');
-      Router.push('/signin');
+      message.warning('You must be logged in to perform this operation');
+      return Router.push('/signin');
     }
     if (!isFav) {
       await addFavorite(el.scrapedEventId, Auth.isAuthenticated('id'));
-      setIsFav(!isFav);
+      return setIsFav(!isFav);
     }
     if (isFav) {
       await removeFavorite(el.scrapedEventId, Auth.isAuthenticated('id'));
-      setIsFav(!isFav);
+      return setIsFav(!isFav);
     }
+    return null;
   };
 
   return (
