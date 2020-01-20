@@ -25,7 +25,6 @@ const SearchBar = ({ doFetchEvent }) => {
   return (
     <>
       <SearchBarDiv>
-        {/* <Input search type="text" placeholder="I want events in" /> */}
         <Interests interest={interest} setInterest={setInterest} />
         <div>
           <CountryDropdown

@@ -12,4 +12,10 @@ export const Auth = {
 
     return decodedToken.exp > Date.now() / 1000;
   },
+  getId() {
+    const token = Cookie.get('comcal-event-token');
+    if (!token) return false;
+    const decodedToken = jwtDecode(token);
+    return decodedToken.id;
+  },
 };

@@ -20,7 +20,7 @@ export const doFavoriteError = payload => ({
 export const addFavorite = (eventId, userId) => dispatch => {
   dispatch(doFavoriteRequest(true));
   axios
-    .post('http://localhost:4000/api/v1/favorite', { eventId, userId })
+    .post('https://comcalstaging.herokuapp.com/api/v1/favorite', { eventId, userId })
     .then(({ data }) => {
       dispatch(doFavoriteRequest(false));
       dispatch(doFavoriteSuccess(data.message));
@@ -35,7 +35,7 @@ export const addFavorite = (eventId, userId) => dispatch => {
 export const removeFavorite = (eventId, userId) => dispatch => {
   dispatch(doFavoriteRequest(true));
   axios
-    .delete('http://localhost:4000/api/v1/favorite', { data: { eventId, userId } })
+    .delete('https://comcalstaging.herokuapp.com/api/v1/favorite', { data: { eventId, userId } })
     .then(({ data }) => {
       dispatch(doFavoriteRequest(false));
       dispatch(doFavoriteSuccess(data.message));

@@ -4,6 +4,7 @@ import Router from 'next/router';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import { Auth } from '../../../config/auth';
 import EventCardMin from './EventCardMin';
 import EventCardMax from './EventCardMax';
 import { addFavorite, removeFavorite } from '../../../redux/actions/favorite';
@@ -20,17 +21,17 @@ const EventCard = ({ el, addFavorite, removeFavorite }) => {
   };
 
   const setFav = async () => {
-    if (!localStorage.getItem('cc_user')) {
+    if (!Auth.getId()) {
       // eslint-disable-next-line no-alert
       alert('You must be logged in to perform this operation');
       Router.push('/signin');
     }
     if (!isFav) {
-      await addFavorite(el.scrapedEventId, localStorage.getItem('cc_user'));
+      await addFavorite(el.scrapedEventId, Auth.getId());
       setIsFav(!isFav);
     }
     if (isFav) {
-      await removeFavorite(el.scrapedEventId, localStorage.getItem('cc_user'));
+      await removeFavorite(el.scrapedEventId, Auth.getId());
       setIsFav(!isFav);
     }
   };
