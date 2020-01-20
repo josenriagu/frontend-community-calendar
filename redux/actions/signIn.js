@@ -26,7 +26,6 @@ export const doSignIn = user => dispatch => {
       Cookie.set('comcal-event-token', data.user.token);
       Router.push('/userdashboard');
       dispatch(signInSuccess(data.user));
-      localStorage.setItem('cc_user', data.user._id);
     })
     .catch(error => {
       dispatch(signInError(error.response.data));

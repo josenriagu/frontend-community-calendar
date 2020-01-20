@@ -12,7 +12,6 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         requesting: action.payload,
-
       };
     case types.SIGNIN_SUCCESS:
       return {
