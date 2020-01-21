@@ -22,7 +22,6 @@ const SearchBar = ({ doFetchEvent }) => {
     localStorage.setItem('userSearchCountry', sendCountry);
     localStorage.setItem('userSearchCity', sendCity);
     localStorage.setItem('userEventType', interest);
-    console.log(sendCity, sendCountry, interest)
     doFetchEvent(sendCountry, sendCity, interest);
   };
 
