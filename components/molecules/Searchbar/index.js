@@ -9,7 +9,6 @@ import { Button } from '../../atoms/Button';
 import { colors } from '../../~reusables';
 import { doFetchEvent } from '../../../redux/actions/events';
 
-// eslint-disable-next-line no-shadow
 const SearchBar = ({ doFetchEvent }) => {
   const [location, setLocation] = useState({ country: '', city: '' });
   const [interest, setInterest] = useState('all');
