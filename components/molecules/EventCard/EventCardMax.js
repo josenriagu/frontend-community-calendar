@@ -35,7 +35,7 @@ const EventCardMax = ({ toggle, setFav, isFav, el, description }) => {
           }
         </span>
       </div>
-      <h6>{el.name.includes('-') ? el.name.split('-')[1] : el.name}</h6>
+      <h6>{el.name !== undefined && el.name.includes('-') ? el.name.split('-')[1] : el.name}</h6>
       <div id="host">
         <div id="imgHolder">
           <img src="/user.png" alt="star" />
