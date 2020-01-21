@@ -6,7 +6,7 @@ import EventCardMax from './EventCardMax';
 
 const EventCard = ({ el }) => {
   const [isToggled, setIsToggled] = useState(false);
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState({});
   const [isFav, setIsFav] = useState(false);
 
   const toggle = () => {

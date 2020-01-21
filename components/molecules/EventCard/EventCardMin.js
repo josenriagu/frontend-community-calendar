@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 import { EventCardDiv } from './index.styled';
 
@@ -19,9 +20,10 @@ const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
         }),
       };
 
-      fetch('https://comcalstaging.herokuapp.com/api/v1/event/fetch-description', config)
+      fetch('http://localhost:5000/api/v1/event/fetch-description', config)
         .then(res => res.json())
         .then(data => {
+          console.log(data)
           setDescription(data);
         })
         .catch(() => 'Description unavailable');
@@ -31,11 +33,11 @@ const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
   };
 
   const source = el.source === 'eventbrite' ? 'EventBrite' : 'ComCal';
-  const dateTimeArr = el.eventDate.split('+')[0].split(',');
+
   return (
     <EventCardDiv>
       <div id="parent1">
-        <div><p>{dateTimeArr[2]}</p></div>
+        <div><p>{moment(el.eventDate).format('LT')}</p></div>
         <div id="sibling1">
           <h6>{el.name.includes('-') ? el.name.split('-')[0] : el.name}</h6>
           <p>{`Source: ${source}`}</p>
