@@ -37,7 +37,7 @@ const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
       <div id="parent1">
         <div><p>{dateTimeArr[2]}</p></div>
         <div id="sibling1">
-          <h6>{el.name.includes('-') ? el.name.split('-')[0] : el.name}</h6>
+          <h6>{el.name !== undefined && el.name.includes('-') ? el.name.split('-')[0] : el.name}</h6>
           <p>{`Source: ${source}`}</p>
           {el.location && <p>{el.location.split('•')[1]}</p>}
         </div>
