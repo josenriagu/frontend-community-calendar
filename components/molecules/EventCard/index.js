@@ -1,10 +1,18 @@
+/* eslint-disable react/forbid-prop-types */
 import React, { useState } from 'react';
+import Router from 'next/router';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { message } from 'antd';
 
+import { Auth } from '../../../config/auth';
 import EventCardMin from './EventCardMin';
 import EventCardMax from './EventCardMax';
+import { addFavorite, removeFavorite } from '../../../redux/actions/favorite';
 
-const EventCard = ({ el }) => {
+
+// eslint-disable-next-line no-shadow
+const EventCard = ({ el, addFavorite, removeFavorite }) => {
   const [isToggled, setIsToggled] = useState(false);
   const [description, setDescription] = useState('');
   const [isFav, setIsFav] = useState(false);
@@ -13,8 +21,21 @@ const EventCard = ({ el }) => {
     setIsToggled(!isToggled);
   };
 
-  const setFav = () => {
-    setIsFav(!isFav);
+  const setFav = async () => {
+    if (!Auth.isAuthenticated('id')) {
+      // eslint-disable-next-line no-alert
+      message.warning('You must be logged in to perform this operation');
+      return Router.push('/signin');
+    }
+    if (!isFav) {
+      await addFavorite(el.scrapedEventId, Auth.isAuthenticated('id'));
+      return setIsFav(!isFav);
+    }
+    if (isFav) {
+      await removeFavorite(el.scrapedEventId, Auth.isAuthenticated('id'));
+      return setIsFav(!isFav);
+    }
+    return null;
   };
 
   return (
@@ -23,8 +44,12 @@ const EventCard = ({ el }) => {
 };
 
 EventCard.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   el: PropTypes.object.isRequired,
+  addFavorite: PropTypes.func.isRequired,
+  removeFavorite: PropTypes.func.isRequired,
 };
 
-export default EventCard;
+export default connect(
+  state => state,
+  { addFavorite, removeFavorite },
+)(EventCard);

@@ -7,7 +7,7 @@ export default function InterestSelect({ interest, setInterest }) {
       <select
         value={interest}
         onChange={(e) => { setInterest(e.target.value); }}
-        placeHolder="Select Interest"
+        placeholder="Select Interest"
         style={{
           fontSize: '16px',
           border: 'none',
