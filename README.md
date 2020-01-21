@@ -16,6 +16,30 @@ A local event app serving municipalities and neighborhoods.
 ## Contributing
 
 - To contribute to this repo, branch off ```develop``` to create your own branch
-  - branch names can be ```feat-create-login-page```
+- branch names can be ```feat-create-login-page```
 - For each component you create, use ```storybook``` to write a story and test the component with ```jest and react-testing-library```
 - Push your code to github and make a pull request to ```develop```
+
+## Required features
+- Non-logged-in users can **view events happening around them**
+- Non logged-in users can **search for events happening at a specified location** 
+- Users can **search for events happening on a specific date**
+- Users can **signup**
+- Users can **login**
+- Users can **add preferred events as favorite**
+- A logged-in user can **access userdashboard displaying bio, preferences, future events and bio.**
+- A logged in user can **signout**
+- Users can share events on social media**
+
+## Technologies
+* Git
+* Nextjs
+* Ant design
+* Story-book
+* Redux
+* styled-components
+* Jest
+* Husky
+
+## Link to deployed App
+You can see a hosted version of the template at https://frontendcommunitycalendar.comcalender.now.sh/
