@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { object } from PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import NavBarDashboard from '../../molecules/NavbarDashboard';
 import * as Styles from './index.styled';
