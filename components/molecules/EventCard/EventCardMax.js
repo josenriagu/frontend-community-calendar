@@ -61,7 +61,7 @@ const EventCardMax = ({ toggle, setFav, isFav, el, description }) => {
         </span>
         <span>
           <AntIcon type="twitter" color={colors.primary} />
-          <p><a style={{ color: 'rgba(0,0,0,0.65)' }} href={shareLink}>Share</a></p>
+          <p><a style={{ color: 'rgba(0,0,0,0.65)' }} href={shareLink} target="_blank" rel="noreferrer noopener">Share</a></p>
         </span>
       </div>
       <div id="description">
