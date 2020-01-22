@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import fetch from 'isomorphic-fetch';
 
 import GlobalStyle from '../styles/GlobalStyles';
 import App from '../components/layout/App';
@@ -12,6 +13,10 @@ import { doFetchEvent } from '../redux/actions/events';
 
 const Home = ({ city, country, doFetchEvent }) => {
   useEffect(() => {
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(error => console.log(error));
     if (city !== undefined) {
       localStorage.setItem('userCity', city);
     }
