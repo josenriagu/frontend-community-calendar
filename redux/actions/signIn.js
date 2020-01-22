@@ -2,7 +2,6 @@ import axios from 'axios';
 import Router from 'next/router';
 import Cookie from 'js-cookie';
 
-import { API_URL } from '../../config/environment';
 import * as types from '../constants/signIn';
 
 const signInRequest = payload => ({
@@ -26,7 +25,7 @@ export const doSignIn = user => dispatch => {
     .then(({ data }) => {
       Cookie.set('comcal-event-token', data.user.token);
       Router.push('/userdashboard');
-      dispatch(signInSuccess(data));
+      dispatch(signInSuccess(data.user));
     })
     .catch(error => {
       dispatch(signInError(error.response.data));

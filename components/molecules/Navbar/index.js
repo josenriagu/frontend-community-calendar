@@ -19,7 +19,7 @@ const NavBar = ({ alt, notLoggedIn, notSignedIn, eventAuthToken }) => {
       </Link>
       <nav>
         {(alt || eventAuthToken) && (
-        <Link href="/create-event">
+        <Link href="#">
           <a>
             <Button medium background={colors.primary}>
               Create Event

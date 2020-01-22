@@ -1,30 +1,31 @@
-import * as types from '../constants/signUp';
+import * as types from '../constants/favorite';
 
 const initialState = {
   requesting: false,
-  user: {},
+  favoriteEvents: [],
+  success: null,
   error: null,
 };
 
-export default function signUp(state = initialState, action) {
+export default function favorite(state = initialState, action) {
   switch (action.type) {
-    case types.SIGNUP_REQUEST:
+    case types.DO_FAVORITE_REQUEST:
       return {
         ...state,
         requesting: action.payload,
       };
-    case types.SIGNUP_SUCCESS:
+    case types.DO_FAVORITE_SUCCESS:
       return {
         ...state,
         requesting: false,
-        user: action.payload,
+        success: action.payload,
         error: null,
       };
-    case types.SIGNUP_ERROR:
+    case types.DO_FAVORITE_ERROR:
       return {
         ...state,
         requesting: false,
-        user: {},
+        success: null,
         error: action.payload,
       };
     default:
