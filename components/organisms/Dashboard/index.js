@@ -9,7 +9,6 @@ import * as Styles from './index.styled';
 
 const Dashboard = ({ user }) => {
   const [favoriteEvent, setFavoriteEvent] = useState([]);
-  console.log('this is user', user);
   const id = user.user._id;
 
   axios.get(`https://comcalstaging.herokuapp.com/api/v1/favorite?userId=${id}`)
@@ -58,8 +57,8 @@ const Dashboard = ({ user }) => {
         <Styles.MidSectionDiv>
           <p>Starting soon</p>
 
-          {favoriteEvent.map((event, index) => (
-              (event)
+          {favoriteEvent.map((event) => (
+            (event)
               && (
               <Styles.Card1Div key={event._id}>
                 <h3>{event.name}</h3>
@@ -69,7 +68,7 @@ const Dashboard = ({ user }) => {
               </Styles.Card1Div>
               )
 
-            ))}
+          ))}
 
 
         </Styles.MidSectionDiv>

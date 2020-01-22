@@ -1,15 +1,19 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import { connect } from 'react-redux';
-import { Calendar } from 'antd';
 import PropTypes from 'prop-types';
 import Cookie from 'js-cookie';
 
 import { AppDiv } from './App.styled';
+import Heading from '../atoms/Heading';
 import NavBar from '../molecules/Navbar';
 import SearchBar from '../molecules/Searchbar';
 import EventCard from '../molecules/EventCard';
 import AppFooter from '../molecules/Footer';
 import Loader from '../molecules/EventCard/Loader';
+import Calendar from '../organisms/Calendar';
 
 const App = ({ events }) => (
   <AppDiv>
@@ -49,6 +53,8 @@ App.propTypes = {
 
 const mapStateToProps = state => ({
   events: state.fetchEvents.events,
+  fetchEventsError: state.fetchEvents.error,
+  fetchEventsRequesting: state.fetchEvents.requesting,
 });
 
 export default connect(mapStateToProps, {})(App);
