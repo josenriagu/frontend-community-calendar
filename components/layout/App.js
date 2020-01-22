@@ -36,7 +36,7 @@ const App = ({ events, fetchEventsRequesting, fetchEventsError }) => (
               (events.length <= 0 || fetchEventsRequesting)
                 ? <Loader />
                 : (!fetchEventsRequesting && typeof events === 'object' && events.length > 0)
-                  ? <Pagination items={events} position="right" Component={EventCard} uniqueKey="scrapedEventId" perPage={10} />
+                  ? <Pagination items={events} position="right" Component={EventCard} uniqueKey="scrapedEventId" perPage={5} />
                   : <Heading color="red">There are no events currently. Please try the search feature.</Heading>
             }
           </div>
