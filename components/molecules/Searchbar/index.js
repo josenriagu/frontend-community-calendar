@@ -19,6 +19,9 @@ const SearchBar = ({ doFetchEvent }) => {
   const handleClick = () => {
     const sendCountry = location.country.toLowerCase().replace(' ', '-');
     const sendCity = location.city === 'Abuja Federal Capital Territory' ? 'abuja' : location.city.toLowerCase().replace(' ', '-');
+    localStorage.setItem('userSearchCountry', sendCountry);
+    localStorage.setItem('userSearchCity', sendCity);
+    localStorage.setItem('userEventType', interest);
     doFetchEvent(sendCountry, sendCity, interest);
   };
 
