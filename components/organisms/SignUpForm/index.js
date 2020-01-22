@@ -1,8 +1,7 @@
-/* eslint-disable prefer-template */
-/* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Button as AntButton } from 'antd';
 import validate from 'validate.js';
 
@@ -129,7 +128,7 @@ const SignUpForm = ({ doSignUp }) => {
 
   return (
     <div>
-      <NavBar notSignedIn />
+      <NavBar signup />
       <BorderDiv>
         <Form>
           <InputDiv>
@@ -249,6 +248,10 @@ const SignUpForm = ({ doSignUp }) => {
       </BorderDiv>
     </div>
   );
+};
+
+SignUpForm.propTypes = {
+  doSignUp: PropTypes.func.isRequired,
 };
 
 export default connect(state => state, { doSignUp })(SignUpForm);

@@ -10,7 +10,6 @@ import App from '../components/layout/App';
 import { doSignUp } from '../redux/actions/signUp';
 import { doFetchEvent } from '../redux/actions/events';
 
-// eslint-disable-next-line no-shadow
 const Home = ({ city, country, doFetchEvent }) => {
   useEffect(() => {
     if (city !== undefined) {
@@ -54,9 +53,9 @@ Home.getInitialProps = async ctx => {
 };
 
 Home.propTypes = {
-  city: PropTypes.string.isRequired,
-  country: PropTypes.string.isRequired,
-  doFetchEvent: PropTypes.func.isRequired,
+  city: PropTypes.string,
+  country: PropTypes.string,
+  doFetchEvent: PropTypes.func,
 };
 
 export default connect(

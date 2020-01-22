@@ -1,5 +1,3 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-confusing-arrow */
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -32,7 +30,7 @@ const schema = {
   },
 };
 
-const SignInForm = ({ doSignIn, requesting, error }) => {
+const SignInForm = ({ doSignIn, error }) => {
   const [formState, setFormState] = useState({
     isValid: false,
     values: {},
@@ -86,7 +84,7 @@ const SignInForm = ({ doSignIn, requesting, error }) => {
 
   return (
     <Styles.PageWrapper>
-      <NavBar notLoggedIn />
+      <NavBar signin />
       <Styles.BorderDiv>
         <Styles.Form>
           <Styles.InputDiv>
@@ -157,10 +155,10 @@ const SignInForm = ({ doSignIn, requesting, error }) => {
 };
 SignInForm.propTypes = {
   doSignIn: PropTypes.func.isRequired,
+  error: PropTypes.object,
 };
 const mapStateToProps = state => ({
-  requesting: state.signIn.requesting,
-  userData: state.signIn.user.user,
-  error: state.signIn.error,
+  userData: state.user.user.user,
+  error: state.user.error,
 });
 export default connect(mapStateToProps, { doSignIn })(SignInForm);

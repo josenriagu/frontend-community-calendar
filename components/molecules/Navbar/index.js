@@ -1,33 +1,28 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import Cookie from 'js-cookie';
 
 import { NavBarDiv } from './index.styled';
 import { Logo } from '../../atoms/Logo';
 import { Button } from '../../atoms/Button';
 import { colors } from '../../~reusables';
 
-const NavBar = ({ alt, notLoggedIn, notSignedIn, eventAuthToken }) => {
-  const logout = () => Cookie.remove('comcal-event-token');
-
-  return (
-    <NavBarDiv>
-      <Link href="/">
-        <Logo />
-      </Link>
-      <nav>
-        {(alt || eventAuthToken) && (
-        <Link href="#">
+const NavBar = ({ alt, logged, notLogged, signin, signup }) => (
+  <NavBarDiv>
+    <Link href="/">
+      <Logo />
+    </Link>
+    <nav>
+      {(logged || notLogged) && (
+        <Link href="/create-event">
           <a>
             <Button medium background={colors.primary}>
               Create Event
             </Button>
           </a>
         </Link>
-        )}
-        {(notLoggedIn || notSignedIn) && (
+      )}
+      {(signin || signup) && (
         <Link href="/">
           <a>
             <Button medium background={colors.primary}>
@@ -35,28 +30,17 @@ const NavBar = ({ alt, notLoggedIn, notSignedIn, eventAuthToken }) => {
             </Button>
           </a>
         </Link>
-        )}
-        {(eventAuthToken) && (
+      )}
+      {logged && (
         <Link href="/userdashboard">
           <a>
             <Button medium background="inherit">
-             Profile
+              Profile
             </Button>
           </a>
         </Link>
-        )}
-
-        {(eventAuthToken) && (
-          <Link href="/">
-            <a>
-              <Button onClick={logout} medium background="inherit">
-             Logout
-              </Button>
-            </a>
-          </Link>
-        )}
-
-        {(alt || notSignedIn) && (
+      )}
+      {(notLogged || signup) && (
         <Link href="/signin">
           <a>
             <Button medium background="inherit" fontColor={alt ? colors.white : colors.primary}>
@@ -64,9 +48,8 @@ const NavBar = ({ alt, notLoggedIn, notSignedIn, eventAuthToken }) => {
             </Button>
           </a>
         </Link>
-        )}
-
-        {(alt || notLoggedIn) && (
+      )}
+      {(notLogged || signin) && (
         <Link href="/signup">
           <a>
             <Button medium background="inherit" fontColor={alt ? colors.white : colors.primary}>
@@ -74,24 +57,26 @@ const NavBar = ({ alt, notLoggedIn, notSignedIn, eventAuthToken }) => {
             </Button>
           </a>
         </Link>
-        )}
-      </nav>
-    </NavBarDiv>
-  );
-};
+      )}
+    </nav>
+  </NavBarDiv>
+);
 
 NavBar.defaultProps = {
   alt: false,
-  notLoggedIn: false,
-  notSignedIn: false,
-  eventAuthToken: false,
+  signin: false,
+  signup: false,
+  logged: false,
+  notLogged: false,
 };
 
 NavBar.propTypes = {
   alt: PropTypes.bool,
-  notLoggedIn: PropTypes.bool,
-  notSignedIn: PropTypes.bool,
-  eventAuthToken: PropTypes.bool,
+  signin: PropTypes.bool,
+  signup: PropTypes.bool,
+  logged: PropTypes.bool,
+  notLogged: PropTypes.bool,
 };
+
 
 export default NavBar;

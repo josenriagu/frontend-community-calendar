@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux';
 
-import signUp from './signUp';
-import signIn from './signIn';
+import user from './user';
 import fetchEvents from './events';
 import favorite from './favorite';
 
 export default combineReducers({
-  signUp,
-  signIn,
+  user,
   fetchEvents,
   favorite,
 });

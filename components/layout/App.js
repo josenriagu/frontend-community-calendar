@@ -15,40 +15,37 @@ import AppFooter from '../molecules/Footer';
 import Loader from '../molecules/EventCard/Loader';
 import Calendar from '../organisms/Calendar';
 
-const App = ({ events, fetchEventsRequesting, fetchEventsError }) => {
-  const token = Cookie.get('comcal-event-token');
-  return (
-    <AppDiv>
-      <div id="introSection">
-        <div id="wrapper">
-          {token ? <NavBar eventAuthToken /> : <NavBar alt />}
-          <div id="heading">
-            <h3>find relevant community events</h3>
-            <h3>around you</h3>
-          </div>
+const App = ({ events, fetchEventsRequesting, fetchEventsError }) => (
+  <AppDiv>
+    <div id="introSection">
+      <div id="wrapper">
+        {Cookie.get('comcal-event-token') ? <NavBar alt logged /> : <NavBar alt notLogged />}
+        <div id="heading">
+          <h3>find relevant community events</h3>
+          <h3>around you</h3>
         </div>
       </div>
-      <div id="eventSection">
-        <div id="wrapper">
-          <SearchBar />
-          <div id="eventCal">
-            <div id="eventsContainer">
-              {
-                (!fetchEventsError && fetchEventsRequesting)
-                  ? <Loader />
-                  : (!fetchEventsRequesting && typeof events === 'object' && events.length > 0)
-                    ? events.map(el => <EventCard key={el.scrapedEventId} el={el} />)
-                    : <Heading color="red">There are no events currently. Please try the search feature.</Heading>
-              }
-            </div>
-            <Calendar />
+    </div>
+    <div id="eventSection">
+      <div id="wrapper">
+        <SearchBar />
+        <div id="eventCal">
+          <div id="eventsContainer">
+            {
+              (!fetchEventsError && fetchEventsRequesting)
+                ? <Loader />
+                : (!fetchEventsRequesting && typeof events === 'object' && events.length > 0)
+                  ? events.map(el => <EventCard key={el.scrapedEventId} el={el} />)
+                  : <Heading color="red">There are no events currently. Please try the search feature.</Heading>
+            }
           </div>
+          <Calendar />
         </div>
       </div>
-      <AppFooter />
-    </AppDiv>
-  );
-};
+    </div>
+    <AppFooter />
+  </AppDiv>
+);
 
 App.propTypes = {
   events: PropTypes.array,
