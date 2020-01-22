@@ -32,7 +32,7 @@ const App = ({ events, fetchEventsRequesting, fetchEventsError }) => (
         <div id="eventCal">
           <div id="eventsContainer">
             {
-              (!fetchEventsError && fetchEventsRequesting)
+              (events.length <= 0 || fetchEventsRequesting)
                 ? <Loader />
                 : (!fetchEventsRequesting && typeof events === 'object' && events.length > 0)
                   ? events.map(el => <EventCard key={el.scrapedEventId} el={el} />)
