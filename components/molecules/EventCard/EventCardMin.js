@@ -23,7 +23,6 @@ const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
       fetch('http://localhost:5000/api/v1/event/fetch-description', config)
         .then(res => res.json())
         .then(data => {
-          console.log(data)
           setDescription(data);
         })
         .catch(() => 'Description unavailable');
