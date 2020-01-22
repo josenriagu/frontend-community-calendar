@@ -10,6 +10,7 @@ import SearchBar from '../molecules/Searchbar';
 import EventCard from '../molecules/EventCard';
 import AppFooter from '../molecules/Footer';
 import Loader from '../molecules/EventCard/Loader';
+import Pagination from '../molecules/Pagination'
 
 const App = ({ events }) => {
   const token = Cookie.get('comcal-event-token');
@@ -31,7 +32,7 @@ const App = ({ events }) => {
             <div id="eventsContainer">
               {
               events.length > 0
-                ? events.map(el => <EventCard key={el.scrapedEventId} el={el} />)
+                ? <Pagination items={events} position="right" Component={EventCard} uniqueKey="scrapedEventId" perPage={10} />
                 : <Loader />
               }
             </div>
