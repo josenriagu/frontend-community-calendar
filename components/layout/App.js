@@ -15,7 +15,7 @@ import AppFooter from '../molecules/Footer';
 import Loader from '../molecules/EventCard/Loader';
 import Calendar from '../organisms/Calendar';
 
-const App = ({ events, fetchEventsRequesting, fetchEventsError }) => (
+const App = ({ events, fetchEventsRequesting }) => (
   <AppDiv>
     <div id="introSection">
       <div id="wrapper">
@@ -49,13 +49,11 @@ const App = ({ events, fetchEventsRequesting, fetchEventsError }) => (
 
 App.propTypes = {
   events: PropTypes.array,
-  fetchEventsError: PropTypes.object,
   fetchEventsRequesting: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
   events: state.fetchEvents.events,
-  fetchEventsError: state.fetchEvents.error,
   fetchEventsRequesting: state.fetchEvents.requesting,
 });
 
