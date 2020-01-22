@@ -11,21 +11,20 @@ import App from '../components/layout/App';
 import { doSignUp } from '../redux/actions/signUp';
 import { doFetchEvent } from '../redux/actions/events';
 
-const Home = ({ city, country, doFetchEvent }) => {
+const Home = ({ doFetchEvent }) => {
   useEffect(() => {
     fetch('https://ipapi.co/json/')
       .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(error => console.log(error));
-    if (city !== undefined) {
-      localStorage.setItem('userCity', city);
-    }
-    if (country !== undefined) {
-      localStorage.setItem('userCountry', country);
-    }
-    const scity = city === undefined ? localStorage.getItem('userCity') : city;
-    const scountry = country === undefined ? localStorage.getItem('userCountry') : country;
-    doFetchEvent(scountry, scity, 'all');
+      .then(data => {
+        doFetchEvent(data.country_name.replace(' ', '-').toLowerCase(), data.city.replace(' ', '-').toLowerCase(), 'all');
+        if (data.city !== undefined) {
+          localStorage.setItem('userCity', data.city.replace(' ', '-').toLowerCase());
+        }
+        if (data.country_name !== undefined) {
+          localStorage.setItem('userCountry', data.country_name.replace(' ', '-').toLowerCase());
+        }
+      })
+      .catch(error => error);
   }, []);
 
   return (
@@ -58,8 +57,6 @@ Home.getInitialProps = async ctx => {
 };
 
 Home.propTypes = {
-  city: PropTypes.string,
-  country: PropTypes.string,
   doFetchEvent: PropTypes.func,
 };
 
