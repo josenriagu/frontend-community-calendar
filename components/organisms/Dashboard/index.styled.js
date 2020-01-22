@@ -4,7 +4,7 @@ export const BorderDiv = styled.div`
   width: 60vw;
   margin: 0 auto;
   background: #ffffff;
-  border: 1px solid #cec8c8;
+  /* border: 1px solid #cec8c8; */
   box-sizing: border-box;
   border-radius: 0.5rem;
   padding-top: 2rem;
