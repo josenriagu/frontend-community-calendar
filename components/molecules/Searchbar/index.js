@@ -9,7 +9,6 @@ import { Button } from '../../atoms/Button';
 import { colors } from '../../~reusables';
 import { doFetchEvent } from '../../../redux/actions/events';
 
-// eslint-disable-next-line no-shadow
 const SearchBar = ({ doFetchEvent }) => {
   const [location, setLocation] = useState({ country: '', city: '' });
   const [interest, setInterest] = useState('all');
@@ -19,6 +18,9 @@ const SearchBar = ({ doFetchEvent }) => {
   const handleClick = () => {
     const sendCountry = location.country.toLowerCase().replace(' ', '-');
     const sendCity = location.city === 'Abuja Federal Capital Territory' ? 'abuja' : location.city.toLowerCase().replace(' ', '-');
+    localStorage.setItem('userSearchCountry', sendCountry);
+    localStorage.setItem('userSearchCity', sendCity);
+    localStorage.setItem('userEventType', interest);
     doFetchEvent(sendCountry, sendCity, interest);
   };
 

@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React, { useState } from 'react';
 import Router from 'next/router';
 import { connect } from 'react-redux';
@@ -11,10 +10,9 @@ import EventCardMax from './EventCardMax';
 import { addFavorite, removeFavorite } from '../../../redux/actions/favorite';
 
 
-// eslint-disable-next-line no-shadow
 const EventCard = ({ el, addFavorite, removeFavorite }) => {
   const [isToggled, setIsToggled] = useState(false);
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState({});
   const [isFav, setIsFav] = useState(false);
 
   const toggle = () => {
@@ -23,7 +21,6 @@ const EventCard = ({ el, addFavorite, removeFavorite }) => {
 
   const setFav = async () => {
     if (!Auth.isAuthenticated('id')) {
-      // eslint-disable-next-line no-alert
       message.warning('You must be logged in to perform this operation');
       return Router.push('/signin');
     }

@@ -2,7 +2,7 @@ import axios from 'axios';
 import Router from 'next/router';
 import Cookie from 'js-cookie';
 
-import * as types from '../constants/signIn';
+import * as types from '../constants/user';
 
 const signInRequest = payload => ({
   type: types.SIGNIN_REQUEST,

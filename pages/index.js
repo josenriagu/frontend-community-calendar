@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import fetch from 'isomorphic-fetch';
 
 import GlobalStyle from '../styles/GlobalStyles';
 import App from '../components/layout/App';
@@ -10,19 +11,22 @@ import App from '../components/layout/App';
 import { doSignUp } from '../redux/actions/signUp';
 import { doFetchEvent } from '../redux/actions/events';
 
-// eslint-disable-next-line no-shadow
-const Home = ({ city, country, doFetchEvent }) => {
+const Home = ({ doFetchEvent }) => {
   useEffect(() => {
-    if (city !== undefined) {
-      localStorage.setItem('user_city', city);
-    }
-    if (country !== undefined) {
-      localStorage.setItem('user_country', country);
-    }
-    const scity = city === undefined ? localStorage.getItem('user_city') : city;
-    const scountry = country === undefined ? localStorage.getItem('user_country') : country;
-    doFetchEvent(scountry, scity, 'all');
-  }, [city]);
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        doFetchEvent(data.country_name.replace(' ', '-').toLowerCase(), data.city.replace(' ', '-').toLowerCase(), 'all');
+        if (data.city !== undefined) {
+          localStorage.setItem('userCity', data.city.replace(' ', '-').toLowerCase());
+        }
+        if (data.country_name !== undefined) {
+          localStorage.setItem('userCountry', data.country_name.replace(' ', '-').toLowerCase());
+        }
+      })
+      .catch(error => error);
+  }, []);
 
   return (
     <>
@@ -49,14 +53,12 @@ Home.getInitialProps = async ctx => {
       } else throw new Error('an error occurred');
     })
     // eslint-disable-next-line no-console
-    .catch(error => console.log(error));
+    .catch(error => error);
   return { city, country };
 };
 
 Home.propTypes = {
-  city: PropTypes.string.isRequired,
-  country: PropTypes.string.isRequired,
-  doFetchEvent: PropTypes.func.isRequired,
+  doFetchEvent: PropTypes.func,
 };
 
 export default connect(
