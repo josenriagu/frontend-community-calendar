@@ -12,18 +12,22 @@ export default function fetchEvents(state = initialState, action) {
       return {
         ...state,
         requesting: action.payload,
+        events: [],
+        error: null,
       };
     case types.FETCH_EVENT_SUCCESS:
       return {
         ...state,
         requesting: false,
         events: action.payload,
+        error: null,
       };
     case types.FETCH_EVENT_ERROR:
       return {
         ...state,
         requesting: false,
         error: action.payload,
+        events: [],
       };
     default:
       return state;

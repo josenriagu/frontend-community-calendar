@@ -1,17 +1,21 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import { connect } from 'react-redux';
-import { Calendar } from 'antd';
 import PropTypes from 'prop-types';
 import Cookie from 'js-cookie';
 
 import { AppDiv } from './App.styled';
+import Heading from '../atoms/Heading';
 import NavBar from '../molecules/Navbar';
 import SearchBar from '../molecules/Searchbar';
 import EventCard from '../molecules/EventCard';
 import AppFooter from '../molecules/Footer';
 import Loader from '../molecules/EventCard/Loader';
+import Calendar from '../organisms/Calendar';
 
-const App = ({ events }) => (
+const App = ({ events, fetchEventsRequesting, fetchEventsError }) => (
   <AppDiv>
     <div id="introSection">
       <div id="wrapper">
@@ -28,14 +32,14 @@ const App = ({ events }) => (
         <div id="eventCal">
           <div id="eventsContainer">
             {
-              events.length > 0
-                ? events.map(el => <EventCard key={el.scrapedEventId} el={el} />)
-                : <Loader />
+              (!fetchEventsError && fetchEventsRequesting)
+                ? <Loader />
+                : (!fetchEventsRequesting && typeof events === 'object' && events.length > 0)
+                  ? events.map(el => <EventCard key={el.scrapedEventId} el={el} />)
+                  : <Heading color="red">There are no events currently. Please try the search feature.</Heading>
             }
           </div>
-          <div id="calendar">
-            <Calendar fullscreen={false} />
-          </div>
+          <Calendar />
         </div>
       </div>
     </div>
@@ -44,11 +48,15 @@ const App = ({ events }) => (
 );
 
 App.propTypes = {
-  events: PropTypes.array.isRequired,
+  events: PropTypes.array,
+  fetchEventsError: PropTypes.object,
+  fetchEventsRequesting: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
   events: state.fetchEvents.events,
+  fetchEventsError: state.fetchEvents.error,
+  fetchEventsRequesting: state.fetchEvents.requesting,
 });
 
 export default connect(mapStateToProps, {})(App);

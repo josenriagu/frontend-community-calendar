@@ -12,7 +12,7 @@ import { addFavorite, removeFavorite } from '../../../redux/actions/favorite';
 
 const EventCard = ({ el, addFavorite, removeFavorite }) => {
   const [isToggled, setIsToggled] = useState(false);
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState({});
   const [isFav, setIsFav] = useState(false);
 
   const toggle = () => {

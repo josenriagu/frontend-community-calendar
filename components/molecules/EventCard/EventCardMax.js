@@ -1,17 +1,19 @@
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon as AntIcon } from 'antd';
+import moment from 'moment';
 
 import { Button } from '../../atoms/Button';
 import { EventCardAltDiv } from './index.styled';
 import { colors } from '../../~reusables';
-import Icon from '../../atoms/Icon';
 import Loader from './Loader';
 
 const EventCardMax = ({ toggle, setFav, isFav, el, description }) => {
-  const dateTimeArr = el.eventDate.split('+')[0].split(',');
-
   function pushLink(e, link) {
     e.preventDefault();
     window.location.href = link;
@@ -25,8 +27,7 @@ const EventCardMax = ({ toggle, setFav, isFav, el, description }) => {
     <EventCardAltDiv>
       <div id="topbar">
         <div id="datetime">
-          <span>{dateTimeArr[2]}</span>
-          <span>{`${dateTimeArr[0]}, ${dateTimeArr[1]}, ${new Date().getFullYear()}`}</span>
+          <span>{moment(el.eventDate).format('lll')}</span>
         </div>
         <span id="toggle">
           <i onClick={() => { toggle(); }} className=" fas fa-chevron-up" />
@@ -42,7 +43,7 @@ const EventCardMax = ({ toggle, setFav, isFav, el, description }) => {
         </div>
         <div id="details">
           <span>Host</span>
-          <span>Josemaria and 3 others</span>
+          {description.length <= 0 ? <span>...</span> : <span>{description.author}</span>}
         </div>
       </div>
       <div id="actionIcons">
@@ -65,9 +66,11 @@ const EventCardMax = ({ toggle, setFav, isFav, el, description }) => {
       </div>
       <div id="description">
         <p><strong>Description</strong></p>
-        <p>
-          {description.length < 5 ? <Loader /> : description}
-        </p>
+        {!description.hasOwnProperty('description')
+          ? <Loader />
+          : description.description.length > 5
+            ? <p>{description.description}</p>
+            : <p>There is no description for this event</p>}
       </div>
       <div onClick={(e) => pushLink(e, el.scrapedEventLink)} id="button">
         <Button medium background={colors.primary}>Visit Source</Button>
@@ -82,7 +85,7 @@ EventCardMax.propTypes = {
   isFav: PropTypes.bool.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   el: PropTypes.object.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.object,
 };
 
 export default EventCardMax;
