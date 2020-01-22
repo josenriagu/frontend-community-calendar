@@ -16,6 +16,7 @@ const Pagination = ({
   const [paginatedData, setPaginatedData] = useState(
     cOfItems.slice(offset, perPage),
   );
+  //  Get the total pages necessary for the entire items 
   const pageCount = Math.ceil(items.length / perPage);
 
   const handlePageClick = data => {
@@ -27,7 +28,7 @@ const Pagination = ({
   if (items.length === 0) return null;
 
   let paginationClass = '';
-
+  //  Determine the position of the pagination component by setting the className appropriately
   switch (position) {
     case 'left':
       paginationClass = 'pagination';
