@@ -16,6 +16,7 @@ const Home = ({ doFetchEvent }) => {
     fetch('https://ipapi.co/json/')
       .then(res => res.json())
       .then(data => {
+        console.log(data)
         doFetchEvent(data.country_name.replace(' ', '-').toLowerCase(), data.city.replace(' ', '-').toLowerCase(), 'all');
         if (data.city !== undefined) {
           localStorage.setItem('userCity', data.city.replace(' ', '-').toLowerCase());
@@ -52,7 +53,7 @@ Home.getInitialProps = async ctx => {
       } else throw new Error('an error occurred');
     })
     // eslint-disable-next-line no-console
-    .catch(error => console.log(error));
+    .catch(error => error);
   return { city, country };
 };
 
