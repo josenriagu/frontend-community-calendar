@@ -20,7 +20,7 @@ const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
         }),
       };
 
-      fetch('http://localhost:5000/api/v1/event/fetch-description', config)
+      fetch('https://comcalstaging.herokuapp.com/api/v1/event/fetch-description', config)
         .then(res => res.json())
         .then(data => {
           setDescription(data);
