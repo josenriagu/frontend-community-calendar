@@ -78,8 +78,7 @@ const Dashboard = ({ user }) => {
             <h2>No future events!</h2>
           </Styles.EventsDiv>
           <h5>
-Add events
-
+            Add events
           </h5>
         </Styles.BottomSectionDiv>
       </Styles.BorderDiv>
@@ -97,3 +96,19 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 export default connect(mapStateToProps, {})(Dashboard);
+
+
+// { /* <Styles.DateTimeDiv>
+//         <Styles.StartDiv>
+//           <p>Starts:</p>
+//           <br />
+//           <Input medium type="date" name="date" value="date" />
+//           <Input small type="time" name="time" value="time" />
+//         </Styles.StartDiv>
+//         <Styles.EndDiv>
+//           <p>Ends:</p>
+//           <br />
+//           <Input medium type="date" name="date" value="date" />
+//           <Input small type="time" name="time" value="time" />
+//         </Styles.EndDiv>
+//       </Styles.DateTimeDiv> */ }

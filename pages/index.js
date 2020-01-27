@@ -7,6 +7,7 @@ import fetch from 'isomorphic-fetch';
 
 import GlobalStyle from '../styles/GlobalStyles';
 import App from '../components/layout/App';
+import DateRange from '../components/molecules/DateTime/datetime';
 
 import { doSignUp } from '../redux/actions/signUp';
 import { doFetchEvent } from '../redux/actions/events';
@@ -36,6 +37,7 @@ const Home = ({ doFetchEvent }) => {
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossOrigin="anonymous" />
       </Head>
       <App />
+      <DateRange />
     </>
   );
 };
