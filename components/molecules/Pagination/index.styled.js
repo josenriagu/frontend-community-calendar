@@ -12,8 +12,13 @@ const PaginationDiv = ({ children }) => (
 
       .disable-pagination {
           color:grey;
-          cursor: not-allowed
+          cursor: not-allowed;
       }
+
+      .disable-pagination a {
+        color:grey;
+        cursor: not-allowed;
+    }
       .pagination {
         width: 300px;
         display: flex;
@@ -42,6 +47,22 @@ const PaginationDiv = ({ children }) => (
 
       .pagination-right li {
         margin: 0 10px;
+        color:red;
+      }
+
+      .pagination li a {
+        color:#9c0d38;
+        font-weight:bold;
+      }
+
+      .pagination-right li a {
+        color:#9c0d38;
+        font-weight:bold;
+      }
+
+      .pagination-center li a {
+        color:#9c0d38;
+        font-weight:bold;
       }
 
       .pages {
@@ -52,7 +73,7 @@ const PaginationDiv = ({ children }) => (
       .active {
         color: red;
         padding: 0 8px;
-        border: 1px solid #4C90FF;
+        border: 1px solid #9c0d38;
         border-radius: 5px;
       }
     `}</style>

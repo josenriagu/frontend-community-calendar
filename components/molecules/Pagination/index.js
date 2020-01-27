@@ -34,11 +34,11 @@ const Pagination = ({
       paginationClass = 'pagination';
       break;
     case 'right':
-      paginationClass = 'pagination-right';
+      paginationClass = 'paginate-default pagination-right';
       break;
 
     case 'center':
-      paginationClass = 'pagination-center';
+      paginationClass = 'paginate-default pagination-center';
       break;
 
     default:
