@@ -11,19 +11,25 @@ export const AppDiv = styled.div`
   }
   div#introSection {
     height: 80vh;
-    background: '#ffffff';
     background-image: url('/banner.jpg');
     /* background color is the fallback for when the image is not available */
     background-color: '#ffffff';
+    background-attachment: fixed;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
     div#heading {
       text-align: center;
-      margin: 2rem 0 0;
+      margin: 2rem auto 0;
+      width: 70%;
+      height: 20vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       h3 {
         text-transform: uppercase;
+        text-shadow: .3rem .3rem rgb(0, 0, 0, 0.8);
       }
     }
   }
