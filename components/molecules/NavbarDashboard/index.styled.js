@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const NavBarDiv = styled.div`
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
   padding: 1rem 2.5rem;
   display: flex;
@@ -10,7 +10,6 @@ export const NavBarDiv = styled.div`
   nav {
     display: flex;
     justify-content: space-between;
-    padding: 2 rem;
     a{
       padding-right: 2rem;
       Button{

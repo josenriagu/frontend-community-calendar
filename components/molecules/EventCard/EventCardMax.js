@@ -14,11 +14,6 @@ import { colors } from '../../~reusables';
 import Loader from './Loader';
 
 const EventCardMax = ({ toggle, setFav, isFav, el, description }) => {
-  function pushLink(e, link) {
-    e.preventDefault();
-    window.location.href = link;
-  }
-
   const initialDescription = el.name;
   const finalDescription = initialDescription.replace(/ /g, '%20');
   const shareLink = `https://twitter.com/intent/tweet?url=&text=${finalDescription}%20${el.scrapedEventLink}%2F%20`;
@@ -72,8 +67,12 @@ const EventCardMax = ({ toggle, setFav, isFav, el, description }) => {
             ? <p>{description.description}</p>
             : <p>There is no description for this event</p>}
       </div>
-      <div onClick={(e) => pushLink(e, el.scrapedEventLink)} id="button">
-        <Button medium background={colors.primary}>Visit Source</Button>
+      <div id="button">
+        <Button medium background={colors.primary}>
+          <a style={{ color: 'inherit' }} href={el.scrapedEventLink} target="_blank" rel="noreferrer noopener">
+            Visit Source
+          </a>
+        </Button>
       </div>
     </EventCardAltDiv>
   );
