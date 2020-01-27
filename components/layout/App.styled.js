@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { colors } from '../~reusables';
+import { screens } from '../~reusables';
 
 export const AppDiv = styled.div`
   width: 100%;
@@ -8,6 +8,9 @@ export const AppDiv = styled.div`
   div#wrapper {
     width: 1200px;
     margin: 0 auto;
+    @media ${screens.mobile} {
+      width: 450px
+    }
   }
   div#introSection {
     height: 80vh;
@@ -31,25 +34,51 @@ export const AppDiv = styled.div`
         text-transform: uppercase;
         text-shadow: .3rem .3rem rgb(0, 0, 0, 0.8);
       }
+      @media ${screens.mobile} {
+        width: 100%;
+      }
     }
   }
   div#eventSection {
     width: 100%;
-    padding: 6rem 3rem;
+    padding: 3rem 3rem 6rem;
     position: relative;
     div#eventCal {
       display: flex;
       justify-content: space-between;
-      padding-top: 5rem;
-      div#eventsContainer {
-      width: 62.5%;
+      padding-top: 3rem;
+      @media ${screens.mobile} {
+        flex-direction: column-reverse;
       }
-      div#calendar {
+      div#eventsContainer {
+        width: 62.5%;
+        @media ${screens.mobile} {
+          width: 100%;
+        }
+      }
+      div#desktopCal {
         width: 32.5%;
-        height: 32.5rem;
-        padding: .5rem;
-        border: .1rem solid ${colors.tertiary};
-        border-radius: 1.5rem;
+        @media ${screens.mobile} {
+          display: none;
+        }
+      }
+      div#mobileCal {
+        display: none;
+        @media ${screens.mobile} {
+          display: block;
+          width: 100%;
+          margin-top: 2rem;
+        }
+      }
+      div#switch {
+        display: none;
+        @media ${screens.mobile} {
+          display: flex;
+          align-items: center;
+          h6 {
+            margin-right: 1rem;
+          }
+        }
       }
     }
   }

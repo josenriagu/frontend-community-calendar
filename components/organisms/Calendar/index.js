@@ -12,7 +12,6 @@ import { doFetchCalendarEvent } from '../../../redux/actions/events';
 
 const AntCalendar = ({ doFetchCalendarEvent }) => {
   const CalendarDiv = styled.div`
-    width: 32.5%;
     height: 32.5rem;
     padding: .5rem;
     border: .1rem solid ${colors.tertiary};

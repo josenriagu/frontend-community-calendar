@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
-import { colors } from '../../~reusables';
+import { colors, screens } from '../../~reusables';
 
 export const SearchBarDiv = styled.div`
-  width: 50%;
-  min-width: 740px;
+  width: 60%;
   height: 6rem;
   margin: 0 auto;
   padding: .5rem 1.25rem;
@@ -19,18 +18,32 @@ export const SearchBarDiv = styled.div`
   transition: box-shadow 2s;
   border: .05rem solid ${colors.tertiary};
   border-radius: 7rem;
-  input::placeholder {
-    font-size: 1.6rem;
+  @media ${screens.mobile} {
+    width: 96%;
+    left: 2%;
+    right: 2%;
+  };
+  div#select {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    @media ${screens.mobile} {
+      width: 80%;
+    };
+    select {
+      font-size: 1.6rem;
+      border: none;
+      max-width: calc(100% / 3);
+      :focus {
+        outline: none;
+      }
+      @media ${screens.mobile} {
+        font-size: 1.4rem;
+      }
+    }
   }
   :hover {
     box-shadow: .5rem .5rem 1rem .3rem rgba(167, 167, 167, 1);
     border: none;
-  }
-  div {
-    display: flex;
-    align-items: center;
-    i {
-    font-size: 1.6rem;
-    }
   }
 `;
