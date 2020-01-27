@@ -14,6 +14,7 @@ import EventCard from '../molecules/EventCard';
 import AppFooter from '../molecules/Footer';
 import Loader from '../molecules/EventCard/Loader';
 import Calendar from '../organisms/Calendar';
+import Pagination from '../molecules/Pagination';
 
 const App = ({ events, fetchEventsRequesting }) => (
   <AppDiv>
@@ -35,7 +36,7 @@ const App = ({ events, fetchEventsRequesting }) => (
               (events.length <= 0 || fetchEventsRequesting)
                 ? <Loader />
                 : (!fetchEventsRequesting && typeof events === 'object' && events.length > 0)
-                  ? events.map(el => <EventCard key={el.scrapedEventId} el={el} />)
+                  ? <Pagination items={events} position="right" Component={EventCard} uniqueKey="scrapedEventId" perPage={5} />
                   : <Heading color="red">There are no events currently. Please try the search feature.</Heading>
             }
           </div>
