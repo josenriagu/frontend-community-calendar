@@ -1,4 +1,5 @@
 import { DatePicker } from 'antd';
+import * as Styles from './index.styled';
 
 class DateRange extends React.Component {
   state = {
@@ -50,7 +51,7 @@ class DateRange extends React.Component {
   render() {
     const { startValue, endValue, endOpen } = this.state;
     return (
-      <div>
+      <Styles.DateTimeDiv>
         <DatePicker
           disabledDate={this.disabledStartDate}
           showTime
@@ -70,7 +71,7 @@ class DateRange extends React.Component {
           open={endOpen}
           onOpenChange={this.handleEndOpenChange}
         />
-      </div>
+      </Styles.DateTimeDiv>
     );
   }
 }

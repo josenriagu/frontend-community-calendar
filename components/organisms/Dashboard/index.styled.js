@@ -120,16 +120,3 @@ export const EventsDiv = styled.div`
       color: #888888;
   }
 `;
-export const DateTimeDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  `;
-export const StartDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  `;
-export const EndDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  `;

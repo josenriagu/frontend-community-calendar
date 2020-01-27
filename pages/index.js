@@ -6,7 +6,7 @@ import axios from 'axios';
 import fetch from 'isomorphic-fetch';
 
 import GlobalStyle from '../styles/GlobalStyles';
-import App from '../components/layout/App';
+// import App from '../components/layout/App';
 import DateRange from '../components/molecules/DateTime/datetime';
 
 import { doSignUp } from '../redux/actions/signUp';
@@ -36,7 +36,7 @@ const Home = ({ doFetchEvent }) => {
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossOrigin="anonymous" />
       </Head>
-      <App />
+      {/* <App /> */}
       <DateRange />
     </>
   );
