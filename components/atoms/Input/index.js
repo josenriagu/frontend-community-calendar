@@ -58,6 +58,13 @@ const Input = styled.input`
     border-radius: 20px;
   `}
 
+  ${props => props.xxLarge
+  && css`
+    width: 40rem;
+    background:none;
+    border-radius: 20px;
+  `}
+
   ${props => props.disabled
     && css`
       background: #dddddd;
