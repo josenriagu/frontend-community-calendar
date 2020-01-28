@@ -1,12 +1,13 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Uploader from "./uploader";
-import { Container } from "./index.styled";
+import Uploader from './uploader';
+import { Container } from './index.styled';
+
 
 const UploadContainer = ({ getImageFile }) => {
-
   const uploadProps = {
-    name: "photo",
+    name: 'photo',
     multiple: false,
     beforeUpload: file => {
       getImageFile(file);
@@ -19,5 +20,10 @@ const UploadContainer = ({ getImageFile }) => {
     </Container>
   );
 };
+
+UploadContainer.propTypes = {
+  getImageFile: PropTypes.func.isRequired,
+};
+
 
 export default UploadContainer;

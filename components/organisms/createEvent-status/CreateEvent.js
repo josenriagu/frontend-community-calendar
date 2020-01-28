@@ -11,6 +11,7 @@ import Input from '../../atoms/Input';
 import NavBar from '../../molecules/Navbar';
 import ImageUploader from '../../molecules/ImageUplaoder';
 import TextArea from '../../atoms/TextArea';
+import DataPicker from '../../molecules/DateTime';
 
 const CreateEvent = () => {
   const initialState = {
@@ -20,6 +21,10 @@ const CreateEvent = () => {
     image: '',
     city: '',
     country: '',
+    source: '',
+    eventType: '',
+    price: '',
+    eventDate: null,
   };
 
   const initialErrors = {
@@ -33,6 +38,12 @@ const CreateEvent = () => {
   const handleChange = event => {
     const { name, value } = event.target;
     setNewEvent({ ...newEvent, [name]: value });
+  };
+
+  const onChangeDate = (field, value) => setNewEvent({ ...newEvent, [field]: value });
+
+  const onStartChange = value => {
+    onChangeDate('eventDate', value);
   };
 
   const getImageFile = file => setNewEvent({ ...newEvent, ...{ image: file } });
@@ -58,7 +69,6 @@ const CreateEvent = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    console.log(newEvent);
     // const isValid = handleErrors();
     // if (isValid) {
     //   setErrors(initialErrors);
@@ -78,8 +88,9 @@ const CreateEvent = () => {
       });
 
       console.log(await response.json());
+      message.success('Event Added');
     } catch (e) {
-      console.log(e);
+      message.error(e.message);
     }
   };
 
@@ -186,6 +197,7 @@ const CreateEvent = () => {
           </span>
           <br />
           <span>Starts</span>
+          <DataPicker eventDate={newEvent.eventDate} onStartChange={onStartChange} />
           <br />
           <span>Event Image</span>
           <ImageUploader getImageFile={getImageFile} />

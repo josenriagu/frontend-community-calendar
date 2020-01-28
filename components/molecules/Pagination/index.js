@@ -16,7 +16,7 @@ const Pagination = ({
   const [paginatedData, setPaginatedData] = useState(
     cOfItems.slice(offset, perPage),
   );
-  //  Get the total pages necessary for the entire items 
+  //  Get the total pages necessary for the entire items
   const pageCount = Math.ceil(items.length / perPage);
 
   const handlePageClick = data => {
