@@ -1,10 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const PaginationDiv = ({ children }) => (
   <div>
     <div>{children}</div>
-    <style jsx global>{`
+    <style jsx global>
+      {`
       .pagination-section {
         margin: 50px 0 0 0;
         color:#9c0d38
@@ -76,12 +77,13 @@ const PaginationDiv = ({ children }) => (
         border: 1px solid #9c0d38;
         border-radius: 5px;
       }
-    `}</style>
+    `}
+    </style>
   </div>
 );
 
 PaginationDiv.propTypes = {
-  children: PropTypes.func.isRequired
+  children: PropTypes.func.isRequired,
 };
 
 export default PaginationDiv;

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import { screens } from '../../~reusables';
+import { colors, screens } from '../../~reusables';
 
 export const NavBarDiv = styled.div`
   margin: 0 auto;
-  padding: 1rem 2.5rem;
+  padding: 1rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,7 +16,17 @@ export const NavBarDiv = styled.div`
     display: flex;
     justify-content: space-around;
     @media ${screens.mobile} {
-      width: 65%;
+      display: none;
+    }
+  }
+  span {
+    display: none;
+    @media ${screens.mobile} {
+      display: block;
+    }
+    i {
+      font-size: 2.4rem;
+      color: ${colors.primary}
     }
   }
 `;

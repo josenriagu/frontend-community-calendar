@@ -7,13 +7,14 @@ export const AppDiv = styled.div`
   margin: 0 auto;
   div#wrapper {
     width: 1200px;
-    margin: 0 auto;
     @media ${screens.mobile} {
       width: 450px
     }
   }
   div#introSection {
     height: 80vh;
+    display: flex;
+    justify-content: center;
     background-image: url('/banner.jpg');
     /* background color is the fallback for when the image is not available */
     background-color: '#ffffff';
@@ -40,10 +41,12 @@ export const AppDiv = styled.div`
     }
   }
   div#eventSection {
-    width: 100%;
     padding: 3rem 3rem 6rem;
     position: relative;
+    display: flex;
+    justify-content: center;
     div#eventCal {
+      width: 100%;
       display: flex;
       justify-content: space-between;
       padding-top: 3rem;
@@ -54,6 +57,7 @@ export const AppDiv = styled.div`
         width: 62.5%;
         @media ${screens.mobile} {
           width: 100%;
+          margin: 2rem 0 0;
         }
       }
       div#desktopCal {

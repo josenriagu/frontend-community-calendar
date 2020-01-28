@@ -117,3 +117,12 @@ export const EventCardAltDiv = styled.div`
     }
   }
 `;
+
+export const LoaderDiv = styled.div`
+  width: 100%;
+  text-align: center;
+  margin: 2rem 0;
+  padding: 3rem 5rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: .4rem;
+`;
