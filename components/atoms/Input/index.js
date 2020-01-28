@@ -7,6 +7,7 @@ const Input = styled.input`
   padding: 0 .5rem;
   height: 3.3rem;
   font-size: 1.6rem;
+  border-radius: 0.5rem;
 
   ${props => props.search
     && css`
