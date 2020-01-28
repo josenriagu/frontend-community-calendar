@@ -7,14 +7,14 @@ import { Logo } from '../../atoms/Logo';
 import { Button } from '../../atoms/Button';
 import { colors } from '../../~reusables';
 
-const NavBar = ({ alt, logged, notLogged, signin, signup }) => (
+const NavBar = ({ alt, logged, notLogged, signin, signup, createEvent }) => (
   <NavBarDiv>
     <Link href="/">
       <Logo />
     </Link>
     <nav>
       {(logged || notLogged) && (
-        <Link href="#">
+        <Link href="/event">
           <a>
             <Button medium background={colors.primary}>
               Create Event
@@ -22,7 +22,7 @@ const NavBar = ({ alt, logged, notLogged, signin, signup }) => (
           </a>
         </Link>
       )}
-      {(signin || signup) && (
+      {(signin || signup || createEvent) && (
         <Link href="/">
           <a>
             <Button medium background={colors.primary}>
@@ -31,10 +31,10 @@ const NavBar = ({ alt, logged, notLogged, signin, signup }) => (
           </a>
         </Link>
       )}
-      {logged && (
+      {(logged || createEvent) && (
         <Link href="/userdashboard">
           <a>
-            <Button medium background="inherit">
+            <Button medium background="inherit" style={{ color: `${createEvent ? colors.primary : null}` }}>
               Profile
             </Button>
           </a>
@@ -68,6 +68,7 @@ NavBar.defaultProps = {
   signup: false,
   logged: false,
   notLogged: false,
+  createEvent: false,
 };
 
 NavBar.propTypes = {
@@ -76,6 +77,7 @@ NavBar.propTypes = {
   signup: PropTypes.bool,
   logged: PropTypes.bool,
   notLogged: PropTypes.bool,
+  createEvent: PropTypes.bool,
 };
 
 

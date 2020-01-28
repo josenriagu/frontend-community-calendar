@@ -44,7 +44,8 @@ const Input = styled.input`
 
   ${props => props.medium
     && css`
-      width: 14rem;
+      width: 11.5rem;
+      border-radius: 20px;
     `}
 
   ${props => props.large
@@ -55,6 +56,13 @@ const Input = styled.input`
   ${props => props.xLarge
   && css`
     width: 25rem;
+    border-radius: 20px;
+  `}
+
+  ${props => props.xxLarge
+  && css`
+    width: 40rem;
+    background:none;
     border-radius: 20px;
   `}
 
