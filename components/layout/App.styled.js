@@ -10,6 +10,9 @@ export const AppDiv = styled.div`
     @media ${screens.mobile} {
       width: 450px
     }
+    @media ${screens.xmobile} {
+      width: 300px
+    }
   }
   div#introSection {
     height: 80vh;
@@ -19,15 +22,15 @@ export const AppDiv = styled.div`
     /* background color is the fallback for when the image is not available */
     background-color: '#ffffff';
     background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
+    background-position: 0% 90%;
+    background-size: fill;
     background-repeat: no-repeat;
     overflow: hidden;
     div#heading {
       text-align: center;
       margin: 2rem auto 0;
-      width: 70%;
-      height: 20vh;
+      width: 80%;
+      height: 40vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -45,6 +48,9 @@ export const AppDiv = styled.div`
     position: relative;
     display: flex;
     justify-content: center;
+    @media ${screens.xmobile} {
+      padding: 3rem 1rem 6rem;
+    }
     div#eventCal {
       width: 100%;
       display: flex;

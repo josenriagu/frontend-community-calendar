@@ -9,4 +9,5 @@ export const colors = {
 export const screens = {
   tablet: '(max-width: 800px)',
   mobile: '(max-width: 500px)',
+  xmobile: '(max-width: 320px)',
 };

@@ -23,12 +23,20 @@ export const SearchBarDiv = styled.div`
     left: 2%;
     right: 2%;
   };
+  @media ${screens.xmobile} {
+    width: 98%;
+    left: 1%;
+    right: 1%;
+  };
   div#select {
     width: 90%;
     display: flex;
     align-items: center;
     @media ${screens.mobile} {
       width: 80%;
+    };
+    @media ${screens.xmobile} {
+      width: 70%;
     };
     select {
       font-size: 1.6rem;

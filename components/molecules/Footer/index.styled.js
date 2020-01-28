@@ -7,7 +7,13 @@ export const Footer = styled.footer`
   display: flex;
   justify-content: center;
   padding: 5rem 3rem 2rem;
+  background-image: url('/footer.jpg');
+  /* background color is the fallback for when the image is not available */
   background-color: ${colors.secondary};
+  background-attachment: fixed;
+  background-position: 0% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
   div#footerGroup {
     display: flex;
     justify-content: space-between;
@@ -28,10 +34,19 @@ export const Footer = styled.footer`
       @media ${screens.mobile} {
         width: 31%
       }
+      @media ${screens.xmobile} {
+        width: 100%
+      }
     }
     div#col2 {
       display: flex;
       flex-direction: column;
+    }
+    div#col3,
+    div#col4 {
+      @media ${screens.xmobile} {
+        margin-top: 2rem;
+      }
     }
     h6, p {
       color: white;
@@ -61,5 +76,13 @@ export const Footer = styled.footer`
     @media ${screens.mobile} {
       width: 30%
     }
+    @media ${screens.xmobile} {
+      width: 45%
+    }
+  }
+  div#copyright {
+    margin-top: 1rem;
+    color: white;
+    text-align: center;
   }
 `;

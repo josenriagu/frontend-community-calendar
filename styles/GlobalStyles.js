@@ -42,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
     color: white;
   }
   h3 {
-    font-size: calc(1.5 * 2.4rem);
+    font-size: calc(2.0 * 2.4rem);
     margin-bottom: 0;
     font-weight: 400;
     color: white;

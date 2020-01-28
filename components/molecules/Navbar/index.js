@@ -34,7 +34,6 @@ const NavBar = ({ alt, logged, notLogged, signin, signup }) => {
         </Link>
       </Menu.Item>
       )}
-      {logged && <Menu.Divider />}
       {(notLogged || signup) && (
       <Menu.Item key="3">
         <Link href="/signin">
@@ -42,7 +41,6 @@ const NavBar = ({ alt, logged, notLogged, signin, signup }) => {
         </Link>
       </Menu.Item>
       )}
-      {(notLogged || signup) && <Menu.Divider />}
       {(notLogged || signin) && (
       <Menu.Item key="4">
         <Link href="/signup">

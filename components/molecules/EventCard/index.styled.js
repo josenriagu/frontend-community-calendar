@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { colors } from '../../~reusables';
+import { colors, screens } from '../../~reusables';
 
 export const EventCardDiv = styled.div`
   width: 100%;
@@ -10,6 +10,9 @@ export const EventCardDiv = styled.div`
   padding: 1.5rem 3rem 1rem;
   border: .05rem solid ${colors.tertiary};
   border-radius: 1.5rem;
+  @media ${screens.xmobile} {
+    padding: 1.5rem 1rem 1rem;
+  }
   div#parent1 {
     display: flex;
   }
@@ -28,6 +31,12 @@ export const EventCardDiv = styled.div`
     i {
       color: ${colors.primary};
     }
+    @media ${screens.mobile} {
+      width: 12%;
+    }
+    @media ${screens.xmobile} {
+      width: 15%;
+    }
   }
 `;
 
@@ -40,6 +49,9 @@ export const EventCardAltDiv = styled.div`
   padding: 1.5rem 3rem 1rem;
   border: .05rem solid ${colors.tertiary};
   border-radius: 1.5rem;
+  @media ${screens.xmobile} {
+    padding: 1.5rem 1rem 1rem;
+  }
   div#topbar {
     width: 100%;
     display: flex;
@@ -57,6 +69,12 @@ export const EventCardAltDiv = styled.div`
       cursor: pointer;
       i {
         color: ${colors.primary};
+      }
+      @media ${screens.mobile} {
+        width: 12%;
+      }
+      @media ${screens.xmobile} {
+        width: 15%;
       }
     }
   }
