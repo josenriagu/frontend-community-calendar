@@ -1,16 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { screens } from '../../~reusables';
+
 const PaginationDiv = ({ children }) => (
   <div>
     <div>{children}</div>
     <style jsx global>
       {`
       .pagination-section {
-        margin: 50px 0 0 0;
+        width: 100%;
+        margin-top: 5rem;
         color:#9c0d38
       }
-
+      @media ${screens.xmobile} {
+        .pagination-section ul {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
       .disable-pagination {
           color:grey;
           cursor: not-allowed;
