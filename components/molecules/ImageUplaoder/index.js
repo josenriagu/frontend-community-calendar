@@ -1,12 +1,23 @@
-import React from 'react';
+import React from "react";
 
-import Uploader from './uploader';
-import { Container } from './index.styled';
+import Uploader from "./uploader";
+import { Container } from "./index.styled";
 
-const UploadContainer = () => (
-  <Container>
-    <Uploader />
-  </Container>
-);
+const UploadContainer = ({ getImageFile }) => {
+
+  const uploadProps = {
+    name: "photo",
+    multiple: false,
+    beforeUpload: file => {
+      getImageFile(file);
+      return false;
+    },
+  };
+  return (
+    <Container>
+      <Uploader uploadProps={uploadProps} />
+    </Container>
+  );
+};
 
 export default UploadContainer;
