@@ -15,6 +15,7 @@ import AppFooter from '../molecules/Footer';
 import Loader from '../molecules/EventCard/Loader';
 import Calendar from '../organisms/Calendar';
 import Pagination from '../molecules/Pagination';
+import UploadContainer from '../molecules/ImageUplaoder/index';
 
 const App = ({ events, fetchEventsRequesting }) => (
   <AppDiv>
@@ -39,6 +40,7 @@ const App = ({ events, fetchEventsRequesting }) => (
                   ? <Pagination items={events} position="right" Component={EventCard} uniqueKey="scrapedEventId" perPage={5} />
                   : <Heading color="red">There are no events currently. Please try the search feature.</Heading>
             }
+            <UploadContainer />
           </div>
           <Calendar />
         </div>
