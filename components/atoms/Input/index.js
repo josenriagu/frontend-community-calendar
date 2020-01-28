@@ -44,7 +44,8 @@ const Input = styled.input`
 
   ${props => props.medium
     && css`
-      width: 14rem;
+      width: 11.5rem;
+      border-radius: 20px;
     `}
 
   ${props => props.large

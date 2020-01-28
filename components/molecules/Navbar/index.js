@@ -31,10 +31,10 @@ const NavBar = ({ alt, logged, notLogged, signin, signup, createEvent }) => (
           </a>
         </Link>
       )}
-      {logged && (
+      {(logged || createEvent) && (
         <Link href="/userdashboard">
           <a>
-            <Button medium background="inherit">
+            <Button medium background="inherit" style={{ color: `${createEvent ? colors.primary : null}` }}>
               Profile
             </Button>
           </a>
