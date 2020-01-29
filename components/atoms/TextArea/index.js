@@ -45,6 +45,11 @@ const TextArea = styled.textarea`
       background: #dddddd;
       cursor: not-allowed;
     `}
+
+    ${props => props.noBackground
+    && css`
+      background: none;
+    `}
 `;
 
 export default TextArea;

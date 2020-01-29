@@ -9,7 +9,7 @@ const Uploader = ({ uploadProps }) => (
     <Dragger {...uploadProps}>
       <div style={{ width: '100%' }}>
         <p className="ant-upload-drag-icon">
-          <Icon type="inbox" />
+          <Icon type="cloud-upload" style={{ color: '#9c0d38' }} />
         </p>
         <p className="ant-upload-text">
             Click or drag file to this area to upload
