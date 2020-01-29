@@ -7,7 +7,7 @@ export const Footer = styled.footer`
   display: flex;
   justify-content: center;
   padding: 5rem 3rem 2rem;
-  background-image: url('/footer.jpg');
+  background-image: url("/footer.jpg");
   /* background color is the fallback for when the image is not available */
   background-color: ${colors.secondary};
   background-attachment: fixed;
@@ -18,7 +18,7 @@ export const Footer = styled.footer`
     display: flex;
     justify-content: space-between;
     @media ${screens.mobile} {
-      flex-wrap: wrap
+      flex-wrap: wrap;
     }
     div#col1 {
       width: 35%;
@@ -31,16 +31,14 @@ export const Footer = styled.footer`
     div#col3,
     div#col4 {
       width: 22%;
-      @media ${screens.mobile} {
-        width: 31%
-      }
-      @media ${screens.xmobile} {
-        width: 100%
-      }
-    }
-    div#col2 {
       display: flex;
       flex-direction: column;
+      @media ${screens.mobile} {
+        width: 31%;
+      }
+      @media ${screens.xmobile} {
+        width: 100%;
+      }
     }
     div#col3,
     div#col4 {
@@ -48,17 +46,18 @@ export const Footer = styled.footer`
         margin-top: 2rem;
       }
     }
-    h6, p {
+    h6,
+    p {
       color: white;
     }
     h6 {
       margin-bottom: 2rem;
     }
     p {
-      padding: .5rem 0;
+      padding: 0.5rem 0;
     }
     a {
-      margin: .5rem 0;
+      margin: 0.5rem 0;
       color: white;
     }
   }
@@ -73,11 +72,14 @@ export const Footer = styled.footer`
         height: 3rem;
       }
     }
+    @media ${screens.tablet} {
+      width: 19.26%;
+    }
     @media ${screens.mobile} {
-      width: 30%
+      width: 32.39%;
     }
     @media ${screens.xmobile} {
-      width: 45%
+      width: 54.81%;
     }
   }
   div#copyright {

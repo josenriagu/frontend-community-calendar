@@ -15,8 +15,14 @@ export const NavBarDiv = styled.div`
     width: 30%;
     display: flex;
     justify-content: space-around;
+    @media ${screens.tablet} {
+      width: 50%;
+    }
     @media ${screens.mobile} {
       display: none;
+    }
+    button {
+      font-weight: bold;
     }
   }
   span {
@@ -26,7 +32,7 @@ export const NavBarDiv = styled.div`
     }
     i {
       font-size: 2.4rem;
-      color: ${colors.primary}
+      color: ${colors.primary};
     }
   }
 `;

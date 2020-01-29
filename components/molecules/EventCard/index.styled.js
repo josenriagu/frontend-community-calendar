@@ -8,19 +8,32 @@ export const EventCardDiv = styled.div`
   justify-content: space-between;
   margin: 0 0 1rem;
   padding: 1.5rem 3rem 1rem;
-  border: .05rem solid ${colors.tertiary};
+  border: 0.05rem solid ${colors.tertiary};
   border-radius: 1.5rem;
+  @media ${screens.tablet} {
+    padding: 1.5rem 1.5rem 1rem;
+  }
   @media ${screens.xmobile} {
     padding: 1.5rem 1rem 1rem;
   }
   div#parent1 {
     display: flex;
+    width: 92.5%;
+    @media ${screens.tablet} {
+      width: 89%;
+    }
+    @media ${screens.mobile} {
+      width: 87%;
+    }
+    @media ${screens.xmobile} {
+      width: 85%;
+    }
   }
   div#sibling1 {
     margin-left: 1rem;
   }
   p {
-    margin: .3rem 0;
+    margin: 0.3rem 0;
   }
   span#toggle {
     width: 7.5%;
@@ -31,8 +44,11 @@ export const EventCardDiv = styled.div`
     i {
       color: ${colors.primary};
     }
+    @media ${screens.tablet} {
+      width: 11%;
+    }
     @media ${screens.mobile} {
-      width: 12%;
+      width: 13%;
     }
     @media ${screens.xmobile} {
       width: 15%;
@@ -47,8 +63,11 @@ export const EventCardAltDiv = styled.div`
   justify-content: space-between;
   margin: 0 0 1rem;
   padding: 1.5rem 3rem 1rem;
-  border: .05rem solid ${colors.tertiary};
+  border: 0.05rem solid ${colors.tertiary};
   border-radius: 1.5rem;
+  @media ${screens.tablet} {
+    padding: 1.5rem 1.5rem 1rem;
+  }
   @media ${screens.xmobile} {
     padding: 1.5rem 1rem 1rem;
   }
@@ -70,6 +89,9 @@ export const EventCardAltDiv = styled.div`
       i {
         color: ${colors.primary};
       }
+      @media ${screens.tablet} {
+        width: 10%;
+      }
       @media ${screens.mobile} {
         width: 12%;
       }
@@ -86,7 +108,7 @@ export const EventCardAltDiv = styled.div`
       width: 5rem;
       height: 5rem;
       border-radius: 50%;
-      border: .1rem solid ${colors.tertiary};
+      border: 0.1rem solid ${colors.tertiary};
       text-align: center;
       img {
         width: 80%;
@@ -94,7 +116,7 @@ export const EventCardAltDiv = styled.div`
       }
     }
     div#details {
-      margin-left: .5rem;
+      margin-left: 0.5rem;
       display: flex;
       flex-direction: column;
       span:nth-child(2) {
@@ -111,7 +133,7 @@ export const EventCardAltDiv = styled.div`
       display: flex;
       align-items: center;
       p {
-        margin-left: .5rem;
+        margin-left: 0.5rem;
       }
       i {
         color: ${colors.primary};
@@ -122,7 +144,7 @@ export const EventCardAltDiv = styled.div`
     margin-top: 1rem;
     word-wrap: break-word;
     p {
-      margin: .8rem 0;
+      margin: 0.8rem 0;
     }
     button {
       margin: 0 auto;
@@ -142,5 +164,5 @@ export const LoaderDiv = styled.div`
   margin: 2rem 0;
   padding: 3rem 5rem;
   background: rgba(0, 0, 0, 0.05);
-  border-radius: .4rem;
+  border-radius: 0.4rem;
 `;

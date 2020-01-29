@@ -21,9 +21,9 @@ const AppFooter = () => {
           </div>
           <div id="col3">
             <h6>Use ComCal</h6>
-            <p>How it Works</p>
-            <p>Fun Facts</p>
-            <p>FAQs</p>
+            <a href="#">How it Works</a>
+            <a href="#">Fun Facts</a>
+            <a href="#">FAQs</a>
           </div>
           <div id="col4">
             <h6>Find Events</h6>

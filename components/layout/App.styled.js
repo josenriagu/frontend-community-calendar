@@ -7,25 +7,34 @@ export const AppDiv = styled.div`
   margin: 0 auto;
   div#wrapper {
     width: 1200px;
+    @media ${screens.tablet} {
+      width: 750px;
+    }
     @media ${screens.mobile} {
-      width: 450px
+      width: 450px;
     }
     @media ${screens.xmobile} {
-      width: 300px
+      width: 300px;
     }
   }
   div#introSection {
     height: 80vh;
     display: flex;
     justify-content: center;
-    background-image: url('/banner.jpg');
+    background-image: url("/banner.jpg");
     /* background color is the fallback for when the image is not available */
-    background-color: '#ffffff';
+    background-color: "#ffffff";
     background-attachment: fixed;
     background-position: 0% 90%;
     background-size: fill;
     background-repeat: no-repeat;
     overflow: hidden;
+    @media ${screens.tablet} {
+      background-position: 20% 90%;
+    }
+    @media ${screens.mobile} {
+      background-position: 5% 90%;
+    }
     div#heading {
       text-align: center;
       margin: 2rem auto 0;
@@ -36,7 +45,7 @@ export const AppDiv = styled.div`
       justify-content: center;
       h3 {
         text-transform: uppercase;
-        text-shadow: .3rem .3rem rgb(0, 0, 0, 0.8);
+        text-shadow: 0.3rem 0.3rem rgb(0, 0, 0, 0.8);
       }
       @media ${screens.mobile} {
         width: 100%;

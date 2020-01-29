@@ -18,7 +18,12 @@ export const SearchBarDiv = styled.div`
   transition: box-shadow 2s;
   border: .05rem solid ${colors.tertiary};
   border-radius: 7rem;
-  @media ${screens.mobile} {
+  @media ${screens.desktop} {
+    width: 75%;
+    left: 12.5;
+    right: 12.5%;
+  }
+  @media ${screens.tablet} {
     width: 96%;
     left: 2%;
     right: 2%;
@@ -32,6 +37,9 @@ export const SearchBarDiv = styled.div`
     width: 90%;
     display: flex;
     align-items: center;
+    @media ${screens.tablet} {
+      width: 85%;
+    };
     @media ${screens.mobile} {
       width: 80%;
     };
