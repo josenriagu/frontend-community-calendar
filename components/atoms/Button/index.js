@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { colors } from '../../~reusables';
+import { colors, screens } from '../../~reusables';
 
 export const Button = styled.button`
     background: ${props => props.background};
@@ -34,6 +34,9 @@ export const Button = styled.button`
     ${props => props.medium && css`
       font-weight: 500;
       font-size: 1.75rem;
+      @media ${screens.mobile} {
+        font-size: 1.4rem;
+      }
     `};
 
     ${props => props.small && css`
