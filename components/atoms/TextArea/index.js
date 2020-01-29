@@ -22,7 +22,9 @@ const TextArea = styled.textarea`
 
   ${props => props.large
     && css`
-      width: 20rem;
+      width: 40rem;
+      height: 15rem;
+      border-radius: 5px;
     `}
 
   ${props => props.xLarge

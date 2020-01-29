@@ -12,7 +12,7 @@ import { Button } from '../../atoms/Button';
 const NavBarDashboard = ({ doLogout }) => {
   const logout = () => doLogout();
   return (
-    <Styles.NavBarDiv>
+    <NavBarDiv>
       <Logo />
       <nav>
         <Link href="/">
@@ -33,7 +33,7 @@ const NavBarDashboard = ({ doLogout }) => {
         <div className="imgHolder" />
         <Icon type="down" className="down" />
       </nav>
-    </Styles.NavBarDiv>
+    </NavBarDiv>
   );
 };
 

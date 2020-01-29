@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { CountryDropdown } from 'react-country-region-selector';
 
 import { Button } from '../../atoms/Button';
+import Interests from '../../atoms/Interests';
 import { colors } from '../../~reusables';
 import Heading from '../../atoms/Heading';
 import Label from '../../atoms/Label';
@@ -18,7 +19,7 @@ const CreateEvent = () => {
     name: '',
     location: '',
     description: '',
-    image: '',
+    file: '',
     city: '',
     country: '',
     source: '',
@@ -41,7 +42,8 @@ const CreateEvent = () => {
   };
 
   const onChangeDate = (field, value) => setNewEvent({ ...newEvent, [field]: value });
-
+  const selectCountry = (val) => setNewEvent({ ...newEvent, country: val });
+  const setInterest = (value) => setNewEvent({ ...newEvent, eventType: value });
   const onStartChange = value => {
     onChangeDate('eventDate', value);
   };
@@ -72,7 +74,8 @@ const CreateEvent = () => {
     // const isValid = handleErrors();
     // if (isValid) {
     //   setErrors(initialErrors);
-    // } else {
+    // }
+    // else {
     //   message.error('Error occured');
     // }
     const url = 'http://localhost:5000/api/v1/event/create-event';
@@ -87,8 +90,9 @@ const CreateEvent = () => {
         body: formData,
       });
 
-      console.log(await response.json());
+      console.log('see', await response.json());
       message.success('Event Added');
+      console.log('newEvent is', newEvent);
     } catch (e) {
       message.error(e.message);
     }
@@ -100,13 +104,12 @@ const CreateEvent = () => {
         style={{ dispaly: 'flex', justifyContent: 'space-between' }}
         createEvent
       />
-      <Div>
+      <ContainerDiv>
         <Heading> Event Details</Heading>
         <br />
-        <form>
-          <Label medium>Event Title</Label>
-          <br />
+        <Form>
           <InputDiv>
+            <Label medium>Event Title</Label>
             <Input
               xxLarge
               type="text"
@@ -117,98 +120,93 @@ const CreateEvent = () => {
             />
             <div style={{ color: 'red' }}>{errors.eventError}</div>
           </InputDiv>
-          <br />
-          <Label medium>Location</Label>
-          <br />
-          <Input
-            xLarge
-            style={{ background: 'none', marginBottom: '5px' }}
-            type="text"
-            name="location"
-            value={newEvent.location}
-            onChange={handleChange}
-            placeholder="Location"
-          />
-          <div style={{ color: 'red' }}>{errors.locationError}</div>
+          <InputDiv>
+            <Label medium>Location</Label>
+            <CountryDropdown
+              value={newEvent.country}
+              onChange={(val) => selectCountry(val)}
+              style={{
+                borderRadius: '5px',
+                fontSize: '16px',
+                width: '40rem',
+                height: '3.5rem',
+              }}
+            />
+          </InputDiv>
           <InputDiv>
             <Input
-              xLarge
-              style={{ background: 'none', marginBottom: '5px' }}
+              xxLarge
+              style={{ background: 'none' }}
+              type="text"
+              name="location"
+              value={newEvent.location}
+              onChange={handleChange}
+              placeholder="Location"
+            />
+            <div style={{ color: 'red' }}>{errors.locationError}</div>
+          </InputDiv>
+          <InputDiv>
+            <Input
+              xxLarge
+              style={{ background: 'none' }}
               type="text"
               name="city"
               value={newEvent.city}
               onChange={handleChange}
               placeholder="City"
             />
-            <Input
-              xLarge
-              style={{ background: 'none', marginBottom: '5px' }}
-              type="text"
-              name="address"
-              value={newEvent.address}
-              onChange={handleChange}
-              placeholder="Address 2"
-            />
-            <Input
-              xLarge
-              style={{ background: 'none', marginBottom: '5px' }}
-              type="text"
-              name="address"
-              value={newEvent.address}
-              onChange={handleChange}
-              placeholder="city"
-            />
-            <StyledDiv>
-              <Input
-                medium
-                style={{ background: 'none', marginRight: '2rem' }}
-                type="text"
-                name="address"
-                value={newEvent.address}
-                onChange={handleChange}
-                placeholder="state"
-              />
-              <Input
-                medium
-                style={{ background: 'none' }}
-                type="text"
-                name="address"
-                value={newEvent.address}
-                onChange={handleChange}
-                placeholder="zip/postal"
-              />
-            </StyledDiv>
-            <CountryDropdown
-              style={{
-                borderRadius: '20px',
-                fontSize: '16px',
-                maxWidth: '25rem',
-                height: '3.5rem',
-              }}
-            />
           </InputDiv>
-          <br />
-          <span>
-            <a href="#">online event</a>
-          </span>
-          &nbsp; &nbsp;
-          <span>
-            <a href="#">Enter address</a>
-          </span>
-          <br />
-          <span>Starts</span>
-          <DataPicker eventDate={newEvent.eventDate} onStartChange={onStartChange} />
-          <br />
-          <span>Event Image</span>
+          <InputDiv>
+            <Input
+              xxLarge
+              style={{ background: 'none' }}
+              type="text"
+              name="source"
+              value={newEvent.source}
+              onChange={handleChange}
+              placeholder="source"
+            />
+            <InputDiv>
+              <Interests
+                interest={newEvent.interest}
+                setInterest={setInterest}
+                xxLarge
+                style={{ border: '1px solid', marginTop:'10px' }}
+                type="text"
+                name="eventType"
+                value={newEvent.eventType}
+                onChange={handleChange}
+                placeholder="Event Type"
+              />
+            </InputDiv>
+            <InputDiv>
+              <StyledDiv>
+                <Input
+                  medium
+                  style={{ background: 'none', marginRight: '4rem' }}
+                  type="text"
+                  name="price"
+                  value={newEvent.price}
+                  onChange={handleChange}
+                  placeholder="Fee"
+                />
+
+                <DataPicker style={{ width: '19rem' }} eventDate={newEvent.eventDate} onStartChange={onStartChange} />
+              </StyledDiv>
+            </InputDiv>
+          </InputDiv>
+          <span style={{ marginRight: '318px' }}>Event Image</span>
           <ImageUploader getImageFile={getImageFile} />
           <Paragraph>
             We recommend using at least a 2160 x 1080px(2:1) ratio image thats
-            no larger than 5MB.
+            no
+            <br />
+             larger than 5MB.
             <a href="#">Learn more</a>
           </Paragraph>
           <InputDiv>
             <TextArea
-              medium
+              large
               style={{ background: 'none' }}
               type="text"
               name="description"
@@ -226,31 +224,40 @@ const CreateEvent = () => {
               Create Event
             </Button>
           </ButtonWrapper>
-        </form>
-      </Div>
+        </Form>
+      </ContainerDiv>
     </>
   );
 };
 
 export default CreateEvent;
 
-const Div = styled.div`
-  width: 900px;
-  margin: 0 auto;
-  margin-top: 5px;
+const Form = styled.div`
+width:800px;
+display:flex;
+ flex-direction:column;
+ align-items:center
+`;
+const ContainerDiv = styled.div`
+ display:flex;
+ flex-direction:column;
+ align-items:center
 `;
 const ButtonWrapper = styled.div`
   margin-top: 20px;
-  align-items: center;
+  margin-bottom: 20px;
 `;
 
 const Paragraph = styled.p`
   font-size: 14px;
+  margin-left:40px;
+  margin-bottom:10px
 `;
 
 export const InputDiv = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom:10px
 `;
 
 export const StyledDiv = styled.div`
