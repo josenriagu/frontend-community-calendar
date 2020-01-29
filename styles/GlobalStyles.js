@@ -1,5 +1,6 @@
 // Create global styles using styled components to be injected into components.
 import { createGlobalStyle } from 'styled-components';
+import { screens } from '../components/~reusables';
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe
@@ -41,10 +42,13 @@ const GlobalStyle = createGlobalStyle`
     color: white;
   }
   h3 {
-    font-size: calc(1.5 * 2.4rem);
+    font-size: calc(2.0 * 2.4rem);
     margin-bottom: 0;
     font-weight: 400;
     color: white;
+    @media ${screens.mobile} {
+      font-size: calc(1.2 * 2.4rem);
+    }
   }
   h4 {
     font-size: 3rem;
@@ -61,9 +65,15 @@ const GlobalStyle = createGlobalStyle`
     font-size: 2rem;
     font-weight: bold;
     margin: 0;
+    @media ${screens.mobile} {
+      font-size: 1.7rem;
+    }
   }
   p, span {
     font-size: 1.6rem;
+    @media ${screens.mobile} {
+      font-size: 1.4rem;
+    }
   }
   a {
     text-decoration: none;
