@@ -21,7 +21,7 @@ const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
         }),
       };
 
-      fetch('http://comcalstaging.herokuapp.com/api/v1/event/fetch-description', config)
+      fetch('https://comcalstaging.herokuapp.com/api/v1/event/fetch-description', config)
         .then(res => res.json())
         .then(data => {
           if (source !== 'meetup')setDescription(data);
