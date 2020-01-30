@@ -8,12 +8,12 @@ import { Logo } from '../../atoms/Logo';
 import { Button } from '../../atoms/Button';
 import { colors } from '../../~reusables';
 
-const NavBar = ({ alt, logged, notLogged, signin, signup }) => {
+const NavBar = ({ alt, logged, notLogged, signin, signup,createEvent }) => {
   const menu = (
     <Menu>
       {(logged || notLogged) && (
       <Menu.Item key="0">
-        <Link href="#">
+        <Link href="/event">
           <a>Create Event</a>
         </Link>
       </Menu.Item>
@@ -56,8 +56,8 @@ const NavBar = ({ alt, logged, notLogged, signin, signup }) => {
         <Logo />
       </Link>
       <nav>
-        {(logged || notLogged) && (
-          <Link href="#">
+        {(logged || notLogged ) && (
+          <Link href="/event">
             <a>
               <Button medium background={colors.primary}>
                 Create Event
@@ -65,7 +65,7 @@ const NavBar = ({ alt, logged, notLogged, signin, signup }) => {
             </a>
           </Link>
         )}
-        {(signin || signup) && (
+        {(signin || signup || createEvent) && (
           <Link href="/">
             <a>
               <Button medium background={colors.primary}>

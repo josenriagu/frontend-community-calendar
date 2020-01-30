@@ -57,7 +57,7 @@ const Input = styled.input`
   ${props => props.xLarge
   && css`
     width: 25rem;
-    border-radius: 20px;
+    border-radius: 5px;
   `}
 
   ${props => props.xxLarge

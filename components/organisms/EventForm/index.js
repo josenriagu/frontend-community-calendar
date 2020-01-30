@@ -4,6 +4,7 @@ import { CountryDropdown } from 'react-country-region-selector';
 import fetch from 'isomorphic-fetch';
 import jwtDecode from 'jwt-decode';
 import Router from 'next/router';
+import Cookie from 'js-cookie';
 
 
 import * as Styles from './index.styled';
@@ -58,17 +59,17 @@ const CreateEvent = () => {
 
   const fieldsValid = () => {
     const eventKeys = Object.keys(newEvent);
+
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < eventKeys.length; i++) {
       if (newEvent[eventKeys[i]] === '' || newEvent[eventKeys[i]] == null) {
         message.error(`${eventKeys[i].toUpperCase()} is required! `);
         return false;
       }
+
+      return true;
     }
-
-    return true;
   };
-
   const handleSubmit = async event => {
     event.preventDefault();
     if (!fieldsValid()) {
@@ -83,13 +84,13 @@ const CreateEvent = () => {
     setPageLoading(true);
 
     try {
-      const token = localStorage.getItem('token');
+      const token = Cookie.get('comcal-event-token');
       if (token == null) {
         message.error('You need to be authenticated to post an event.');
         setPageLoading(false);
         return;
       }
-      const { _id: author } = jwtDecode(token);
+      const { id: author } = jwtDecode(token);
       if (!author) {
         message.error('Error: Could not verify your identity');
         setPageLoading(false);
