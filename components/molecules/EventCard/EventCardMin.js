@@ -17,14 +17,19 @@ const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
         body: JSON.stringify({
           link,
           eventId: id,
-          type: source
+          type: source,
         }),
       };
 
-      fetch('https://comcalstaging.herokuapp.com/api/v1/event/fetch-description', config)
+      fetch('http://comcalstaging.herokuapp.com/api/v1/event/fetch-description', config)
         .then(res => res.json())
         .then(data => {
-          setDescription(data);
+          if (source !== 'meetup')setDescription(data);
+          if (source === 'meetup' && data === 'No description available for this event') {
+            setDescription({ description: 'No description available for this event' });
+          } else {
+            setDescription(data);
+          }
         })
         .catch(() => 'Description unavailable');
     } catch (error) {
