@@ -17,8 +17,20 @@ import Loader from '../molecules/EventCard/Loader';
 import Calendar from '../organisms/Calendar';
 import Pagination from '../molecules/Pagination';
 
+function compare(a, b) {
+  if (a.eventDate < b.eventDate) {
+    return -1;
+  }
+  if (a.eventDate > b.eventDate) {
+    return 1;
+  }
+  return 0;
+}
+
 const App = ({ events, fetchEventsRequesting }) => {
   const [calToggle, setCalToggle] = useState(false);
+  if (events.length > 0)events.sort(compare);
+
   const toggleCal = () => setCalToggle(!calToggle);
   return (
     <AppDiv>
