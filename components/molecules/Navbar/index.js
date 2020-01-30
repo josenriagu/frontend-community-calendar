@@ -127,6 +127,7 @@ NavBar.defaultProps = {
   signup: false,
   logged: false,
   notLogged: false,
+  createEvent: false,
 };
 
 NavBar.propTypes = {
@@ -135,6 +136,8 @@ NavBar.propTypes = {
   signup: PropTypes.bool,
   logged: PropTypes.bool,
   notLogged: PropTypes.bool,
+  // eslint-disable-next-line react/no-unused-prop-types
+  createEvent: PropTypes.bool,
 };
 
 export default NavBar;
