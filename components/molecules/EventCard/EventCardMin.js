@@ -7,7 +7,7 @@ import { EventCardDiv } from './index.styled';
 
 const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
   // eslint-disable-next-line no-param-reassign
-  const getDescription = async (link, id) => {
+  const getDescription = async (link, id, source) => {
     try {
       const config = {
         method: 'POST',
@@ -17,6 +17,7 @@ const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
         body: JSON.stringify({
           link,
           eventId: id,
+          type: source
         }),
       };
 
@@ -42,7 +43,7 @@ const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
         </div>
       </div>
       <span id="toggle">
-        <i onClick={() => { toggle(); getDescription(el.scrapedEventLink, el.scrapedEventId); }} className=" fas fa-chevron-down" />
+        <i onClick={() => { toggle(); getDescription(el.scrapedEventLink, el.scrapedEventId, el.source); }} className=" fas fa-chevron-down" />
         {
           isFav ? <i onClick={() => { setFav(); }} className="fas fa-star"></i> : <i onClick={() => { setFav(); }} className="far fa-star"></i>
         }
