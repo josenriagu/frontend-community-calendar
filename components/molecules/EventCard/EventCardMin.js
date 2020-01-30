@@ -7,7 +7,7 @@ import { EventCardDiv } from './index.styled';
 
 const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
   // eslint-disable-next-line no-param-reassign
-  const getDescription = async (link, id) => {
+  const getDescription = async (link, id, source) => {
     try {
       const config = {
         method: 'POST',
@@ -17,13 +17,19 @@ const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
         body: JSON.stringify({
           link,
           eventId: id,
+          type: source,
         }),
       };
 
-      fetch('https://comcalstaging.herokuapp.com/api/v1/event/fetch-description', config)
+      fetch('http://comcalstaging.herokuapp.com/api/v1/event/fetch-description', config)
         .then(res => res.json())
         .then(data => {
-          setDescription(data);
+          if (source !== 'meetup')setDescription(data);
+          if (source === 'meetup' && data === 'No description available for this event') {
+            setDescription({ description: 'No description available for this event' });
+          } else {
+            setDescription(data);
+          }
         })
         .catch(() => 'Description unavailable');
     } catch (error) {
@@ -31,20 +37,18 @@ const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
     }
   };
 
-  const source = el.source === 'eventbrite' ? 'EventBrite' : 'ComCal';
-
   return (
     <EventCardDiv>
       <div id="parent1">
         <div><p>{moment(el.eventDate).format('LT')}</p></div>
         <div id="sibling1">
           <h6>{el.name !== undefined && el.name.includes('-') ? el.name.split('-')[0] : el.name}</h6>
-          <p>{`Source: ${source}`}</p>
+          <p style={{ textTransform: 'capitalize' }}>{`Source: ${el.source}`}</p>
           {el.location && <p>{el.location.split('•')[1]}</p>}
         </div>
       </div>
       <span id="toggle">
-        <i onClick={() => { toggle(); getDescription(el.scrapedEventLink, el.scrapedEventId); }} className=" fas fa-chevron-down" />
+        <i onClick={() => { toggle(); getDescription(el.scrapedEventLink, el.scrapedEventId, el.source); }} className=" fas fa-chevron-down" />
         {
           isFav ? <i onClick={() => { setFav(); }} className="fas fa-star"></i> : <i onClick={() => { setFav(); }} className="far fa-star"></i>
         }
