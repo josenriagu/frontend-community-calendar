@@ -31,15 +31,13 @@ const EventCardMin = ({ toggle, setFav, isFav, el, setDescription }) => {
     }
   };
 
-  const source = el.source === 'eventbrite' ? 'EventBrite' : 'ComCal';
-
   return (
     <EventCardDiv>
       <div id="parent1">
         <div><p>{moment(el.eventDate).format('LT')}</p></div>
         <div id="sibling1">
           <h6>{el.name !== undefined && el.name.includes('-') ? el.name.split('-')[0] : el.name}</h6>
-          <p>{`Source: ${source}`}</p>
+          <p style={{ textTransform: 'capitalize' }}>{`Source: ${el.source}`}</p>
           {el.location && <p>{el.location.split('•')[1]}</p>}
         </div>
       </div>
