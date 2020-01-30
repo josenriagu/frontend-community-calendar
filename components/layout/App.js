@@ -54,7 +54,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  events: state.fetchEvents.events,
+  events: state.fetchEvents.events.events,
   fetchEventsRequesting: state.fetchEvents.requesting,
 });
 

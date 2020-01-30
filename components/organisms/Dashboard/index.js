@@ -1,46 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import fetch from 'isomorphic-fetch';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import NavBarDashboard from '../../molecules/NavbarDashboard';
 import * as Styles from './index.styled';
+import { doFetchFavEvents } from '../../../redux/actions/events';
 
-const Dashboard = ({ user }) => {
-  const [favoriteEvent, setFavoriteEvent] = useState([]);
+const Dashboard = ({ user, doFetchFavEvents, favEvents }) => {
+  // const [favoriteEvent, setFavoriteEvent] = useState([]);
   const id = user.user._id;
-  console.log('id is', user.user);
-
-  const config = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
-
 
   useEffect(() => {
-    async function dataFunction() {
-      console.log('dataFunction');
-      try {
-        const res = await fetch(
-          `https://comcalstaging.herokuapp.com/api/v1/favorite?userId=${id}`,
-          config,
-        );
-        if (res.status >= 400) {
-          console.log('status is > 400');
-          return;
-        }
-        console.log('id is defined');
-        const data =await res.json();
-        console.log(data);
-        setFavoriteEvent(data.fetchEvents);
-      } catch (error) {
-        console.log(error.msg);
-      }
-    }
-    dataFunction();
-  }, []);
+    doFetchFavEvents(id);
+  }, [id]);
 
   return (
     <>
@@ -83,8 +55,8 @@ const Dashboard = ({ user }) => {
         <br />
         <h2>Favorite Events</h2>
         <Styles.MidSectionDiv>
-          {favoriteEvent > 0
-            && favoriteEvent.map(
+          {favEvents.length > 0
+            && favEvents.map(
               event => event && (
               <Styles.CardDiv key={event._id}>
                 <h3>{event.name}</h3>
@@ -109,9 +81,12 @@ const Dashboard = ({ user }) => {
 
 Dashboard.propTypes = {
   user: PropTypes.object,
+  favEvents: PropTypes.array,
+  doFetchFavEvents: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   user: state.user,
+  favEvents: state.fetchEvents.favEvents.events,
 });
-export default connect(mapStateToProps, {})(Dashboard);
+export default connect(mapStateToProps, { doFetchFavEvents })(Dashboard);
