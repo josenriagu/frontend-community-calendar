@@ -56,7 +56,7 @@ const NavBar = ({ alt, logged, notLogged, signin, signup,createEvent }) => {
         <Logo />
       </Link>
       <nav>
-        {(logged || notLogged ) && (
+        {(logged || notLogged) && (
           <Link href="/event">
             <a>
               <Button medium background={colors.primary}>

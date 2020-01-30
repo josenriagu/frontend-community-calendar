@@ -59,7 +59,7 @@ export const BorderDiv = styled.div`
   border: 1px solid #cec8c8;
   box-sizing: border-box;
   padding: 2.5rem 0;
-  border-radius: 20px;
+  border-radius: 5px;
 `;
 
 export const InputDiv = styled.div`
@@ -240,6 +240,8 @@ const SignUpForm = ({ doSignUp }) => {
             }}
             style={{
               backgroundColor: `${!formState.isValid ? 'lightpink' : colors.primary}`,
+              width: '25rem',
+              height: '4rem',
             }}
           >
             Sign up
