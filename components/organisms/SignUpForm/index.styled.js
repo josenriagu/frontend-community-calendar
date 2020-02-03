@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const PageWrapper = styled.div`
 position: relative;
+width:90%;
+margin:0 auto
 `;
 
 export const BorderDiv = styled.div`

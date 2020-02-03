@@ -11,6 +11,7 @@ import Paragraph from '../../atoms/Paragraph';
 import Input from '../../atoms/Input';
 import { colors } from '../../~reusables';
 import { doSignUp } from '../../../redux/actions/signUp';
+import {PageWrapper} from './index.styled';
 
 const schema = {
   first_name: {
@@ -127,7 +128,7 @@ const SignUpForm = ({ doSignUp }) => {
   }, [formState.values]);
 
   return (
-    <div>
+    <PageWrapper>
       <NavBar signup />
       <BorderDiv>
         <Form>
@@ -248,7 +249,7 @@ const SignUpForm = ({ doSignUp }) => {
           </AntButton>
         </Form>
       </BorderDiv>
-    </div>
+    </PageWrapper>
   );
 };
 

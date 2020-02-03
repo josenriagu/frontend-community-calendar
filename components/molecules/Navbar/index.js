@@ -8,7 +8,7 @@ import { Logo } from '../../atoms/Logo';
 import { Button } from '../../atoms/Button';
 import { colors } from '../../~reusables';
 
-const NavBar = ({ alt, logged, notLogged, signin, signup,createEvent }) => {
+const NavBar = ({ alt, logged, notLogged, signin, signup, createEvent }) => {
   const menu = (
     <Menu>
       {(logged || notLogged) && (
@@ -55,7 +55,7 @@ const NavBar = ({ alt, logged, notLogged, signin, signup,createEvent }) => {
       <Link href="/">
         <Logo />
       </Link>
-      <nav>
+      <nav className={(signin || signup) ? 'auth-nav' : null}>
         {(logged || notLogged) && (
           <Link href="/event">
             <a>
