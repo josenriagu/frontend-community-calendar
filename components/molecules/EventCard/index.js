@@ -25,7 +25,8 @@ const EventCard = ({ el, addFavorite, removeFavorite }) => {
       return Router.push('/signin');
     }
     if (!isFav) {
-      await addFavorite(el.scrapedEventId, Auth.isAuthenticated('id'));
+      // await addFavorite(el.scrapedEventId, Auth.isAuthenticated('id'));
+      addFavorite(el.scrapedEventId, Auth.isAuthenticated('id'));
       return setIsFav(!isFav);
     }
     if (isFav) {

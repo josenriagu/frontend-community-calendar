@@ -90,7 +90,7 @@ const CreateEvent = () => {
 
     try {
       const token = Cookie.get('comcal-event-token');
-      if (token == null) {
+      if (!token) {
         message.error('You need to be authenticated to post an event.');
         setPageLoading(false);
         return;

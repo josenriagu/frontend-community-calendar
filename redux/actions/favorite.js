@@ -18,10 +18,12 @@ export const doFavoriteError = payload => ({
   payload,
 });
 
-export const addFavorite = (eventId, userId) => dispatch => {
+export const addFavorite = (eventId, userId) => async dispatch => {
+  // 'https://comcalstaging.herokuapp.com/api/v1/favorite';
+  // 'http://localhost:5000/api/v1/favorite'
   dispatch(doFavoriteRequest(true));
   axios
-    .post('https://comcalstaging.herokuapp.com/api/v1/favorite', { eventId, userId })
+    .post('http://localhost:5000/api/v1/favorite', { eventId, userId })
     .then(({ data }) => {
       dispatch(doFavoriteRequest(false));
       dispatch(doFavoriteSuccess(data.message));
