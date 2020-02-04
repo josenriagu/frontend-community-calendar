@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 
 export default function InterestSelect({ interest, setInterest }) {
   return (
-    <select
+    <Select
       value={interest}
       onChange={e => {
         setInterest(e.target.value);
@@ -32,9 +33,55 @@ export default function InterestSelect({ interest, setInterest }) {
       <option value="hobbies">Hobbies</option>
       <option value="school-activities">School Activities</option>
       <option value="other">Other</option>
-    </select>
+    </Select>
   );
 }
+
+const Select = styled.select`
+  outline: 0;
+  border: none;
+
+  ${props => props.small
+    && css`
+      width: 6rem;
+    `}
+
+  ${props => props.medium
+    && css`
+      width: 16.5rem;
+      border-radius: 5px;
+    `}
+
+  ${props => props.large
+    && css`
+      width: 20rem;
+    `}
+
+  ${props => props.xLarge
+  && css`
+    width: 25rem;
+    border-radius: 5px;
+  `}
+
+  ${props => props.xxLarge
+  && css`
+    width: 40rem;
+    background:none;
+    border-radius: 5px;
+  `}
+
+  ${props => props.disabled
+    && css`
+      background: #dddddd;
+      cursor: not-allowed;
+    `}
+
+    ${props => props.noBackground
+    && css`
+      background: none;
+    `}
+`;
+
 
 InterestSelect.propTypes = {
   setInterest: PropTypes.func.isRequired,

@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import Cookie from 'js-cookie';
 import { Switch } from 'antd';
 
+
 import { AppDiv } from './App.styled';
 import Heading from '../atoms/Heading';
 import NavBar from '../molecules/Navbar';

@@ -1,17 +1,37 @@
 import styled, { css } from 'styled-components';
 
+import { screens } from '../../~reusables';
+
 
 export const Form = styled.div`
 width:800px;
 display:flex;
  flex-direction:column;
  align-items:center;
+ @media ${screens.tablet} {
+    width: 700px;
+  }
+  @media ${screens.mobile} {
+    width: 99.5%;
+    margin:0;
+  }
+  @media ${screens.xmobile} {
+    width: 100%;
+    margin:0;
+  }
 `;
 
 export const ContainerDiv = styled.div`
  display:flex;
  flex-direction:column;
  align-items:center;
+
+  @media ${screens.mobile} {
+    width: 100%;;
+  }
+  @media ${screens.xmobile} {
+    width: 100%;
+  } 
 `;
 
 export const ButtonWrapper = styled.div`
@@ -51,9 +71,6 @@ export const InputDiv = styled.div`
     && css`
       border-radius: 5px;
     `}
-
-
-
 `;
 
 export const StyledDiv = styled.div`
@@ -75,4 +92,18 @@ export const Flex = styled.div`
           width: ${props.width}
       }
     `}
+`;
+
+export const NavContainer = styled.div`
+  width: 100%;
+  margin: 0 0 0 30px;
+  @media ${screens.tablet} {
+    margin: 0 0 0 10px;
+  }
+  @media ${screens.mobile} {
+    margin: 0 0 0 5px;
+  }
+  @media ${screens.xmobile} {
+    margin: 0 0 0 1px;
+  }
 `;
