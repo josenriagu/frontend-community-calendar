@@ -18,12 +18,10 @@ export const doFavoriteError = payload => ({
   payload,
 });
 
-export const addFavorite = (eventId, userId) => async dispatch => {
-  // 'https://comcalstaging.herokuapp.com/api/v1/favorite';
-  // 'http://localhost:5000/api/v1/favorite'
+export const addFavorite = (event, userId) => async dispatch => {
   dispatch(doFavoriteRequest(true));
   axios
-    .post('http://localhost:5000/api/v1/favorite', { eventId, userId })
+    .post('https://comcalstaging.herokuapp.com/api/v1/favorite', { event, userId })
     .then(({ data }) => {
       dispatch(doFavoriteRequest(false));
       dispatch(doFavoriteSuccess(data.message));
@@ -31,13 +29,16 @@ export const addFavorite = (eventId, userId) => async dispatch => {
     })
     .catch(error => {
       dispatch(doFavoriteError(error));
+      if (error.message === 'Request failed with status code 400') {
+        message.error('You have already added this event to favourites!');
+      } else message.error(error.message || 'Failed to add to favourites');
     });
 };
 
-export const removeFavorite = (eventId, userId) => dispatch => {
+export const removeFavorite = (event, userId) => dispatch => {
   dispatch(doFavoriteRequest(true));
   axios
-    .delete('https://comcalstaging.herokuapp.com/api/v1/favorite', { data: { eventId, userId } })
+    .delete('https://comcalstaging.herokuapp.com/api/v1/favorite', { data: { event, userId } })
     .then(({ data }) => {
       dispatch(doFavoriteRequest(false));
       dispatch(doFavoriteSuccess(data.message));
@@ -45,5 +46,6 @@ export const removeFavorite = (eventId, userId) => dispatch => {
     })
     .catch(error => {
       dispatch(doFavoriteError(error));
+      message.error(error.message);
     });
 };

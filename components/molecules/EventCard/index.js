@@ -26,11 +26,12 @@ const EventCard = ({ el, addFavorite, removeFavorite }) => {
     }
     if (!isFav) {
       // await addFavorite(el.scrapedEventId, Auth.isAuthenticated('id'));
-      addFavorite(el.scrapedEventId, Auth.isAuthenticated('id'));
+      addFavorite(el, Auth.isAuthenticated('id'));
+
       return setIsFav(!isFav);
     }
     if (isFav) {
-      await removeFavorite(el.scrapedEventId, Auth.isAuthenticated('id'));
+      await removeFavorite(el, Auth.isAuthenticated('id'));
       return setIsFav(!isFav);
     }
     return null;
