@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { message } from 'antd';
-import { CountryDropdown } from 'react-country-region-selector';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import fetch from 'isomorphic-fetch';
 import jwtDecode from 'jwt-decode';
 import Router from 'next/router';
@@ -34,14 +34,18 @@ const CreateEvent = () => {
     image: null,
   };
 
-  const initialErrors = {
-    eventError: '',
-    locationError: '',
+  const selectorStyle = {
+    borderRadius: '5px',
+    fontSize: '16px',
+    width: '40rem',
+    height: '3.5rem',
   };
 
   const [newEvent, setNewEvent] = useState(initialState);
-  const [errors, setErrors] = useState(initialErrors);
   const [pageLoading, setPageLoading] = useState(false);
+
+
+  const setCity = (val) => setNewEvent({ ...newEvent, city: val });
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -57,6 +61,7 @@ const CreateEvent = () => {
 
   const getImageFile = file => setNewEvent({ ...newEvent, ...{ image: file } });
 
+  // eslint-disable-next-line consistent-return
   const fieldsValid = () => {
     const validator = {
       name: {
@@ -94,7 +99,6 @@ const CreateEvent = () => {
       },
     };
     const eventKeys = Object.keys(newEvent);
-
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < eventKeys.length; i++) {
       if (newEvent[eventKeys[i]] === '' || newEvent[eventKeys[i]] == null) {
@@ -143,6 +147,7 @@ const CreateEvent = () => {
     }
     return true;
   };
+
   const handleSubmit = async event => {
     event.preventDefault();
     if (!fieldsValid()) {
@@ -158,7 +163,7 @@ const CreateEvent = () => {
 
     try {
       const token = Cookie.get('comcal-event-token');
-      if (token == null) {
+      if (!token) {
         message.error('You need to be authenticated to post an event.');
         setPageLoading(false);
         return;
@@ -203,10 +208,12 @@ const CreateEvent = () => {
     <>
       <LoaderContainer>
         {pageLoading && <PageLoader />}
-        <NavBar
-          style={{ dispaly: 'flex', justifyContent: 'space-between' }}
-          createEvent
-        />
+        <Styles.NavContainer>
+          <NavBar
+            style={{ dispaly: 'flex', justifyContent: 'space-between' }}
+            createEvent
+          />
+        </Styles.NavContainer>
         <Styles.ContainerDiv>
           <Heading> Event Details</Heading>
           <br />
@@ -221,23 +228,26 @@ const CreateEvent = () => {
                 onChange={handleChange}
                 placeholder="Give a short distinct name"
               />
-              <div style={{ color: 'red' }}>{errors.eventError}</div>
             </Styles.InputDiv>
             <Styles.InputDiv margin>
               <Label medium>Country</Label>
               <CountryDropdown
                 value={newEvent.country}
-                onChange={val => selectCountry(val)}
-                style={{
-                  borderRadius: '5px',
-                  fontSize: '16px',
-                  width: '40rem',
-                  height: '3.5rem',
-                }}
+                onChange={selectCountry}
+                style={selectorStyle}
               />
             </Styles.InputDiv>
             <Styles.InputDiv margin>
-              <Label medium>Location</Label>
+              <Label medium>City</Label>
+              <RegionDropdown
+                country={newEvent.country}
+                value={newEvent.city}
+                style={selectorStyle}
+                onChange={setCity}
+              />
+            </Styles.InputDiv>
+            <Styles.InputDiv margin>
+              <Label medium>Street</Label>
               <Input
                 xxLarge
                 noBackground
@@ -245,20 +255,7 @@ const CreateEvent = () => {
                 name="location"
                 value={newEvent.location}
                 onChange={handleChange}
-                placeholder="Location"
-              />
-              <div style={{ color: 'red' }}>{errors.locationError}</div>
-            </Styles.InputDiv>
-            <Styles.InputDiv margin>
-              <Label medium>City</Label>
-              <Input
-                xxLarge
-                noBackground
-                type="text"
-                name="city"
-                value={newEvent.city}
-                onChange={handleChange}
-                placeholder="City"
+                placeholder="Street"
               />
             </Styles.InputDiv>
             <Styles.InputDiv margin>
@@ -278,9 +275,10 @@ const CreateEvent = () => {
                 <Label medium>Interests</Label>
                 <Styles.InputDiv border margin padding round>
                   <Interests
+                    noBorder
                     interest={newEvent.eventType}
                     setInterest={setInterest}
-                    xxLarge
+                    small
                     type="text"
                     name="eventType"
                     value={newEvent.eventType}
