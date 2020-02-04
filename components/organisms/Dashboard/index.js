@@ -4,24 +4,33 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { message } from 'antd';
 
-
-
 import NavBarDashboard from '../../molecules/NavbarDashboard';
 import * as Styles from './index.styled';
 
 const Dashboard = ({ user }) => {
   const [favoriteEvent, setFavoriteEvent] = useState([]);
+  const [userEvents, setUserEvents] = useState([]);
 
   const id = user.user._id;
 
   useEffect(() => {
     const url = `https://comcalstaging.herokuapp.com/api/v1/favorite?userId=${id}`;
+    const eventsURL = `https://comcalstaging.herokuapp.com/api/v1/event/get-event/${id}`;
+
     axios.get(url)
       .then(res => {
         setFavoriteEvent(res.data.result);
       })
       .catch(err => {
-        message.error(err.message || 'Error: Could not your faourite events')
+        message.error(err.message || 'Error: Could not your faourite events');
+      });
+
+    axios.post(eventsURL)
+      .then(res => {
+        setUserEvents(res.data);
+      })
+      .catch(err => {
+        message.error(err.message || 'Error: Could not your faourite events');
       });
   }, [id]);
 
@@ -76,6 +85,23 @@ const Dashboard = ({ user }) => {
             ),
           )}
         </Styles.MidSectionDiv>
+
+        <Styles.MidSectionDiv>
+          <p>My Events</p>
+
+
+          {userEvents.map(
+            event => event && (
+            <Styles.Card1Div key={event._id}>
+              <h3>{event.name}</h3>
+              <h4>{event.location}</h4>
+              <p>{event.description}</p>
+              <h6>{event.source}</h6>
+            </Styles.Card1Div>
+            ),
+          )}
+        </Styles.MidSectionDiv>
+
         <Styles.BottomSectionDiv>
           <Styles.EventsDiv>
             <h4>Future events</h4>
