@@ -58,12 +58,12 @@ const Dashboard = ({ user }) => {
           <p>Starting soon</p>
           {favoriteEvent.map(
             event => event && (
-            <Styles.Card1Div key={event._id}>
+            <Styles.CardDiv key={event._id}>
               <h3>{event.name}</h3>
               <h4>{event.location}</h4>
               <p>{event.description}</p>
               <h6>{event.source}</h6>
-            </Styles.Card1Div>
+            </Styles.CardDiv>
             ),
           )}
         </Styles.MidSectionDiv>
