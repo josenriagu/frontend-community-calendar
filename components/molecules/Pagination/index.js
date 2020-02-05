@@ -16,7 +16,7 @@ const Pagination = ({
   const [paginatedData, setPaginatedData] = useState(
     cOfItems.slice(offset, perPage),
   );
-  //  Get the total pages necessary for the entire items 
+  //  Get the total pages necessary for the entire items
   const pageCount = Math.ceil(items.length / perPage);
 
   const handlePageClick = data => {
@@ -34,11 +34,11 @@ const Pagination = ({
       paginationClass = 'pagination';
       break;
     case 'right':
-      paginationClass = 'pagination-right';
+      paginationClass = 'paginate-default pagination-right';
       break;
 
     case 'center':
-      paginationClass = 'pagination-center';
+      paginationClass = 'paginate-default pagination-center';
       break;
 
     default:

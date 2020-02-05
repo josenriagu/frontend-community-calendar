@@ -7,6 +7,7 @@ const Input = styled.input`
   padding: 0 .5rem;
   height: 3.3rem;
   font-size: 1.6rem;
+  border-radius: 0.5rem;
 
   ${props => props.search
     && css`
@@ -44,7 +45,8 @@ const Input = styled.input`
 
   ${props => props.medium
     && css`
-      width: 14rem;
+      width: 16.5rem;
+      border-radius: 5px;
     `}
 
   ${props => props.large
@@ -55,13 +57,25 @@ const Input = styled.input`
   ${props => props.xLarge
   && css`
     width: 25rem;
-    border-radius: 20px;
+    border-radius: 5px;
+  `}
+
+  ${props => props.xxLarge
+  && css`
+    width: 40rem;
+    background:none;
+    border-radius: 5px;
   `}
 
   ${props => props.disabled
     && css`
       background: #dddddd;
       cursor: not-allowed;
+    `}
+
+    ${props => props.noBackground
+    && css`
+      background: none;
     `}
 `;
 
