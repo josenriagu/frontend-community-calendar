@@ -5,3 +5,10 @@ export const colors = {
   white: '#fff',
   disabled: '#ffb6c1',
 };
+
+export const screens = {
+  desktop: '(max-width: 1200px)',
+  tablet: '(max-width: 800px)',
+  mobile: '(max-width: 500px)',
+  xmobile: '(max-width: 320px)',
+};

@@ -1,17 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { message } from 'antd';
+
+
 
 import NavBarDashboard from '../../molecules/NavbarDashboard';
 import * as Styles from './index.styled';
 import { doFetchFavEvents } from '../../../redux/actions/events';
 
-const Dashboard = ({ user, doFetchFavEvents, favEvents }) => {
-  // const [favoriteEvent, setFavoriteEvent] = useState([]);
+const Dashboard = ({ user }) => {
+  const [favoriteEvent, setFavoriteEvent] = useState([]);
+
   const id = user.user._id;
 
   useEffect(() => {
-    doFetchFavEvents(id);
+    const url = `https://comcalstaging.herokuapp.com/api/v1/favorite?userId=${id}`;
+    axios.get(url)
+      .then(res => {
+        setFavoriteEvent(res.data.result);
+      })
+      .catch(err => {
+        message.error(err.message || 'Error: Could not your favourite events')
+      });
   }, [id]);
 
   return (
@@ -24,27 +36,14 @@ const Dashboard = ({ user, doFetchFavEvents, favEvents }) => {
             <div className="datelocation">
               <p>
                 <strong>Location:</strong>
-                {' '}
                 <br />
                 Accra, Ghana
               </p>
-              <date>
-                <strong>Member since:</strong>
-                {' '}
-                <br />
-                Jan 20, 2020
-              </date>
+              <strong>Member since:</strong>
+              <br />
+              Jan 20, 2020
             </div>
-            {/* <Styles.BioDiv>
-              <h4>Bio:</h4>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Styles.BioDiv> */}
+            </Styles.BioDiv>
           </Styles.UserBioDiv>
           <Styles.InterestDiv>
             <h4>Interests:</h4>
@@ -55,17 +54,17 @@ const Dashboard = ({ user, doFetchFavEvents, favEvents }) => {
         <br />
         <h2>Favorite Events</h2>
         <Styles.MidSectionDiv>
-          {favEvents.length > 0
-            && favEvents.map(
-              event => event && (
-              <Styles.CardDiv key={event._id}>
-                <h3>{event.name}</h3>
-                <h4>{event.location}</h4>
-                <p>{event.description}</p>
-                <h6>{event.source}</h6>
-              </Styles.CardDiv>
-              ),
-            )}
+          <p>Starting soon</p>
+          {favoriteEvent.map(
+            event => event && (
+            <Styles.Card1Div key={event._id}>
+              <h3>{event.name}</h3>
+              <h4>{event.location}</h4>
+              <p>{event.description}</p>
+              <h6>{event.source}</h6>
+            </Styles.Card1Div>
+            ),
+          )}
         </Styles.MidSectionDiv>
         <Styles.BottomSectionDiv>
           <Styles.EventsDiv>
@@ -89,4 +88,5 @@ const mapStateToProps = state => ({
   user: state.user,
   favEvents: state.fetchEvents.favEvents.events,
 });
-export default connect(mapStateToProps, { doFetchFavEvents })(Dashboard);
+
+export default connect(mapStateToProps, {})(Dashboard);
