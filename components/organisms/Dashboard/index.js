@@ -6,6 +6,7 @@ import { message } from 'antd';
 
 import NavBarDashboard from '../../molecules/NavbarDashboard';
 import * as Styles from './index.styled';
+import { doFetchFavEvents } from '../../../redux/actions/events';
 
 const Dashboard = ({ user }) => {
   const [favoriteEvent, setFavoriteEvent] = useState([]);
@@ -22,15 +23,14 @@ const Dashboard = ({ user }) => {
         setFavoriteEvent(res.data.result);
       })
       .catch(err => {
-        message.error(err.message || 'Error: Could not your faourite events');
+        message.error(err.message || 'Error: Could not retrieve your favourite events');
       });
-
     axios.post(eventsURL)
       .then(res => {
         setUserEvents(res.data);
       })
       .catch(err => {
-        message.error(err.message || 'Error: Could not your faourite events');
+        message.error(err.message || 'Error: Could not retrieve your favourite events');
       });
   }, [id]);
 
@@ -47,20 +47,12 @@ const Dashboard = ({ user }) => {
                 <br />
                 Accra, Ghana
               </p>
-              <strong>Member since:</strong>
-              <br />
-              Jan 20, 2020
+              <p>
+                <strong>Member since:</strong>
+                <br />
+                Jan 20, 2020
+              </p>
             </div>
-            <Styles.BioDiv>
-              <h4>Bio:</h4>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Styles.BioDiv>
           </Styles.UserBioDiv>
           <Styles.InterestDiv>
             <h4>Interests:</h4>
@@ -72,16 +64,14 @@ const Dashboard = ({ user }) => {
         <h2>Favorite Events</h2>
         <Styles.MidSectionDiv>
           <p>Starting soon</p>
-
-
           {favoriteEvent.map(
             event => event && (
-            <Styles.Card1Div key={event._id}>
+            <Styles.CardDiv key={event._id}>
               <h3>{event.name}</h3>
               <h4>{event.location}</h4>
               <p>{event.description}</p>
               <h6>{event.source}</h6>
-            </Styles.Card1Div>
+            </Styles.CardDiv>
             ),
           )}
         </Styles.MidSectionDiv>
@@ -104,8 +94,8 @@ const Dashboard = ({ user }) => {
 
         <Styles.BottomSectionDiv>
           <Styles.EventsDiv>
-            <h4>Future events</h4>
-            <h2>No future events!</h2>
+            <h4>Created Events</h4>
+            <h2>No created events!</h2>
           </Styles.EventsDiv>
           <h5>Add events</h5>
         </Styles.BottomSectionDiv>
@@ -114,29 +104,15 @@ const Dashboard = ({ user }) => {
   );
 };
 
-
 Dashboard.propTypes = {
   user: PropTypes.object,
-
+  favEvents: PropTypes.array,
+  doFetchFavEvents: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
+  favEvents: state.fetchEvents.favEvents.events,
 });
+
 export default connect(mapStateToProps, {})(Dashboard);
-
-
-// { /* <Styles.DateTimeDiv>
-//         <Styles.StartDiv>
-//           <p>Starts:</p>
-//           <br />
-//           <Input medium type="date" name="date" value="date" />
-//           <Input small type="time" name="time" value="time" />
-//         </Styles.StartDiv>
-//         <Styles.EndDiv>
-//           <p>Ends:</p>
-//           <br />
-//           <Input medium type="date" name="date" value="date" />
-//           <Input small type="time" name="time" value="time" />
-//         </Styles.EndDiv>
-//       </Styles.DateTimeDiv> */ }
