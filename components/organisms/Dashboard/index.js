@@ -39,11 +39,12 @@ const Dashboard = ({ user }) => {
                 <br />
                 Accra, Ghana
               </p>
-              <strong>Member since:</strong>
-              <br />
-              Jan 20, 2020
+              <p>
+                <strong>Member since:</strong>
+                <br />
+                Jan 20, 2020
+              </p>
             </div>
-            </Styles.BioDiv>
           </Styles.UserBioDiv>
           <Styles.InterestDiv>
             <h4>Interests:</h4>
