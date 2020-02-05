@@ -11,6 +11,7 @@ import Paragraph from '../../atoms/Paragraph';
 import Input from '../../atoms/Input';
 import { colors } from '../../~reusables';
 import { doSignUp } from '../../../redux/actions/signUp';
+import {PageWrapper} from './index.styled';
 
 const schema = {
   first_name: {
@@ -59,7 +60,7 @@ export const BorderDiv = styled.div`
   border: 1px solid #cec8c8;
   box-sizing: border-box;
   padding: 2.5rem 0;
-  border-radius: 20px;
+  border-radius: 5px;
 `;
 
 export const InputDiv = styled.div`
@@ -127,7 +128,7 @@ const SignUpForm = ({ doSignUp }) => {
   }, [formState.values]);
 
   return (
-    <div>
+    <PageWrapper>
       <NavBar signup />
       <BorderDiv>
         <Form>
@@ -240,13 +241,15 @@ const SignUpForm = ({ doSignUp }) => {
             }}
             style={{
               backgroundColor: `${!formState.isValid ? 'lightpink' : colors.primary}`,
+              width: '25rem',
+              height: '4rem',
             }}
           >
             Sign up
           </AntButton>
         </Form>
       </BorderDiv>
-    </div>
+    </PageWrapper>
   );
 };
 

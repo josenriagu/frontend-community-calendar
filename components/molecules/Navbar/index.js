@@ -55,7 +55,7 @@ const NavBar = ({ alt, logged, notLogged, signin, signup, createEvent }) => {
       <Link href="/">
         <Logo />
       </Link>
-      <nav>
+      <nav className={(signin || signup) ? 'auth-nav' : null}>
         {(logged || notLogged) && (
           <Link href="/event">
             <a>

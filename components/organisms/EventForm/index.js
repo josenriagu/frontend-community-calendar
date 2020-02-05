@@ -63,6 +63,41 @@ const CreateEvent = () => {
 
   // eslint-disable-next-line consistent-return
   const fieldsValid = () => {
+    const validator = {
+      name: {
+        type: 'string',
+      },
+      country: {
+        type: 'string',
+        test: /^[a-z]+$/i,
+      },
+      location: {
+        type: 'string',
+      },
+      city: {
+        type: 'string',
+        test: /^[a-z]+$/i,
+      },
+      source: {
+        type: 'string',
+      },
+      eventType: {
+        type: 'string',
+      },
+      price: {
+        type: 'string',
+        test: /^[0-9]+$/,
+      },
+      image: {
+        type: 'object',
+      },
+      date: {
+        type: 'object',
+      },
+      description: {
+        type: 'string',
+      },
+    };
     const eventKeys = Object.keys(newEvent);
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < eventKeys.length; i++) {
@@ -70,9 +105,47 @@ const CreateEvent = () => {
         message.error(`${eventKeys[i].toUpperCase()} is required! `);
         return false;
       }
-
-      return true;
+      switch (eventKeys[i]) {
+        case 'city':
+          if (typeof newEvent[eventKeys[i]] === 'string') {
+            if (!newEvent[eventKeys[i]].match(validator.city.test)) {
+              return false;
+            }
+          } else {
+            return false;
+          }
+          break;
+        case 'country':
+          if (typeof newEvent[eventKeys[i]] === 'string') {
+            if (!newEvent[eventKeys[i]].match(validator.country.test)) {
+              return false;
+            }
+          } else {
+            return false;
+          }
+          break;
+        case 'source':
+          if (typeof newEvent[eventKeys[i]] === 'string') {
+            if (!newEvent[eventKeys[i]].match(validator.source.test)) {
+              return false;
+            }
+          } else {
+            return false;
+          }
+          break;
+        case 'description':
+          if (typeof newEvent[eventKeys[i]] === 'string') {
+            if (!newEvent[eventKeys[i]].match(validator.description.test)) {
+              return false;
+            }
+          } else {
+            return false;
+          }
+          break;
+        default: return true;
+      }
     }
+    return true;
   };
 
   const handleSubmit = async event => {

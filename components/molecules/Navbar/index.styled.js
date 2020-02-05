@@ -14,7 +14,7 @@ export const NavBarDiv = styled.div`
   nav {
     width: 30%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     @media ${screens.tablet} {
       width: 50%;
     }
@@ -24,6 +24,12 @@ export const NavBarDiv = styled.div`
     button {
       font-weight: bold;
     }
+  }
+  nav.auth-nav{
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+
   }
   span {
     display: none;

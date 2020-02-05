@@ -125,6 +125,7 @@ const SignInForm = ({ doSignIn, error }) => {
           </Styles.InputDiv>
           <StyledDiv>
             <Input xLarge type="checkbox" />
+&nbsp;
             <Paragraph>Remember me</Paragraph>
           </StyledDiv>
           {/* <Button
@@ -143,6 +144,8 @@ const SignInForm = ({ doSignIn, error }) => {
             }}
             style={{
               backgroundColor: `${!formState.isValid ? 'lightpink' : colors.primary}`,
+              width: '25rem',
+              height: '4rem',
             }}
           >
             Login
