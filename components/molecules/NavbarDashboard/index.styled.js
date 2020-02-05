@@ -7,12 +7,33 @@ export const NavBarDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  main {
+      display: none;
+      @media (max-width: 500px) {
+        display: flex;
+        flex-direction: column;
+        align-items:flex-start
+      }
+      div{
+        display:flex;
+        flex-direction:column
+      }
+      
+    }
   nav {
     display: flex;
     justify-content: space-between;
-    a{
+    @media (max-width: 500px) {
+        background-color: red;
+        display: none;
+      }
+      @media (max-width: 300px) {
+        background-color: red;
+        display: none;
+      }
+    a {
       padding-right: 2rem;
-      Button{
+      button {
         background-color: #9c0d38;
       }
     }
@@ -23,12 +44,12 @@ export const NavBarDiv = styled.div`
       background-color: gray;
     }
     .bell {
-    font-size: 1.6rem;
-    padding: .5rem  1rem 0 0;
+      font-size: 1.6rem;
+      padding: 0.5rem 1rem 0 0;
     }
-    .down{
-    font-size: .5rem;
-    padding: 1.5rem 0 0 .5rem;
+    .down {
+      font-size: 0.5rem;
+      padding: 1.5rem 0 0 0.5rem;
     }
   }
 `;
